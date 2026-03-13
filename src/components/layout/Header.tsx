@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X, ChevronDown, Globe } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Menu, X, ChevronDown, Globe, LogOut } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Language } from '@/i18n/translations';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
+import { useAuth } from '@/contexts/AuthContext';
 
 const languages: { code: Language; label: string; flag: string }[] = [
   { code: 'en', label: 'EN', flag: '🇬🇧' },
@@ -16,6 +17,10 @@ const languages: { code: Language; label: string; flag: string }[] = [
 const Header = () => {
   const { t, language, setLanguage } = useLanguage();
   const [langOpen, setLangOpen] = useState(false);
+  const { user, roles, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const dashboardPath = roles.includes('admin') ? '/admin' : roles.includes('agent') ? '/agent' : '/student';
 
   const navItems = [
     { label: t('nav.courses'), href: '/cursuri' },
@@ -90,10 +95,20 @@ const Header = () => {
               )}
             </div>
 
-            {/* Sign In */}
-            <Link to="/login" className="hidden md:block text-sm text-secondary-foreground/80 hover:text-primary-foreground transition-colors">
-              {t('nav.signIn')}
-            </Link>
+            {user ? (
+              <div className="hidden md:flex items-center gap-2">
+                <Link to={dashboardPath} className="text-sm text-secondary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Dashboard
+                </Link>
+                <button onClick={async () => { await signOut(); navigate('/'); }} className="text-sm text-secondary-foreground/80 hover:text-primary-foreground transition-colors">
+                  <LogOut className="w-4 h-4" />
+                </button>
+              </div>
+            ) : (
+              <Link to="/login" className="hidden md:block text-sm text-secondary-foreground/80 hover:text-primary-foreground transition-colors">
+                {t('nav.signIn')}
+              </Link>
+            )}
 
             {/* CTA */}
             <Link to="/eligibilitate">
@@ -122,9 +137,14 @@ const Header = () => {
                     </Link>
                   ))}
                   <div className="border-t border-navy-light/20 my-4" />
-                  <Link to="/login" className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground">
-                    {t('nav.signIn')}
-                  </Link>
+                  {user ? (
+                    <>
+                      <Link to={dashboardPath} className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground">Dashboard</Link>
+                      <button onClick={async () => { await signOut(); navigate('/'); }} className="px-4 py-3 text-left text-secondary-foreground/80 hover:text-primary-foreground">Sign Out</button>
+                    </>
+                  ) : (
+                    <Link to="/login" className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground">{t('nav.signIn')}</Link>
+                  )}
                   <Link to="/eligibilitate">
                     <Button className="w-full mt-2 bg-primary hover:bg-orange-dark text-primary-foreground">
                       {t('nav.checkEligibility')}

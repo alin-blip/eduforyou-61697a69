@@ -4,6 +4,8 @@ import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { ArrowRight, ArrowLeft, CheckCircle2, User, Phone, Mail, Calendar, MapPin, BookOpen } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 const steps = [
   { id: 'residence', icon: MapPin },
@@ -34,6 +36,7 @@ const courseOptions = [
 
 const EligibilityPage = () => {
   const { t } = useLanguage();
+  const { toast } = useToast();
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({
     residence: '', fullName: '', phone: '', email: '', dob: '', course: '',
@@ -51,8 +54,26 @@ const EligibilityPage = () => {
     }
   };
 
-  const handleSubmit = () => {
-    setStep(4);
+  const handleSubmit = async () => {
+    try {
+      await supabase.from('contacts').insert({
+        full_name: form.fullName,
+        email: form.email,
+        phone: form.phone,
+        residence_status: form.residence,
+        course_interest: form.course,
+        date_of_birth: form.dob || null,
+        source: 'eligibility_quiz',
+      });
+      await supabase.from('quiz_results').insert({
+        quiz_type: 'eligibility',
+        answers: form as any,
+        result: { eligible: form.residence !== 'Other / Not Sure' },
+      });
+      setStep(4);
+    } catch {
+      toast({ title: 'Error', description: 'Something went wrong. Please try again.', variant: 'destructive' });
+    }
   };
 
   const isEligible = form.residence !== 'Other / Not Sure';
