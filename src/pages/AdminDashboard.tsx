@@ -38,9 +38,6 @@ const AdminDashboard = () => {
 
   // Blog
   const [blogPosts, setBlogPosts] = useState<any[]>([]);
-  const [editingPost, setEditingPost] = useState<any>(null);
-  const [newPost, setNewPost] = useState(false);
-  const [postForm, setPostForm] = useState({ title: '', slug: '', content: '', excerpt: '', category: '', published: false });
 
   // Applications
   const [applications, setApplications] = useState<any[]>([]);
