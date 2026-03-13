@@ -58,11 +58,19 @@ const CVBuilder = () => {
   const saveCV = async () => {
     if (!user) return;
     setSaving(true);
+    const payload = {
+      personal_statement: cv.personal_statement,
+      education: cv.education as unknown as any,
+      experience: cv.experience as unknown as any,
+      skills: cv.skills as unknown as any,
+      languages: cv.languages as unknown as any,
+      certifications: cv.certifications as unknown as any,
+    };
     const { data: existing } = await supabase.from('student_cv').select('id').eq('user_id', user.id).maybeSingle();
     if (existing) {
-      await supabase.from('student_cv').update({ ...cv }).eq('user_id', user.id);
+      await supabase.from('student_cv').update(payload).eq('user_id', user.id);
     } else {
-      await supabase.from('student_cv').insert({ user_id: user.id, ...cv });
+      await supabase.from('student_cv').insert({ user_id: user.id, ...payload } as any);
     }
     setSaving(false);
     toast({ title: 'CV saved!' });
