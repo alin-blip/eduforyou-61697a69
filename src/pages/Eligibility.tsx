@@ -4,6 +4,8 @@ import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { ArrowRight, ArrowLeft, CheckCircle2, User, Phone, Mail, Calendar, MapPin, BookOpen } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 const steps = [
   { id: 'residence', icon: MapPin },
