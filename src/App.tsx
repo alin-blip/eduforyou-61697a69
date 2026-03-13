@@ -30,6 +30,7 @@ import LoginPage from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
 import AgentDashboard from "./pages/AgentDashboard";
 import StudentDashboard from "./pages/StudentDashboard";
+import BlogEditor from "./pages/BlogEditor";
 
 const queryClient = new QueryClient();
 
