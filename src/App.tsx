@@ -84,6 +84,7 @@ const App = () => (
               <Route path="/legal/terms" element={<LegalPage type="terms" />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            </TrackingProvider>
           </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>
