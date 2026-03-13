@@ -2,7 +2,8 @@ import { useEffect, useState, useRef } from 'react';
 import Layout from '@/components/layout/Layout';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
-import { CheckCircle2, Circle, Lock, BookOpen, FileText, GraduationCap, Upload, Trash2, Save, Edit2, X, PoundSterling, ClipboardList } from 'lucide-react';
+import { CheckCircle2, Circle, Lock, BookOpen, FileText, GraduationCap, Upload, Trash2, Save, Edit2, X, PoundSterling, ClipboardList, Trophy } from 'lucide-react';
+import GamificationWidget from '@/components/student/GamificationWidget';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
@@ -140,8 +141,9 @@ const StudentDashboard = () => {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="mb-6">
+            <TabsList className="mb-6 flex-wrap">
               <TabsTrigger value="journey">Journey</TabsTrigger>
+              <TabsTrigger value="gamification">Progress</TabsTrigger>
               <TabsTrigger value="documents">Documents</TabsTrigger>
               <TabsTrigger value="applications">Applications</TabsTrigger>
               <TabsTrigger value="finance">Finance</TabsTrigger>
@@ -197,6 +199,19 @@ const StudentDashboard = () => {
                 })}
               </div>
             </TabsContent>
+
+            {/* GAMIFICATION */}
+            <TabsContent value="gamification">
+              <GamificationWidget />
+              <div className="mt-4">
+                <a href="/student/cv">
+                  <Button variant="outline">
+                    <FileText className="w-4 h-4 mr-2" /> Open CV Builder
+                  </Button>
+                </a>
+              </div>
+            </TabsContent>
+
 
             {/* DOCUMENTS */}
             <TabsContent value="documents">

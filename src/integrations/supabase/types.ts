@@ -274,6 +274,84 @@ export type Database = {
         }
         Relationships: []
       }
+      ceo_okrs: {
+        Row: {
+          created_at: string
+          id: string
+          key_results: Json
+          objective: string
+          progress: number
+          quarter: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key_results?: Json
+          objective: string
+          progress?: number
+          quarter: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key_results?: Json
+          objective?: string
+          progress?: number
+          quarter?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ceo_tasks: {
+        Row: {
+          ai_generated: boolean
+          assigned_to: string | null
+          category: string | null
+          created_at: string
+          created_by: string | null
+          description: string | null
+          due_date: string | null
+          id: string
+          priority: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          ai_generated?: boolean
+          assigned_to?: string | null
+          category?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          ai_generated?: boolean
+          assigned_to?: string | null
+          category?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       contacts: {
         Row: {
           course_interest: string | null
@@ -558,6 +636,45 @@ export type Database = {
         }
         Relationships: []
       }
+      student_cv: {
+        Row: {
+          certifications: Json
+          created_at: string
+          education: Json
+          experience: Json
+          id: string
+          languages: Json
+          personal_statement: string | null
+          skills: Json
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          certifications?: Json
+          created_at?: string
+          education?: Json
+          experience?: Json
+          id?: string
+          languages?: Json
+          personal_statement?: string | null
+          skills?: Json
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          certifications?: Json
+          created_at?: string
+          education?: Json
+          experience?: Json
+          id?: string
+          languages?: Json
+          personal_statement?: string | null
+          skills?: Json
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       student_documents: {
         Row: {
           created_at: string
@@ -584,6 +701,42 @@ export type Database = {
           file_path?: string
           id?: string
           status?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      student_gamification: {
+        Row: {
+          badges: Json
+          created_at: string
+          id: string
+          last_activity_date: string | null
+          level: number
+          points: number
+          streak_days: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          badges?: Json
+          created_at?: string
+          id?: string
+          last_activity_date?: string | null
+          level?: number
+          points?: number
+          streak_days?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          badges?: Json
+          created_at?: string
+          id?: string
+          last_activity_date?: string | null
+          level?: number
+          points?: number
+          streak_days?: number
+          updated_at?: string
           user_id?: string
         }
         Relationships: []

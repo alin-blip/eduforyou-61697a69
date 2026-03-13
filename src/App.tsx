@@ -32,6 +32,8 @@ import AgentDashboard from "./pages/AgentDashboard";
 import StudentDashboard from "./pages/StudentDashboard";
 import BlogEditor from "./pages/BlogEditor";
 import BookAppointment from "./pages/BookAppointment";
+import CVBuilder from "./pages/CVBuilder";
+import CeoDashboard from "./pages/CeoDashboard";
 
 const queryClient = new QueryClient();
 
@@ -73,6 +75,8 @@ const App = () => (
               <Route path="/admin/blog/:id" element={<ProtectedRoute requiredRole="admin"><BlogEditor /></ProtectedRoute>} />
               <Route path="/agent" element={<ProtectedRoute requiredRole="agent"><AgentDashboard /></ProtectedRoute>} />
               <Route path="/student" element={<ProtectedRoute requiredRole="student"><StudentDashboard /></ProtectedRoute>} />
+              <Route path="/student/cv" element={<ProtectedRoute requiredRole="student"><CVBuilder /></ProtectedRoute>} />
+              <Route path="/ceo" element={<ProtectedRoute requiredRole="admin"><CeoDashboard /></ProtectedRoute>} />
               <Route path="/legal/cookies" element={<LegalPage type="cookies" />} />
               <Route path="/legal/privacy" element={<LegalPage type="privacy" />} />
               <Route path="/legal/terms" element={<LegalPage type="terms" />} />
