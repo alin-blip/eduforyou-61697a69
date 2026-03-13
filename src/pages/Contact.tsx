@@ -1,9 +1,39 @@
+import { useState } from 'react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageCircle, Loader2, CheckCircle2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from '@/hooks/use-toast';
 
 const ContactPage = () => {
+  const [form, setForm] = useState({ full_name: '', email: '', phone: '', subject: '', message: '' });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.full_name.trim() || !form.email.trim() || !form.message.trim()) {
+      toast({ title: 'Please fill in all required fields', variant: 'destructive' });
+      return;
+    }
+    setSubmitting(true);
+    const { error } = await supabase.from('contacts').insert({
+      full_name: form.full_name.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim() || null,
+      course_interest: form.subject || null,
+      notes: form.message.trim(),
+      source: 'contact_form',
+    });
+    setSubmitting(false);
+    if (error) {
+      toast({ title: 'Something went wrong', description: 'Please try again later.', variant: 'destructive' });
+    } else {
+      setSubmitted(true);
+      toast({ title: 'Message sent successfully!' });
+    }
+  };
+
   return (
     <Layout>
       <section className="py-20 bg-navy-gradient">
@@ -47,26 +77,37 @@ const ContactPage = () => {
             {/* Form */}
             <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
               <h3 className="font-display font-bold text-xl text-card-foreground mb-6">Send us a message</h3>
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <input type="text" placeholder="Full Name *" className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                  <input type="email" placeholder="Email *" className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+              {submitted ? (
+                <div className="text-center py-12">
+                  <CheckCircle2 className="w-16 h-16 text-primary mx-auto mb-4" />
+                  <h4 className="font-display text-xl font-bold text-foreground mb-2">Thank you!</h4>
+                  <p className="text-muted-foreground mb-6">We've received your message and will get back to you shortly.</p>
+                  <Button variant="outline" onClick={() => { setSubmitted(false); setForm({ full_name: '', email: '', phone: '', subject: '', message: '' }); }}>
+                    Send another message
+                  </Button>
                 </div>
-                <input type="tel" placeholder="Phone Number" className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                <select className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
-                  <option value="">Select Subject</option>
-                  <option>Course Information</option>
-                  <option>Eligibility Question</option>
-                  <option>Student Finance</option>
-                  <option>Application Status</option>
-                  <option>Partnership</option>
-                  <option>Other</option>
-                </select>
-                <textarea placeholder="Your Message *" rows={5} className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" />
-                <Button type="submit" size="lg" className="w-full bg-primary hover:bg-orange-dark text-primary-foreground font-semibold">
-                  Send Message
-                </Button>
-              </form>
+              ) : (
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input type="text" placeholder="Full Name *" required value={form.full_name} onChange={e => setForm(f => ({ ...f, full_name: e.target.value }))} className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                    <input type="email" placeholder="Email *" required value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                  </div>
+                  <input type="tel" placeholder="Phone Number" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                  <select value={form.subject} onChange={e => setForm(f => ({ ...f, subject: e.target.value }))} className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
+                    <option value="">Select Subject</option>
+                    <option>Course Information</option>
+                    <option>Eligibility Question</option>
+                    <option>Student Finance</option>
+                    <option>Application Status</option>
+                    <option>Partnership</option>
+                    <option>Other</option>
+                  </select>
+                  <textarea placeholder="Your Message *" required rows={5} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" />
+                  <Button type="submit" size="lg" disabled={submitting} className="w-full bg-primary hover:bg-orange-dark text-primary-foreground font-semibold">
+                    {submitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Sending...</> : 'Send Message'}
+                  </Button>
+                </form>
+              )}
             </div>
           </div>
         </div>
