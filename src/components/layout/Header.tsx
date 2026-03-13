@@ -17,6 +17,10 @@ const languages: { code: Language; label: string; flag: string }[] = [
 const Header = () => {
   const { t, language, setLanguage } = useLanguage();
   const [langOpen, setLangOpen] = useState(false);
+  const { user, roles, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const dashboardPath = roles.includes('admin') ? '/admin' : roles.includes('agent') ? '/agent' : '/student';
 
   const navItems = [
     { label: t('nav.courses'), href: '/cursuri' },
