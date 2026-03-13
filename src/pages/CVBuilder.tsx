@@ -45,11 +45,11 @@ const CVBuilder = () => {
     if (data) {
       setCv({
         personal_statement: data.personal_statement || '',
-        education: (data.education as CVEntry[]) || [],
-        experience: (data.experience as CVEntry[]) || [],
-        skills: (data.skills as string[]) || [],
-        languages: (data.languages as string[]) || [],
-        certifications: (data.certifications as string[]) || [],
+        education: (data.education as unknown as CVEntry[]) || [],
+        experience: (data.experience as unknown as CVEntry[]) || [],
+        skills: (data.skills as unknown as string[]) || [],
+        languages: (data.languages as unknown as string[]) || [],
+        certifications: (data.certifications as unknown as string[]) || [],
       });
     }
     setLoading(false);
