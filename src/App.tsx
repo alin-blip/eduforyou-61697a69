@@ -46,6 +46,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <TrackingProvider>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/cursuri" element={<CoursesPage />} />
