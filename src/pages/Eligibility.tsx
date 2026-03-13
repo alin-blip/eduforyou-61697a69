@@ -36,6 +36,7 @@ const courseOptions = [
 
 const EligibilityPage = () => {
   const { t } = useLanguage();
+  const { toast } = useToast();
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({
     residence: '', fullName: '', phone: '', email: '', dob: '', course: '',
