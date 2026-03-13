@@ -31,6 +31,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AgentDashboard from "./pages/AgentDashboard";
 import StudentDashboard from "./pages/StudentDashboard";
 import BlogEditor from "./pages/BlogEditor";
+import BookAppointment from "./pages/BookAppointment";
 
 const queryClient = new QueryClient();
 
