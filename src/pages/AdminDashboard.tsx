@@ -110,24 +110,18 @@ const AdminDashboard = () => {
     setBlogPosts(data || []);
   };
 
-  const savePost = async () => {
-    if (editingPost) {
-      await supabase.from('blog_posts').update(postForm).eq('id', editingPost.id);
-      toast({ title: 'Post actualizat' });
-    } else {
-      await supabase.from('blog_posts').insert(postForm);
-      toast({ title: 'Post creat' });
-    }
-    setEditingPost(null);
-    setNewPost(false);
-    setPostForm({ title: '', slug: '', content: '', excerpt: '', category: '', published: false });
-    fetchBlog();
-  };
+  const savePost = async () => {};
 
   const deletePost = async (id: string) => {
     await supabase.from('blog_posts').delete().eq('id', id);
     fetchBlog();
     toast({ title: 'Post șters' });
+  };
+
+  const togglePublished = async (id: string, published: boolean) => {
+    await supabase.from('blog_posts').update({ published: !published }).eq('id', id);
+    fetchBlog();
+    toast({ title: published ? 'Post retras din publicare' : 'Post publicat' });
   };
 
   const fetchApplications = async () => {
