@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from '@/hooks/use-toast';
-import { courses } from '@/data/courses';
+import { coursesData } from '@/data/courses';
 
 const AgentDashboard = () => {
   const { user } = useAuth();
