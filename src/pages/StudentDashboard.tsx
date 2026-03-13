@@ -200,6 +200,19 @@ const StudentDashboard = () => {
               </div>
             </TabsContent>
 
+            {/* GAMIFICATION */}
+            <TabsContent value="gamification">
+              <GamificationWidget />
+              <div className="mt-4">
+                <a href="/student/cv">
+                  <Button variant="outline">
+                    <FileText className="w-4 h-4 mr-2" /> Open CV Builder
+                  </Button>
+                </a>
+              </div>
+            </TabsContent>
+
+
             {/* DOCUMENTS */}
             <TabsContent value="documents">
               <div className="bg-card rounded-xl border border-border">
