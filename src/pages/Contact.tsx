@@ -31,6 +31,15 @@ const ContactPage = () => {
     } else {
       setSubmitted(true);
       toast({ title: 'Message sent successfully!' });
+      // Send confirmation email (fire-and-forget)
+      supabase.functions.invoke('send-transactional-email', {
+        body: {
+          recipientEmail: form.email.trim(),
+          fullName: form.full_name.trim(),
+          subject: form.subject || undefined,
+          message: form.message.trim(),
+        },
+      }).catch(() => { /* silently ignore email errors */ });
     }
   };
 
