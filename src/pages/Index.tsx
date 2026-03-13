@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle2, Star, GraduationCap, PoundSterling, TrendingUp, Users, Shield, BookOpen, FileText, Phone, UserCheck, Lightbulb, Calculator, ChevronRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
+import SEOHead, { organizationSchema, faqSchema } from '@/components/SEOHead';
 import heroImage from '@/assets/hero-main.jpg';
 import {
   Accordion,
@@ -57,6 +58,12 @@ const Index = () => {
 
   return (
     <Layout>
+      <SEOHead
+        title="Free UK University Consultancy"
+        description="Access UK university education with up to £25,000/year in Student Finance. We guide you from course selection to graduation — completely free. Over 7,000 students helped."
+        canonical="https://eduforyou.co.uk"
+        jsonLd={organizationSchema}
+      />
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">

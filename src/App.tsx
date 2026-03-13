@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import TrackingProvider from "@/components/TrackingProvider";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import CoursesPage from "./pages/Courses";
@@ -45,6 +46,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <TrackingProvider>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/cursuri" element={<CoursesPage />} />
@@ -82,6 +84,7 @@ const App = () => (
               <Route path="/legal/terms" element={<LegalPage type="terms" />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            </TrackingProvider>
           </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>
