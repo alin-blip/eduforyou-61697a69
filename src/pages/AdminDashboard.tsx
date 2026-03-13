@@ -458,6 +458,10 @@ const AdminDashboard = () => {
                 </Table>
               </div>
             </TabsContent>
+            <TabsContent value="appointments"><AppointmentsTab /></TabsContent>
+            <TabsContent value="campuses"><CampusesTab /></TabsContent>
+            <TabsContent value="sms"><SmsLogsTab /></TabsContent>
+            <TabsContent value="carts"><AbandonedCartsTab /></TabsContent>
           </Tabs>
         </div>
       </section>
