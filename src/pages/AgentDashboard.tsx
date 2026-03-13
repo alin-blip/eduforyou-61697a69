@@ -168,7 +168,7 @@ const AgentDashboard = () => {
                       <Select value={referralForm.course_interest} onValueChange={v => setReferralForm(f => ({ ...f, course_interest: v }))}>
                         <SelectTrigger><SelectValue placeholder="Course Interest" /></SelectTrigger>
                         <SelectContent>
-                          {courses.map(c => <SelectItem key={c.slug} value={c.slug}>{c.title}</SelectItem>)}
+                          {coursesData.map(c => <SelectItem key={c.slug} value={c.slug}>{c.title}</SelectItem>)}
                         </SelectContent>
                       </Select>
                     </div>
