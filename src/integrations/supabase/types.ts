@@ -231,6 +231,78 @@ export type Database = {
           },
         ]
       }
+      referrals: {
+        Row: {
+          agent_id: string
+          commission_amount: number | null
+          commission_paid: boolean | null
+          converted_at: string | null
+          course_interest: string | null
+          created_at: string
+          id: string
+          referred_email: string
+          referred_name: string
+          referred_phone: string | null
+          status: string | null
+        }
+        Insert: {
+          agent_id: string
+          commission_amount?: number | null
+          commission_paid?: boolean | null
+          converted_at?: string | null
+          course_interest?: string | null
+          created_at?: string
+          id?: string
+          referred_email: string
+          referred_name: string
+          referred_phone?: string | null
+          status?: string | null
+        }
+        Update: {
+          agent_id?: string
+          commission_amount?: number | null
+          commission_paid?: boolean | null
+          converted_at?: string | null
+          course_interest?: string | null
+          created_at?: string
+          id?: string
+          referred_email?: string
+          referred_name?: string
+          referred_phone?: string | null
+          status?: string | null
+        }
+        Relationships: []
+      }
+      student_documents: {
+        Row: {
+          created_at: string
+          document_type: string
+          file_name: string
+          file_path: string
+          id: string
+          status: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          document_type?: string
+          file_name: string
+          file_path: string
+          id?: string
+          status?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          document_type?: string
+          file_name?: string
+          file_path?: string
+          id?: string
+          status?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
