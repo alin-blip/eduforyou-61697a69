@@ -54,8 +54,26 @@ const EligibilityPage = () => {
     }
   };
 
-  const handleSubmit = () => {
-    setStep(4);
+  const handleSubmit = async () => {
+    try {
+      await supabase.from('contacts').insert({
+        full_name: form.fullName,
+        email: form.email,
+        phone: form.phone,
+        residence_status: form.residence,
+        course_interest: form.course,
+        date_of_birth: form.dob || null,
+        source: 'eligibility_quiz',
+      });
+      await supabase.from('quiz_results').insert({
+        quiz_type: 'eligibility',
+        answers: form as any,
+        result: { eligible: form.residence !== 'Other / Not Sure' },
+      });
+      setStep(4);
+    } catch {
+      toast({ title: 'Error', description: 'Something went wrong. Please try again.', variant: 'destructive' });
+    }
   };
 
   const isEligible = form.residence !== 'Other / Not Sure';
