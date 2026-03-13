@@ -141,8 +141,9 @@ const StudentDashboard = () => {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="mb-6">
+            <TabsList className="mb-6 flex-wrap">
               <TabsTrigger value="journey">Journey</TabsTrigger>
+              <TabsTrigger value="gamification">Progress</TabsTrigger>
               <TabsTrigger value="documents">Documents</TabsTrigger>
               <TabsTrigger value="applications">Applications</TabsTrigger>
               <TabsTrigger value="finance">Finance</TabsTrigger>
