@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle2, Star, GraduationCap, PoundSterling, TrendingUp, Users, Shield, BookOpen, FileText, Phone, UserCheck, Lightbulb, Calculator, ChevronRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
+import SEOHead, { organizationSchema, faqSchema } from '@/components/SEOHead';
 import heroImage from '@/assets/hero-main.jpg';
 import {
   Accordion,
