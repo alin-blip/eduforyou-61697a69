@@ -17,9 +17,11 @@ import { toast } from '@/hooks/use-toast';
 type AppRole = 'admin' | 'agent' | 'student';
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { user } = useAuth();
   const [stats, setStats] = useState({ contacts: 0, applications: 0, quizzes: 0 });
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState(searchParams.get('tab') || 'overview');
 
   // Overview
   const [recentContacts, setRecentContacts] = useState<any[]>([]);
