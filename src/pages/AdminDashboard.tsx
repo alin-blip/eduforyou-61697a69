@@ -174,6 +174,10 @@ const AdminDashboard = () => {
               <TabsTrigger value="applications">Applications</TabsTrigger>
               <TabsTrigger value="blog">Blog</TabsTrigger>
               <TabsTrigger value="quizzes">Quizzes</TabsTrigger>
+              <TabsTrigger value="appointments">Appointments</TabsTrigger>
+              <TabsTrigger value="campuses">Campuses</TabsTrigger>
+              <TabsTrigger value="sms">SMS Logs</TabsTrigger>
+              <TabsTrigger value="carts">Abandoned Carts</TabsTrigger>
             </TabsList>
 
             {/* OVERVIEW */}
