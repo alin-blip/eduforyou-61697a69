@@ -358,42 +358,17 @@ const AdminDashboard = () => {
               <div className="bg-card rounded-xl border border-border">
                 <div className="p-6 border-b border-border flex items-center justify-between">
                   <h2 className="font-display text-xl font-bold text-foreground">Blog Posts</h2>
-                  <Button size="sm" onClick={() => { setNewPost(true); setEditingPost(null); setPostForm({ title: '', slug: '', content: '', excerpt: '', category: '', published: false }); }}>
+                  <Button size="sm" onClick={() => navigate('/admin/blog/new')}>
                     <Plus className="w-4 h-4 mr-1" /> New Post
                   </Button>
                 </div>
-
-                {(newPost || editingPost) && (
-                  <div className="p-6 border-b border-border space-y-4 bg-muted/30">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <Input placeholder="Title" value={postForm.title} onChange={e => setPostForm(f => ({ ...f, title: e.target.value }))} />
-                      <Input placeholder="Slug (URL)" value={postForm.slug} onChange={e => setPostForm(f => ({ ...f, slug: e.target.value }))} />
-                      <Input placeholder="Category" value={postForm.category} onChange={e => setPostForm(f => ({ ...f, category: e.target.value }))} />
-                      <Input placeholder="Excerpt" value={postForm.excerpt} onChange={e => setPostForm(f => ({ ...f, excerpt: e.target.value }))} />
-                    </div>
-                    <Textarea placeholder="Content (markdown)" value={postForm.content} onChange={e => setPostForm(f => ({ ...f, content: e.target.value }))} rows={6} />
-                    <div className="flex items-center gap-4">
-                      <label className="flex items-center gap-2 text-sm">
-                        <Switch checked={postForm.published} onCheckedChange={v => setPostForm(f => ({ ...f, published: v }))} />
-                        Published
-                      </label>
-                      <div className="ml-auto flex gap-2">
-                        <Button variant="outline" size="sm" onClick={() => { setNewPost(false); setEditingPost(null); }}>
-                          <X className="w-4 h-4 mr-1" /> Cancel
-                        </Button>
-                        <Button size="sm" onClick={savePost}>
-                          <Save className="w-4 h-4 mr-1" /> Save
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                )}
 
                 <Table>
                   <TableHeader>
                     <TableRow>
                       <TableHead>Title</TableHead>
                       <TableHead>Category</TableHead>
+                      <TableHead>Tags</TableHead>
                       <TableHead>Status</TableHead>
                       <TableHead>Date</TableHead>
                       <TableHead>Actions</TableHead>
@@ -405,18 +380,28 @@ const AdminDashboard = () => {
                         <TableCell className="font-medium">{post.title}</TableCell>
                         <TableCell className="text-sm">{post.category || '—'}</TableCell>
                         <TableCell>
-                          <Badge variant={post.published ? 'default' : 'secondary'}>
+                          <div className="flex flex-wrap gap-1">
+                            {(post.tags || []).slice(0, 3).map((tag: string) => (
+                              <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>
+                            ))}
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <Badge
+                            variant={post.published ? 'default' : 'secondary'}
+                            className="cursor-pointer"
+                            onClick={() => togglePublished(post.id, post.published)}
+                          >
                             {post.published ? 'Published' : 'Draft'}
                           </Badge>
                         </TableCell>
                         <TableCell className="text-sm text-muted-foreground">{new Date(post.created_at).toLocaleDateString()}</TableCell>
                         <TableCell>
                           <div className="flex gap-1">
-                            <Button variant="ghost" size="sm" onClick={() => {
-                              setEditingPost(post);
-                              setNewPost(false);
-                              setPostForm({ title: post.title, slug: post.slug, content: post.content, excerpt: post.excerpt || '', category: post.category || '', published: post.published || false });
-                            }}>
+                            <Button variant="ghost" size="sm" onClick={() => window.open(`/blog/${post.slug}`, '_blank')}>
+                              <Eye className="w-4 h-4" />
+                            </Button>
+                            <Button variant="ghost" size="sm" onClick={() => navigate(`/admin/blog/${post.id}`)}>
                               <Edit2 className="w-4 h-4" />
                             </Button>
                             <Button variant="ghost" size="sm" onClick={() => deletePost(post.id)}>
@@ -427,7 +412,7 @@ const AdminDashboard = () => {
                       </TableRow>
                     ))}
                     {blogPosts.length === 0 && (
-                      <TableRow><TableCell colSpan={5} className="text-center text-muted-foreground py-8">No blog posts yet.</TableCell></TableRow>
+                      <TableRow><TableCell colSpan={6} className="text-center text-muted-foreground py-8">No blog posts yet.</TableCell></TableRow>
                     )}
                   </TableBody>
                 </Table>
