@@ -95,10 +95,20 @@ const Header = () => {
               )}
             </div>
 
-            {/* Sign In */}
-            <Link to="/login" className="hidden md:block text-sm text-secondary-foreground/80 hover:text-primary-foreground transition-colors">
-              {t('nav.signIn')}
-            </Link>
+            {user ? (
+              <div className="hidden md:flex items-center gap-2">
+                <Link to={dashboardPath} className="text-sm text-secondary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Dashboard
+                </Link>
+                <button onClick={async () => { await signOut(); navigate('/'); }} className="text-sm text-secondary-foreground/80 hover:text-primary-foreground transition-colors">
+                  <LogOut className="w-4 h-4" />
+                </button>
+              </div>
+            ) : (
+              <Link to="/login" className="hidden md:block text-sm text-secondary-foreground/80 hover:text-primary-foreground transition-colors">
+                {t('nav.signIn')}
+              </Link>
+            )}
 
             {/* CTA */}
             <Link to="/eligibilitate">
