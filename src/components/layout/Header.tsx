@@ -137,9 +137,14 @@ const Header = () => {
                     </Link>
                   ))}
                   <div className="border-t border-navy-light/20 my-4" />
-                  <Link to="/login" className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground">
-                    {t('nav.signIn')}
-                  </Link>
+                  {user ? (
+                    <>
+                      <Link to={dashboardPath} className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground">Dashboard</Link>
+                      <button onClick={async () => { await signOut(); navigate('/'); }} className="px-4 py-3 text-left text-secondary-foreground/80 hover:text-primary-foreground">Sign Out</button>
+                    </>
+                  ) : (
+                    <Link to="/login" className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground">{t('nav.signIn')}</Link>
+                  )}
                   <Link to="/eligibilitate">
                     <Button className="w-full mt-2 bg-primary hover:bg-orange-dark text-primary-foreground">
                       {t('nav.checkEligibility')}
