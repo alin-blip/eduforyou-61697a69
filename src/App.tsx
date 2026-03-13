@@ -31,6 +31,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AgentDashboard from "./pages/AgentDashboard";
 import StudentDashboard from "./pages/StudentDashboard";
 import BlogEditor from "./pages/BlogEditor";
+import BookAppointment from "./pages/BookAppointment";
 
 const queryClient = new QueryClient();
 
@@ -65,6 +66,7 @@ const App = () => (
               <Route path="/reviews" element={<ReviewsPage />} />
               <Route path="/ebook" element={<EbookPage />} />
               <Route path="/agents" element={<AgentsPage />} />
+              <Route path="/book-appointment" element={<BookAppointment />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/admin" element={<ProtectedRoute requiredRole="admin"><AdminDashboard /></ProtectedRoute>} />
               <Route path="/admin/blog/new" element={<ProtectedRoute requiredRole="admin"><BlogEditor /></ProtectedRoute>} />

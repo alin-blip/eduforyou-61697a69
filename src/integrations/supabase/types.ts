@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      abandoned_carts: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          page_url: string
+          phone: string | null
+          product_type: string | null
+          recovered: boolean
+          step_reached: string | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          page_url: string
+          phone?: string | null
+          product_type?: string | null
+          recovered?: boolean
+          step_reached?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          page_url?: string
+          phone?: string | null
+          product_type?: string | null
+          recovered?: boolean
+          step_reached?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: []
+      }
       applications: {
         Row: {
           agent_id: string | null
@@ -64,6 +109,72 @@ export type Database = {
           },
         ]
       }
+      appointments: {
+        Row: {
+          campus_id: string | null
+          contact_id: string | null
+          course_interest: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          notes: string | null
+          phone: string | null
+          preferred_date: string | null
+          preferred_time: string | null
+          status: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          campus_id?: string | null
+          contact_id?: string | null
+          course_interest?: string | null
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          notes?: string | null
+          phone?: string | null
+          preferred_date?: string | null
+          preferred_time?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          campus_id?: string | null
+          contact_id?: string | null
+          course_interest?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          notes?: string | null
+          phone?: string | null
+          preferred_date?: string | null
+          preferred_time?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "appointments_campus_id_fkey"
+            columns: ["campus_id"]
+            isOneToOne: false
+            referencedRelation: "campuses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "appointments_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       blog_posts: {
         Row: {
           author: string | null
@@ -105,6 +216,60 @@ export type Database = {
           slug?: string
           tags?: string[] | null
           title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      campuses: {
+        Row: {
+          address_line1: string | null
+          address_line2: string | null
+          city: string
+          country: string
+          created_at: string
+          email: string | null
+          google_maps_url: string | null
+          id: string
+          image_url: string | null
+          is_active: boolean
+          name: string
+          phone: string | null
+          postcode: string | null
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          address_line1?: string | null
+          address_line2?: string | null
+          city: string
+          country?: string
+          created_at?: string
+          email?: string | null
+          google_maps_url?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          name: string
+          phone?: string | null
+          postcode?: string | null
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          address_line1?: string | null
+          address_line2?: string | null
+          city?: string
+          country?: string
+          created_at?: string
+          email?: string | null
+          google_maps_url?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          name?: string
+          phone?: string | null
+          postcode?: string | null
+          slug?: string
           updated_at?: string
         }
         Relationships: []
@@ -357,6 +522,39 @@ export type Database = {
           referred_name?: string
           referred_phone?: string | null
           status?: string | null
+        }
+        Relationships: []
+      }
+      sms_logs: {
+        Row: {
+          created_at: string
+          error_message: string | null
+          id: string
+          message: string
+          provider_id: string | null
+          recipient_name: string | null
+          recipient_phone: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          message: string
+          provider_id?: string | null
+          recipient_name?: string | null
+          recipient_phone: string
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          message?: string
+          provider_id?: string | null
+          recipient_name?: string | null
+          recipient_phone?: string
+          status?: string
         }
         Relationships: []
       }

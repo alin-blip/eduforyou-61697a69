@@ -3,7 +3,11 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
-import { Users, FileText, BookOpen, TrendingUp, Mail, Phone, Shield, Search, Plus, Trash2, Eye, Edit2, Save, X } from 'lucide-react';
+import { Users, FileText, BookOpen, TrendingUp, Mail, Phone, Shield, Search, Plus, Trash2, Eye, Edit2, Save, X, Calendar, MapPin, MessageSquare, ShoppingCart } from 'lucide-react';
+import AppointmentsTab from '@/components/admin/AppointmentsTab';
+import CampusesTab from '@/components/admin/CampusesTab';
+import SmsLogsTab from '@/components/admin/SmsLogsTab';
+import AbandonedCartsTab from '@/components/admin/AbandonedCartsTab';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
@@ -170,6 +174,10 @@ const AdminDashboard = () => {
               <TabsTrigger value="applications">Applications</TabsTrigger>
               <TabsTrigger value="blog">Blog</TabsTrigger>
               <TabsTrigger value="quizzes">Quizzes</TabsTrigger>
+              <TabsTrigger value="appointments">Appointments</TabsTrigger>
+              <TabsTrigger value="campuses">Campuses</TabsTrigger>
+              <TabsTrigger value="sms">SMS Logs</TabsTrigger>
+              <TabsTrigger value="carts">Abandoned Carts</TabsTrigger>
             </TabsList>
 
             {/* OVERVIEW */}
@@ -450,6 +458,10 @@ const AdminDashboard = () => {
                 </Table>
               </div>
             </TabsContent>
+            <TabsContent value="appointments"><AppointmentsTab /></TabsContent>
+            <TabsContent value="campuses"><CampusesTab /></TabsContent>
+            <TabsContent value="sms"><SmsLogsTab /></TabsContent>
+            <TabsContent value="carts"><AbandonedCartsTab /></TabsContent>
           </Tabs>
         </div>
       </section>
