@@ -30,8 +30,14 @@ const AgentDashboard = () => {
     if (user) {
       fetchData();
       fetchProfile();
+      fetchLeaderboard();
     }
   }, [user]);
+
+  const fetchLeaderboard = async () => {
+    const { data } = await supabase.rpc('get_agent_leaderboard');
+    setLeaderboard(data || []);
+  };
 
   const fetchData = async () => {
     if (!user) return;
