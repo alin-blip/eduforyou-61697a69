@@ -17,11 +17,10 @@ const languages: { code: Language; label: string; flag: string }[] = [
 const Header = () => {
   const { t, language, setLanguage } = useLanguage();
   const [langOpen, setLangOpen] = useState(false);
-  const { user, roles, signOut } = useAuth();
+  const { user, roles, rolesLoading, signOut } = useAuth();
   const navigate = useNavigate();
 
-  const dashboardPath = roles.includes('admin') ? '/admin' : roles.includes('agent') ? '/agent' : '/student';
-  console.log('[Header] user:', !!user, 'roles:', roles, 'dashboardPath:', dashboardPath);
+  const dashboardPath = rolesLoading ? '/student' : roles.includes('admin') ? '/admin' : roles.includes('agent') ? '/agent' : '/student';
 
   const handleSignOut = async () => {
     await signOut();

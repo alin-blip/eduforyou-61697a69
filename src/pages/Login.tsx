@@ -1,12 +1,11 @@
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/contexts/AuthContext';
-import { useEffect } from 'react';
 
 const LoginPage = () => {
   const [isRegister, setIsRegister] = useState(false);
@@ -17,14 +16,19 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { user, roles, loading: authLoading } = useAuth();
+  const { user, roles, rolesLoading, loading: authLoading } = useAuth();
 
   useEffect(() => {
-    if (user && !authLoading && roles.length > 0) {
+    // Only redirect when auth is resolved AND roles are resolved
+    if (authLoading || rolesLoading) return;
+    if (!user) return;
+
+    if (roles.length > 0) {
       const path = roles.includes('admin') ? '/admin' : roles.includes('agent') ? '/agent' : '/student';
       navigate(path, { replace: true });
     }
-  }, [user, roles, authLoading, navigate]);
+    // If user exists but no roles after loading, stay on login (edge case)
+  }, [user, roles, rolesLoading, authLoading, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
