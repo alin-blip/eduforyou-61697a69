@@ -36,11 +36,27 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
+      async (event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
         if (session?.user) {
           setTimeout(() => fetchRoles(session.user.id), 0);
+
+          // Send welcome email on first signup
+          if (event === 'SIGNED_IN' && session.user.created_at) {
+            const createdAt = new Date(session.user.created_at).getTime();
+            const now = Date.now();
+            // Only send if account was created within last 60 seconds (fresh signup)
+            if (now - createdAt < 60000) {
+              supabase.functions.invoke('send-transactional-email', {
+                body: {
+                  template: 'welcome',
+                  recipientEmail: session.user.email,
+                  fullName: session.user.user_metadata?.full_name || '',
+                },
+              }).catch(console.error);
+            }
+          }
         } else {
           setRoles([]);
         }
