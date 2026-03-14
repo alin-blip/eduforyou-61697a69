@@ -6,6 +6,7 @@ import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, Search } from 'lucide-react';
 import { coursesData, categories, levels } from '@/data/courses';
+import SEOHead from '@/components/SEOHead';
 
 const CoursesPage = () => {
   const { t } = useLanguage();
