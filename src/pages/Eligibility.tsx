@@ -39,6 +39,7 @@ const EligibilityPage = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [step, setStep] = useState(0);
+  const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
     residence: '', fullName: '', phone: '', email: '', dob: '', course: '',
   });
@@ -56,8 +57,10 @@ const EligibilityPage = () => {
   };
 
   const handleSubmit = async () => {
+    if (submitting) return;
+    setSubmitting(true);
     try {
-      await supabase.from('contacts').insert({
+      const { error: contactError } = await supabase.from('contacts').insert({
         full_name: form.fullName,
         email: form.email,
         phone: form.phone,
@@ -66,14 +69,18 @@ const EligibilityPage = () => {
         date_of_birth: form.dob || null,
         source: 'eligibility_quiz',
       });
+      if (contactError) throw contactError;
+
       await supabase.from('quiz_results').insert({
         quiz_type: 'eligibility',
         answers: form as any,
         result: { eligible: form.residence !== 'Other / Not Sure' },
       });
       setStep(4);
-    } catch {
-      toast({ title: 'Error', description: 'Something went wrong. Please try again.', variant: 'destructive' });
+    } catch (err: any) {
+      toast({ title: 'Error', description: err?.message || 'Something went wrong. Please try again.', variant: 'destructive' });
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -232,8 +239,8 @@ const EligibilityPage = () => {
                   Next <ArrowRight className="w-4 h-4" />
                 </Button>
               ) : (
-                <Button onClick={handleSubmit} disabled={!canNext()} className="bg-primary hover:bg-orange-dark text-primary-foreground gap-2">
-                  Submit <ArrowRight className="w-4 h-4" />
+                <Button onClick={handleSubmit} disabled={!canNext() || submitting} className="bg-primary hover:bg-orange-dark text-primary-foreground gap-2">
+                  {submitting ? 'Submitting...' : 'Submit'} <ArrowRight className="w-4 h-4" />
                 </Button>
               )}
             </div>
