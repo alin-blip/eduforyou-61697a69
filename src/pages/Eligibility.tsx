@@ -239,8 +239,8 @@ const EligibilityPage = () => {
                   Next <ArrowRight className="w-4 h-4" />
                 </Button>
               ) : (
-                <Button onClick={handleSubmit} disabled={!canNext()} className="bg-primary hover:bg-orange-dark text-primary-foreground gap-2">
-                  Submit <ArrowRight className="w-4 h-4" />
+                <Button onClick={handleSubmit} disabled={!canNext() || submitting} className="bg-primary hover:bg-orange-dark text-primary-foreground gap-2">
+                  {submitting ? 'Submitting...' : 'Submit'} <ArrowRight className="w-4 h-4" />
                 </Button>
               )}
             </div>
