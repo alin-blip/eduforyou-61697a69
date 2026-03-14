@@ -150,43 +150,41 @@ const CVBuilder = () => {
     </div>
   );
 
-  if (loading) return <Layout><div className="py-20 text-center text-muted-foreground">Loading...</div></Layout>;
+  if (loading) return <div className="py-20 text-center text-muted-foreground">Loading...</div>;
 
-  return (
-    <Layout>
-      <section className="py-8 bg-background min-h-screen">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h1 className="font-display text-3xl font-bold text-foreground flex items-center gap-2">
-                <FileText className="w-8 h-8 text-primary" /> CV Builder
-              </h1>
-              <p className="text-muted-foreground">Build your professional CV step by step</p>
-            </div>
-            <Button onClick={saveCV} disabled={saving}>
-              <Save className="w-4 h-4 mr-1" /> {saving ? 'Saving...' : 'Save CV'}
-            </Button>
-          </div>
-
-          <div className="space-y-6">
-            {/* Personal Statement */}
-            <div className="bg-card border border-border rounded-xl p-6">
-              <h2 className="font-display text-lg font-bold text-foreground mb-3">Personal Statement</h2>
-              <Textarea value={cv.personal_statement} onChange={e => setCv(prev => ({ ...prev, personal_statement: e.target.value }))}
-                placeholder="Write a brief summary about yourself, your goals, and what you bring to the table..."
-                rows={4} />
-            </div>
-
-            {renderEntries('education', 'Education')}
-            {renderEntries('experience', 'Work Experience')}
-            {renderTags('skills', 'Skills', newSkill, setNewSkill)}
-            {renderTags('languages', 'Languages', newLang, setNewLang)}
-            {renderTags('certifications', 'Certifications', newCert, setNewCert)}
-          </div>
+  const content = (
+    <div className="max-w-3xl">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h1 className="font-display text-3xl font-bold text-foreground flex items-center gap-2">
+            <FileText className="w-8 h-8 text-primary" /> CV Builder
+          </h1>
+          <p className="text-muted-foreground">Build your professional CV step by step</p>
         </div>
-      </section>
-    </Layout>
+        <Button onClick={saveCV} disabled={saving}>
+          <Save className="w-4 h-4 mr-1" /> {saving ? 'Saving...' : 'Save CV'}
+        </Button>
+      </div>
+
+      <div className="space-y-6">
+        {/* Personal Statement */}
+        <div className="bg-card border border-border rounded-xl p-6">
+          <h2 className="font-display text-lg font-bold text-foreground mb-3">Personal Statement</h2>
+          <Textarea value={cv.personal_statement} onChange={e => setCv(prev => ({ ...prev, personal_statement: e.target.value }))}
+            placeholder="Write a brief summary about yourself, your goals, and what you bring to the table..."
+            rows={4} />
+        </div>
+
+        {renderEntries('education', 'Education')}
+        {renderEntries('experience', 'Work Experience')}
+        {renderTags('skills', 'Skills', newSkill, setNewSkill)}
+        {renderTags('languages', 'Languages', newLang, setNewLang)}
+        {renderTags('certifications', 'Certifications', newCert, setNewCert)}
+      </div>
+    </div>
   );
+
+  return content;
 };
 
 export default CVBuilder;
