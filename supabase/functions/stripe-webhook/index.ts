@@ -115,14 +115,12 @@ serve(async (req) => {
       ? `£${(session.amount_total / 100).toFixed(2)}`
       : "£0.00";
 
-    const html = render(
-      PurchaseConfirmationEmail({
-        fullName: customerName,
-        productName: productInfo?.name || "EduForYou Product",
-        downloadUrl: productInfo?.downloadUrl,
-        amount,
-      })
-    );
+    const html = buildPurchaseConfirmationHtml({
+      fullName: customerName,
+      productName: productInfo?.name || "EduForYou Product",
+      downloadUrl: productInfo?.downloadUrl,
+      amount,
+    });
 
     const messageId = `purchase-${crypto.randomUUID()}`;
     const subject = `Your ${productInfo?.name || "purchase"} is ready — EduForYou`;
