@@ -506,6 +506,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.blog': 'Blog',
     'nav.contact': 'Kontakt',
     'nav.signIn': 'Zaloguj się',
+    'nav.bookAppointment': 'Umów Spotkanie',
     'nav.checkEligibility': 'Sprawdź Kwalifikowalność',
 
     'hero.badge': '100% Darmowa Usługa — Tylko 50 miejsc tygodniowo',
