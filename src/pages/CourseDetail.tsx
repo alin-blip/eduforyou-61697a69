@@ -23,6 +23,12 @@ const CourseDetail = () => {
 
   return (
     <Layout>
+      <SEOHead
+        title={`${course.title} - ${course.university}`}
+        description={course.description}
+        canonical={`https://eduforyou.co.uk/cursuri/${course.slug}`}
+        jsonLd={courseSchema({ title: course.title, description: course.description, slug: course.slug, university: course.university, price: course.price, duration: course.duration })}
+      />
       {/* Hero */}
       <section className="relative py-20 bg-navy-gradient">
         <div className="container mx-auto px-4">
