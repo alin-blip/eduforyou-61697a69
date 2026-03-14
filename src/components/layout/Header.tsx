@@ -110,7 +110,12 @@ const Header = () => {
               </Link>
             )}
 
-            {/* CTA */}
+            {/* CTAs */}
+            <Link to="/book-appointment">
+              <Button size="sm" variant="outline" className="hidden md:inline-flex border-primary text-primary hover:bg-primary/10 font-semibold">
+                {t('nav.bookAppointment') || 'Book Appointment'}
+              </Button>
+            </Link>
             <Link to="/eligibilitate">
               <Button size="sm" className="hidden md:inline-flex bg-primary hover:bg-orange-dark text-primary-foreground font-semibold">
                 {t('nav.checkEligibility')}
