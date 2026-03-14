@@ -12,6 +12,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.blog': 'Blog',
     'nav.contact': 'Contact',
     'nav.signIn': 'Sign In',
+    'nav.bookAppointment': 'Book Appointment',
     'nav.checkEligibility': 'Check Eligibility',
 
     // Hero
