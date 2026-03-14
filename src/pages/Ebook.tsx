@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, BookOpen, Star, CheckCircle2, Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import SEOHead from '@/components/SEOHead';
 
 const EbookPage = () => {
   const [timeLeft, setTimeLeft] = useState({ hours: 23, minutes: 59, seconds: 59 });
