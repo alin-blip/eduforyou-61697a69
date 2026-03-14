@@ -21,6 +21,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const dashboardPath = roles.includes('admin') ? '/admin' : roles.includes('agent') ? '/agent' : '/student';
+  console.log('[Header] user:', !!user, 'roles:', roles, 'dashboardPath:', dashboardPath);
 
   const handleSignOut = async () => {
     await signOut();
