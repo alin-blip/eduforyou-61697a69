@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Layout from '@/components/layout/Layout';
+import SEOHead from '@/components/SEOHead';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
@@ -33,6 +34,7 @@ const BlogPage = () => {
 
   return (
     <Layout>
+      <SEOHead title="Education Blog" description="Latest articles on UK university education, student finance, career advice and study tips from EduForYou experts." canonical="/blog" />
       <section className="py-20 bg-navy-gradient">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Blog</h1>

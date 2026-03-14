@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
+import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { ArrowRight, ArrowLeft, CheckCircle2, User, Phone, Mail, Calendar, MapPin, BookOpen } from 'lucide-react';
@@ -80,6 +81,7 @@ const EligibilityPage = () => {
 
   return (
     <Layout>
+      <SEOHead title="Check Your Eligibility" description="Find out if you qualify for free UK university education in 2 minutes. Take our eligibility quiz now." canonical="/eligibilitate" />
       <section className="py-20 bg-navy-gradient">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">

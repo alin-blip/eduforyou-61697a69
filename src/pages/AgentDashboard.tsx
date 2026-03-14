@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Layout from '@/components/layout/Layout';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
-import { Users, TrendingUp, Award, FileText, Plus, Copy, Link2, Trophy, X, Save } from 'lucide-react';
+import { Users, TrendingUp, Award, FileText, Plus, Copy, Link2, Trophy, X, Save, Medal } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
@@ -15,6 +15,7 @@ import { coursesData } from '@/data/courses';
 const AgentDashboard = () => {
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
+  const [leaderboard, setLeaderboard] = useState<any[]>([]);
   const [referrals, setReferrals] = useState<any[]>([]);
   const [applications, setApplications] = useState<any[]>([]);
   const [profile, setProfile] = useState<any>(null);
@@ -29,8 +30,14 @@ const AgentDashboard = () => {
     if (user) {
       fetchData();
       fetchProfile();
+      fetchLeaderboard();
     }
   }, [user]);
+
+  const fetchLeaderboard = async () => {
+    const { data } = await supabase.rpc('get_agent_leaderboard');
+    setLeaderboard(data || []);
+  };
 
   const fetchData = async () => {
     if (!user) return;
@@ -95,10 +102,11 @@ const AgentDashboard = () => {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="mb-6">
+            <TabsList className="mb-6 flex-wrap">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="referrals">Referrals</TabsTrigger>
               <TabsTrigger value="commissions">Commissions</TabsTrigger>
+              <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
               <TabsTrigger value="profile">Profile</TabsTrigger>
             </TabsList>
 
@@ -249,6 +257,47 @@ const AgentDashboard = () => {
                     ))}
                     {referrals.filter(r => Number(r.commission_amount) > 0).length === 0 && (
                       <TableRow><TableCell colSpan={4} className="text-center text-muted-foreground py-8">No commissions yet.</TableCell></TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
+            </TabsContent>
+
+            {/* LEADERBOARD */}
+            <TabsContent value="leaderboard">
+              <div className="bg-card rounded-xl border border-border">
+                <div className="p-6 border-b border-border">
+                  <h2 className="font-display text-xl font-bold text-foreground flex items-center gap-2">
+                    <Medal className="w-5 h-5 text-primary" /> Agent Leaderboard
+                  </h2>
+                  <p className="text-sm text-muted-foreground mt-1">Top performing agents by referral count</p>
+                </div>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="w-16">Rank</TableHead>
+                      <TableHead>Agent</TableHead>
+                      <TableHead>Referrals</TableHead>
+                      <TableHead>Converted</TableHead>
+                      <TableHead>Commission</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {leaderboard.map((entry) => (
+                      <TableRow key={entry.agent_rank} className={entry.agent_display === profile?.full_name ? 'bg-primary/5' : ''}>
+                        <TableCell>
+                          <span className={`font-bold ${entry.agent_rank <= 3 ? 'text-primary text-lg' : 'text-muted-foreground'}`}>
+                            {entry.agent_rank === 1 ? '🥇' : entry.agent_rank === 2 ? '🥈' : entry.agent_rank === 3 ? '🥉' : `#${entry.agent_rank}`}
+                          </span>
+                        </TableCell>
+                        <TableCell className="font-medium text-foreground">{entry.agent_display}</TableCell>
+                        <TableCell>{entry.total_referrals}</TableCell>
+                        <TableCell><Badge variant={Number(entry.converted) > 0 ? 'default' : 'secondary'}>{entry.converted}</Badge></TableCell>
+                        <TableCell className="font-semibold text-foreground">£{entry.total_commission}</TableCell>
+                      </TableRow>
+                    ))}
+                    {leaderboard.length === 0 && (
+                      <TableRow><TableCell colSpan={5} className="text-center text-muted-foreground py-8">No leaderboard data yet. Start referring students!</TableCell></TableRow>
                     )}
                   </TableBody>
                 </Table>
