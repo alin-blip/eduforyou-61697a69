@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Briefcase, MapPin, Clock, ArrowRight } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 
 const jobs = [
   { id: '1', title: 'Student Consultant', type: 'Full-time / Remote', location: 'Remote', desc: 'Guide prospective students through their university application journey.' },
