@@ -125,7 +125,7 @@ const CeoAIChat = ({ stats }: { stats: { contacts: number; applications: number;
               )}
             </div>
           ))}
-          {loading && !assistantContent && (
+          {loading && messages[messages.length - 1]?.role === 'user' && (
             <div className="flex gap-3">
               <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                 <Loader2 className="w-4 h-4 text-primary animate-spin" />
