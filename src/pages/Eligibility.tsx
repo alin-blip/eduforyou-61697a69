@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/i18n/LanguageContext';
-import { ArrowRight, ArrowLeft, CheckCircle2, User, Phone, Mail, Calendar, MapPin, BookOpen } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, User, Phone, MapPin, BookOpen, Lock } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { trackLead } from '@/lib/tracking';
+
+const META_PIXEL_ID = '1930929073773570';
 
 const steps = [
   { id: 'residence', icon: MapPin },
@@ -43,6 +46,32 @@ const EligibilityPage = () => {
   const [form, setForm] = useState({
     residence: '', fullName: '', phone: '', email: '', dob: '', course: '',
   });
+
+  // Account creation state
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [creatingAccount, setCreatingAccount] = useState(false);
+  const [accountCreated, setAccountCreated] = useState(false);
+
+  const pixelFiredRef = useRef(false);
+
+  // Fire Lead pixel when reaching step 4
+  useEffect(() => {
+    if (step === 4 && !pixelFiredRef.current) {
+      pixelFiredRef.current = true;
+
+      // Meta Pixel Lead event
+      if (typeof window !== 'undefined' && window.fbq) {
+        window.fbq('track', 'Lead', {
+          content_name: 'eligibility_quiz',
+          content_category: form.course,
+        });
+      }
+
+      // GA4 Lead event
+      trackLead('eligibility_quiz', { course: form.course, residence: form.residence });
+    }
+  }, [step, form.course, form.residence]);
 
   const updateForm = (key: string, value: string) => setForm(prev => ({ ...prev, [key]: value }));
 
@@ -106,6 +135,44 @@ const EligibilityPage = () => {
     } finally {
       window.clearTimeout(safetyTimeout);
       setSubmitting(false);
+    }
+  };
+
+  const handleCreateAccount = async () => {
+    if (password.length < 6) {
+      toast({ title: 'Error', description: 'Password must be at least 6 characters.', variant: 'destructive' });
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast({ title: 'Error', description: 'Passwords do not match.', variant: 'destructive' });
+      return;
+    }
+
+    setCreatingAccount(true);
+    try {
+      const { error } = await supabase.auth.signUp({
+        email: form.email,
+        password,
+        options: {
+          data: { full_name: form.fullName },
+        },
+      });
+
+      if (error) throw error;
+
+      setAccountCreated(true);
+      toast({
+        title: 'Account created!',
+        description: 'Check your email to verify your account, then you can log in.',
+      });
+    } catch (err: any) {
+      toast({
+        title: 'Error',
+        description: err?.message || 'Could not create account. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setCreatingAccount(false);
     }
   };
 
@@ -239,6 +306,55 @@ const EligibilityPage = () => {
                           <div className="flex justify-between"><span className="text-muted-foreground">Interest:</span><span className="font-medium text-foreground">{form.course}</span></div>
                         </div>
                       </div>
+
+                      {/* Account creation section */}
+                      {!accountCreated ? (
+                        <div className="bg-card rounded-xl p-6 border border-border max-w-md mx-auto text-left">
+                          <div className="flex items-center gap-2 mb-3">
+                            <Lock className="w-5 h-5 text-primary" />
+                            <h3 className="font-display text-lg font-semibold text-foreground">Create Your Account</h3>
+                          </div>
+                          <p className="text-sm text-muted-foreground mb-4">
+                            Set a password to access your student dashboard and track your application progress.
+                          </p>
+                          <div className="space-y-3">
+                            <div>
+                              <label className="text-sm font-medium text-foreground mb-1 block">Password *</label>
+                              <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                                placeholder="Min. 6 characters"
+                              />
+                            </div>
+                            <div>
+                              <label className="text-sm font-medium text-foreground mb-1 block">Confirm Password *</label>
+                              <input
+                                type="password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                                placeholder="Re-enter password"
+                              />
+                            </div>
+                            <Button
+                              onClick={handleCreateAccount}
+                              disabled={creatingAccount || !password || !confirmPassword}
+                              className="w-full bg-primary hover:bg-orange-dark text-primary-foreground gap-2"
+                            >
+                              {creatingAccount ? 'Creating Account...' : 'Create Account'}
+                            </Button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="bg-success/10 rounded-xl p-6 border border-success/20 max-w-md mx-auto">
+                          <div className="flex items-center gap-2 justify-center">
+                            <CheckCircle2 className="w-5 h-5 text-success" />
+                            <p className="font-medium text-foreground">Account created! Check your email to verify.</p>
+                          </div>
+                        </div>
+                      )}
                     </>
                   ) : (
                     <>
