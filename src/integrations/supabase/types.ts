@@ -484,6 +484,45 @@ export type Database = {
         }
         Relationships: []
       }
+      ikigai_results: {
+        Row: {
+          created_at: string
+          id: string
+          ikigai_statements: Json
+          service_angles: Json
+          updated_at: string
+          user_id: string
+          what_world_needs: Json
+          what_you_can_be_paid_for: Json
+          what_you_love: Json
+          what_youre_good_at: Json
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          ikigai_statements?: Json
+          service_angles?: Json
+          updated_at?: string
+          user_id: string
+          what_world_needs?: Json
+          what_you_can_be_paid_for?: Json
+          what_you_love?: Json
+          what_youre_good_at?: Json
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          ikigai_statements?: Json
+          service_angles?: Json
+          updated_at?: string
+          user_id?: string
+          what_world_needs?: Json
+          what_you_can_be_paid_for?: Json
+          what_you_love?: Json
+          what_youre_good_at?: Json
+        }
+        Relationships: []
+      }
       messages: {
         Row: {
           content: string
@@ -511,6 +550,78 @@ export type Database = {
           receiver_id?: string
           sender_id?: string
           subject?: string | null
+        }
+        Relationships: []
+      }
+      offers: {
+        Row: {
+          created_at: string
+          id: string
+          premium_package: Json | null
+          pricing_justification: string | null
+          smv: string | null
+          standard_package: Json | null
+          starter_package: Json | null
+          target_market: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          premium_package?: Json | null
+          pricing_justification?: string | null
+          smv?: string | null
+          standard_package?: Json | null
+          starter_package?: Json | null
+          target_market?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          premium_package?: Json | null
+          pricing_justification?: string | null
+          smv?: string | null
+          standard_package?: Json | null
+          starter_package?: Json | null
+          target_market?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      outreach_templates: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          platform: string
+          sequence_order: number | null
+          subject: string | null
+          template_type: string | null
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          platform: string
+          sequence_order?: number | null
+          subject?: string | null
+          template_type?: string | null
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          platform?: string
+          sequence_order?: number | null
+          subject?: string | null
+          template_type?: string | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -633,6 +744,36 @@ export type Database = {
         }
         Relationships: []
       }
+      skill_entries: {
+        Row: {
+          category: string
+          confidence: number
+          created_at: string
+          description: string | null
+          id: string
+          skill: string
+          user_id: string
+        }
+        Insert: {
+          category?: string
+          confidence?: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          skill: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          confidence?: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          skill?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       sms_logs: {
         Row: {
           created_at: string
@@ -663,6 +804,51 @@ export type Database = {
           recipient_name?: string | null
           recipient_phone?: string
           status?: string
+        }
+        Relationships: []
+      }
+      social_profiles: {
+        Row: {
+          about: string | null
+          bio: string | null
+          content_pillars: Json | null
+          created_at: string
+          cta: string | null
+          hashtags: Json | null
+          headline: string | null
+          id: string
+          platform: string
+          updated_at: string
+          user_id: string
+          username_suggestions: Json | null
+        }
+        Insert: {
+          about?: string | null
+          bio?: string | null
+          content_pillars?: Json | null
+          created_at?: string
+          cta?: string | null
+          hashtags?: Json | null
+          headline?: string | null
+          id?: string
+          platform: string
+          updated_at?: string
+          user_id: string
+          username_suggestions?: Json | null
+        }
+        Update: {
+          about?: string | null
+          bio?: string | null
+          content_pillars?: Json | null
+          created_at?: string
+          cta?: string | null
+          hashtags?: Json | null
+          headline?: string | null
+          id?: string
+          platform?: string
+          updated_at?: string
+          user_id?: string
+          username_suggestions?: Json | null
         }
         Relationships: []
       }
