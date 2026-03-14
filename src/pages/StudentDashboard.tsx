@@ -1,12 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
 import DashboardLayout from '@/components/layout/DashboardLayout';
-import { Compass, FileText, ClipboardList, PoundSterling, User, Mail, Trophy, Wrench, Rocket } from 'lucide-react';
+import { Compass, FileText, ClipboardList, PoundSterling, User, Mail, Trophy, Wrench, Rocket, Gift, Plane } from 'lucide-react';
 import StudentJourney from './student/StudentJourney';
 import StudentDocuments from './student/StudentDocuments';
 import StudentApplications from './student/StudentApplications';
 import StudentFinanceTab from './student/StudentFinanceTab';
 import StudentProfile from './student/StudentProfile';
 import StudentMessages from './student/StudentMessages';
+import StudentPreparation from './student/StudentPreparation';
+import StudentReferral from './student/StudentReferral';
 import GamificationWidget from '@/components/student/GamificationWidget';
 import CVBuilder from './CVBuilder';
 import DefineYourPath from './wizard/DefineYourPath';
@@ -23,6 +25,8 @@ const navItems = [
   { title: 'Documents', url: '/student/documents', icon: FileText },
   { title: 'Applications', url: '/student/applications', icon: ClipboardList },
   { title: 'Finance', url: '/student/finance', icon: PoundSterling },
+  { title: 'Preparation', url: '/student/preparation', icon: Plane },
+  { title: 'Referrals', url: '/student/referrals', icon: Gift },
   { title: 'Progress', url: '/student/progress', icon: Trophy },
   { title: 'Launchpad', url: '/student/launchpad', icon: Rocket },
   { title: 'CV Builder', url: '/student/cv', icon: Wrench },
@@ -38,6 +42,8 @@ const StudentDashboard = () => {
         <Route path="documents" element={<StudentDocuments />} />
         <Route path="applications" element={<StudentApplications />} />
         <Route path="finance" element={<StudentFinanceTab />} />
+        <Route path="preparation" element={<StudentPreparation />} />
+        <Route path="referrals" element={<StudentReferral />} />
         <Route path="progress" element={<GamificationWidget />} />
         <Route path="launchpad" element={<DefineYourPath />} />
         <Route path="launchpad/skills" element={<SkillScanner />} />
