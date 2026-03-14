@@ -1,13 +1,20 @@
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, BookOpen, Star, CheckCircle2, Clock } from 'lucide-react';
+import { ArrowRight, BookOpen, CheckCircle2, Headphones, Loader2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import SEOHead from '@/components/SEOHead';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from '@/hooks/use-toast';
+
+const PRICES = {
+  ebook: { id: 'price_1T92CgBm1vxHnsGAuKMOu0Yn', amount: 5, mode: 'payment' as const },
+  audiobook: { id: 'price_1TAvO5Bm1vxHnsGAlsOUCU0n', amount: 7, mode: 'payment' as const },
+};
 
 const EbookPage = () => {
   const [timeLeft, setTimeLeft] = useState({ hours: 23, minutes: 59, seconds: 59 });
+  const [loadingProduct, setLoadingProduct] = useState<string | null>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -20,6 +27,24 @@ const EbookPage = () => {
     }, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  const handleCheckout = async (product: keyof typeof PRICES) => {
+    setLoadingProduct(product);
+    try {
+      const price = PRICES[product];
+      const { data, error } = await supabase.functions.invoke('create-checkout', {
+        body: { priceId: price.id, mode: price.mode },
+      });
+      if (error) throw error;
+      if (data?.url) {
+        window.open(data.url, '_blank');
+      }
+    } catch (err: any) {
+      toast({ title: 'Error', description: err.message || 'Could not start checkout', variant: 'destructive' });
+    } finally {
+      setLoadingProduct(null);
+    }
+  };
 
   return (
     <Layout>
@@ -43,7 +68,6 @@ const EbookPage = () => {
                 <span className="px-3 py-1 rounded-full bg-success/20 text-success text-sm font-bold">Save 44%</span>
               </div>
 
-              {/* Countdown */}
               <div className="flex gap-3 mb-8">
                 {[
                   { value: timeLeft.hours, label: 'Hours' },
@@ -57,8 +81,9 @@ const EbookPage = () => {
                 ))}
               </div>
 
-              <Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-bold gap-2 text-lg px-10">
-                Get the Book — £5 <ArrowRight className="w-5 h-5" />
+              <Button size="lg" onClick={() => handleCheckout('ebook')} disabled={!!loadingProduct}
+                className="bg-primary hover:bg-orange-dark text-primary-foreground font-bold gap-2 text-lg px-10">
+                {loadingProduct === 'ebook' ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Get the Book — £5 <ArrowRight className="w-5 h-5" /></>}
               </Button>
             </motion.div>
 
@@ -75,13 +100,32 @@ const EbookPage = () => {
         </div>
       </section>
 
+      {/* Audiobook Section */}
+      <section className="py-16 bg-card border-b border-border">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
+          <Headphones className="w-16 h-16 text-primary mx-auto mb-4" />
+          <h2 className="font-display text-3xl font-bold text-foreground mb-3">Prefer to Listen?</h2>
+          <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
+            Get the audiobook version — professional narration, lifetime access. Perfect for your commute or workout.
+          </p>
+          <div className="flex gap-3 items-center justify-center mb-6">
+            <span className="text-2xl font-bold text-muted-foreground line-through">£12</span>
+            <span className="text-4xl font-bold text-primary">£7</span>
+          </div>
+          <Button size="lg" onClick={() => handleCheckout('audiobook')} disabled={!!loadingProduct}
+            className="bg-primary hover:bg-orange-dark text-primary-foreground font-bold gap-2 text-lg px-10">
+            {loadingProduct === 'audiobook' ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Get the Audiobook — £7 <ArrowRight className="w-5 h-5" /></>}
+          </Button>
+        </div>
+      </section>
+
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 max-w-3xl">
           <h2 className="font-display text-3xl font-bold text-foreground text-center mb-10">What You'll Learn</h2>
           <div className="space-y-4">
             {[
               'How to discover your true calling using the Ikigai method',
-              'Whether you\'re meant for employment, freelancing, or entrepreneurship',
+              "Whether you're meant for employment, freelancing, or entrepreneurship",
               'Self-assessment test with personalised career profile',
               'Actionable strategies for career transition',
               'Real stories from people who changed their lives',

@@ -35,6 +35,7 @@ import BlogEditor from "./pages/BlogEditor";
 import BookAppointment from "./pages/BookAppointment";
 import CVBuilder from "./pages/CVBuilder";
 import CeoDashboard from "./pages/CeoDashboard";
+import PaymentSuccess from "./pages/PaymentSuccess";
 
 const queryClient = new QueryClient();
 
@@ -71,6 +72,7 @@ const App = () => (
               <Route path="/ebook" element={<EbookPage />} />
               <Route path="/agents" element={<AgentsPage />} />
               <Route path="/book-appointment" element={<BookAppointment />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/admin/blog/new" element={<ProtectedRoute requiredRole="admin"><BlogEditor /></ProtectedRoute>} />
               <Route path="/admin/blog/:id" element={<ProtectedRoute requiredRole="admin"><BlogEditor /></ProtectedRoute>} />
