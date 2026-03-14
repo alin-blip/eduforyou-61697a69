@@ -46,6 +46,22 @@ const EligibilityPage = () => {
 
   const updateForm = (key: string, value: string) => setForm(prev => ({ ...prev, [key]: value }));
 
+  const withTimeout = async <T,>(promise: Promise<T>, timeoutMs = 12000): Promise<T> => {
+    let timeoutId: number | undefined;
+
+    const timeoutPromise = new Promise<T>((_, reject) => {
+      timeoutId = window.setTimeout(() => {
+        reject(new Error('Request timed out. Please check your connection and try again.'));
+      }, timeoutMs);
+    });
+
+    try {
+      return await Promise.race([promise, timeoutPromise]);
+    } finally {
+      if (timeoutId) window.clearTimeout(timeoutId);
+    }
+  };
+
   const canNext = () => {
     switch (step) {
       case 0: return !!form.residence;
@@ -59,26 +75,41 @@ const EligibilityPage = () => {
   const handleSubmit = async () => {
     if (submitting) return;
     setSubmitting(true);
-    try {
-      const { error: contactError } = await supabase.from('contacts').insert({
-        full_name: form.fullName,
-        email: form.email,
-        phone: form.phone,
-        residence_status: form.residence,
-        course_interest: form.course,
-        date_of_birth: form.dob || null,
-        source: 'eligibility_quiz',
-      });
-      if (contactError) throw contactError;
 
-      await supabase.from('quiz_results').insert({
-        quiz_type: 'eligibility',
-        answers: form as any,
-        result: { eligible: form.residence !== 'Other / Not Sure' },
-      });
+    try {
+      const contactInsert = await withTimeout(
+        supabase.from('contacts').insert({
+          full_name: form.fullName,
+          email: form.email,
+          phone: form.phone,
+          residence_status: form.residence,
+          course_interest: form.course,
+          date_of_birth: form.dob || null,
+          source: 'eligibility_quiz',
+        })
+      );
+
+      if (contactInsert.error) throw contactInsert.error;
+
+      const quizInsert = await withTimeout(
+        supabase.from('quiz_results').insert({
+          quiz_type: 'eligibility',
+          answers: form as any,
+          result: { eligible: form.residence !== 'Other / Not Sure' },
+        })
+      );
+
+      if (quizInsert.error) {
+        console.error('Eligibility quiz result insert failed:', quizInsert.error);
+      }
+
       setStep(4);
     } catch (err: any) {
-      toast({ title: 'Error', description: err?.message || 'Something went wrong. Please try again.', variant: 'destructive' });
+      toast({
+        title: 'Error',
+        description: err?.message || 'Something went wrong. Please try again.',
+        variant: 'destructive',
+      });
     } finally {
       setSubmitting(false);
     }
