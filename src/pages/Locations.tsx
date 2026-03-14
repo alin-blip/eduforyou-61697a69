@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
+import SEOHead from '@/components/SEOHead';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { locationsData } from '@/data/locations';
 import { MapPin, Users, BookOpen } from 'lucide-react';

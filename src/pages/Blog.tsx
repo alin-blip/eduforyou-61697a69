@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Layout from '@/components/layout/Layout';
+import SEOHead from '@/components/SEOHead';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';

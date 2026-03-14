@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Layout from '@/components/layout/Layout';
+import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, MapPin, Clock, MessageCircle, Loader2, CheckCircle2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
