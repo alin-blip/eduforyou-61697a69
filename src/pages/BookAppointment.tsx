@@ -80,6 +80,16 @@ const BookAppointment = () => {
           preferredTime: form.preferred_time,
         },
       }).catch(console.error);
+      // Send SMS confirmation if phone provided
+      if (form.phone) {
+        supabase.functions.invoke('send-sms', {
+          body: {
+            to: form.phone,
+            message: `Hi ${form.full_name}, your appointment at ${selectedCampus?.name || 'our campus'} on ${form.preferred_date ? format(form.preferred_date, 'PPP') : ''} at ${form.preferred_time} is confirmed. — EduForYou`,
+            recipientName: form.full_name,
+          },
+        }).catch(console.error);
+      }
       // Track abandoned cart recovery
       if (form.email) {
         await supabase.from('abandoned_carts').update({ recovered: true }).eq('email', form.email).eq('product_type', 'appointment');
