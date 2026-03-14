@@ -96,34 +96,30 @@ const Header = () => {
             </div>
 
             {user ? (
-              <div className="hidden md:flex items-center gap-2">
-                <Link to={dashboardPath}>
-                  <Button size="sm" variant="ghost" className="text-secondary-foreground/80 hover:text-primary-foreground">
+              <>
+                <Link to={dashboardPath} className="hidden md:inline-flex">
+                  <Button size="sm" variant="ghost" className="text-secondary-foreground/80 hover:text-primary-foreground font-semibold">
                     Dashboard
                   </Button>
                 </Link>
                 <Button
                   size="sm"
                   variant="ghost"
-                  className="text-secondary-foreground/80 hover:text-primary-foreground"
-                  onClick={async (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    try {
-                      await signOut();
-                      navigate('/login');
-                    } catch (err) {
-                      console.error('Sign out error:', err);
-                    }
+                  className="hidden md:inline-flex text-secondary-foreground/80 hover:text-primary-foreground"
+                  onClick={async () => {
+                    await signOut();
+                    navigate('/login');
                   }}
                 >
                   <LogOut className="w-4 h-4 mr-1" />
                   Sign Out
                 </Button>
-              </div>
+              </>
             ) : (
-              <Link to="/login" className="hidden md:block text-sm text-secondary-foreground/80 hover:text-primary-foreground transition-colors">
-                {t('nav.signIn')}
+              <Link to="/login" className="hidden md:inline-flex">
+                <Button size="sm" variant="ghost" className="text-secondary-foreground/80 hover:text-primary-foreground font-semibold">
+                  {t('nav.signIn')}
+                </Button>
               </Link>
             )}
 
