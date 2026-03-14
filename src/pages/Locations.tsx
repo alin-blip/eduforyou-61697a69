@@ -11,6 +11,7 @@ const LocationsPage = () => {
 
   return (
     <Layout>
+      <SEOHead title="Campus Locations UK" description="Study at one of our 6 UK campuses in London, Birmingham, Leeds, Manchester, Coventry and Northampton." canonical="/locatii" />
       <section className="py-20 bg-navy-gradient">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
