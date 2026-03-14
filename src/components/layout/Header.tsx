@@ -97,12 +97,29 @@ const Header = () => {
 
             {user ? (
               <div className="hidden md:flex items-center gap-2">
-                <Link to={dashboardPath} className="text-sm text-secondary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Dashboard
+                <Link to={dashboardPath}>
+                  <Button size="sm" variant="ghost" className="text-secondary-foreground/80 hover:text-primary-foreground">
+                    Dashboard
+                  </Button>
                 </Link>
-                <button onClick={async () => { await signOut(); navigate('/'); }} className="text-sm text-secondary-foreground/80 hover:text-primary-foreground transition-colors">
-                  <LogOut className="w-4 h-4" />
-                </button>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="text-secondary-foreground/80 hover:text-primary-foreground"
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    try {
+                      await signOut();
+                      navigate('/login');
+                    } catch (err) {
+                      console.error('Sign out error:', err);
+                    }
+                  }}
+                >
+                  <LogOut className="w-4 h-4 mr-1" />
+                  Sign Out
+                </Button>
               </div>
             ) : (
               <Link to="/login" className="hidden md:block text-sm text-secondary-foreground/80 hover:text-primary-foreground transition-colors">
