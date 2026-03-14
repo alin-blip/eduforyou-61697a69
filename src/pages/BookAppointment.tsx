@@ -67,6 +67,19 @@ const BookAppointment = () => {
       toast({ title: 'Error', description: 'Could not book appointment. Please try again.', variant: 'destructive' });
     } else {
       setSubmitted(true);
+      // Send confirmation email
+      const courseTitle = coursesData.find(c => c.slug === form.course_interest)?.title || form.course_interest;
+      supabase.functions.invoke('send-transactional-email', {
+        body: {
+          template: 'appointment-confirmation',
+          recipientEmail: form.email,
+          fullName: form.full_name,
+          campusName: selectedCampus?.name || '',
+          courseInterest: courseTitle,
+          preferredDate: form.preferred_date ? format(form.preferred_date, 'PPP') : '',
+          preferredTime: form.preferred_time,
+        },
+      }).catch(console.error);
       // Track abandoned cart recovery
       if (form.email) {
         await supabase.from('abandoned_carts').update({ recovered: true }).eq('email', form.email).eq('product_type', 'appointment');
