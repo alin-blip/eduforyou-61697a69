@@ -45,7 +45,7 @@ const LoginPage = () => {
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        navigate('/');
+        // Redirect handled by useEffect watching roles
       }
     } catch (error: any) {
       toast({ title: 'Error', description: error.message, variant: 'destructive' });

@@ -40,13 +40,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setSession(session);
         setUser(session?.user ?? null);
         if (session?.user) {
-          setTimeout(() => fetchRoles(session.user.id), 0);
+          await fetchRoles(session.user.id);
 
           // Send welcome email on first signup
           if (event === 'SIGNED_IN' && session.user.created_at) {
             const createdAt = new Date(session.user.created_at).getTime();
             const now = Date.now();
-            // Only send if account was created within last 60 seconds (fresh signup)
             if (now - createdAt < 60000) {
               supabase.functions.invoke('send-transactional-email', {
                 body: {
@@ -64,11 +63,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
     );
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
       if (session?.user) {
-        fetchRoles(session.user.id);
+        await fetchRoles(session.user.id);
       }
       setLoading(false);
     });
