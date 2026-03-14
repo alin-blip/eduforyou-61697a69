@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Calendar, Users } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 
 const webinars = [
   { id: '1', title: 'How to Study in the UK for Free', date: 'Every Wednesday, 7 PM', type: 'Live Webinar', spots: '50 spots', image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80' },
