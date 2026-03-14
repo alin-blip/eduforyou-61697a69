@@ -6,7 +6,8 @@ import { motion } from 'framer-motion';
 import { Users, Award, Target, Heart, ArrowRight } from 'lucide-react';
 
 const AboutPage = () => (
-  <Layout>
+    <Layout>
+      <SEOHead title="About EduForYou" description="Learn how EduForYou has helped 7,000+ students access free UK university education with £138M+ in Student Finance funding." canonical="/about" />
     <section className="py-20 bg-navy-gradient">
       <div className="container mx-auto px-4 text-center">
         <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">About EduForYou</h1>

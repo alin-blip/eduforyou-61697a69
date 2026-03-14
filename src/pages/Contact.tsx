@@ -46,6 +46,7 @@ const ContactPage = () => {
 
   return (
     <Layout>
+      <SEOHead title="Contact Us" description="Get in touch with EduForYou. We're here to help you start your free UK university education journey." canonical="/contact" />
       <section className="py-20 bg-navy-gradient">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Contact Us</h1>
