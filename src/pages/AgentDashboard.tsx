@@ -102,10 +102,11 @@ const AgentDashboard = () => {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="mb-6">
+            <TabsList className="mb-6 flex-wrap">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="referrals">Referrals</TabsTrigger>
               <TabsTrigger value="commissions">Commissions</TabsTrigger>
+              <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
               <TabsTrigger value="profile">Profile</TabsTrigger>
             </TabsList>
 
