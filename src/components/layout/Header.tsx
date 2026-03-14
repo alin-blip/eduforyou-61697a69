@@ -150,6 +150,11 @@ const Header = () => {
                   ) : (
                     <Link to="/login" className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground">{t('nav.signIn')}</Link>
                   )}
+                  <Link to="/book-appointment">
+                    <Button variant="outline" className="w-full mt-2 border-primary text-primary hover:bg-primary/10">
+                      {t('nav.bookAppointment') || 'Book Appointment'}
+                    </Button>
+                  </Link>
                   <Link to="/eligibilitate">
                     <Button className="w-full mt-2 bg-primary hover:bg-orange-dark text-primary-foreground">
                       {t('nav.checkEligibility')}

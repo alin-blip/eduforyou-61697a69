@@ -57,6 +57,13 @@ const BlogPost = () => {
 
   return (
     <Layout>
+      <SEOHead
+        title={post.title}
+        description={post.content.substring(0, 155)}
+        canonical={`https://eduforyou.co.uk/blog/${slug}`}
+        ogImage={post.cover_image || undefined}
+        jsonLd={blogPostSchema({ title: post.title, excerpt: post.content.substring(0, 155), slug: slug!, author: post.author || 'EduForYou Team', created_at: post.created_at, cover_image: post.cover_image || undefined })}
+      />
       <section className="py-20 bg-navy-gradient">
         <div className="container mx-auto px-4">
           <Link to="/blog" className="inline-flex items-center gap-2 text-secondary-foreground/60 hover:text-primary mb-6 transition-colors">

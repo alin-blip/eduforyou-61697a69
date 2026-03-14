@@ -23,6 +23,7 @@ const EbookPage = () => {
 
   return (
     <Layout>
+      <SEOHead title="From Unhappy Career to Fulfilment — Ebook" description="Discover whether you're made for employment, freelancing, or entrepreneurship. 14 chapters, self-assessment test, and actionable strategies. Only £5." canonical="https://eduforyou.co.uk/ebook" />
       <section className="py-20 bg-navy-gradient">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

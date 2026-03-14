@@ -17,6 +17,7 @@ const FinanceCalculator = () => {
 
   return (
     <Layout>
+      <SEOHead title="Student Finance Calculator" description="Calculate how much Student Finance you could receive for your UK university degree. Tuition and maintenance loan estimates." canonical="https://eduforyou.co.uk/finance-calculator" />
       <section className="py-20 bg-navy-gradient">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Finance Calculator</h1>

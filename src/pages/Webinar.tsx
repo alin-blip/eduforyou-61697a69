@@ -13,6 +13,7 @@ const webinars = [
 
 const WebinarPage = () => (
   <Layout>
+    <SEOHead title="Free Webinars — Study in the UK" description="Join our free live webinars and learn everything about studying in the UK with Student Finance. Register now!" canonical="https://eduforyou.co.uk/webinar" />
     <section className="py-20 bg-navy-gradient">
       <div className="container mx-auto px-4 text-center">
         <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Free Webinars</h1>

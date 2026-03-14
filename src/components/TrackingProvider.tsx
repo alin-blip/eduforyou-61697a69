@@ -18,7 +18,10 @@ const TrackingProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   useEffect(() => {
-    trackPageView(location.pathname);
+    const consent = localStorage.getItem('cookie-consent');
+    if (consent === 'all') {
+      trackPageView(location.pathname);
+    }
   }, [location.pathname]);
 
   return <>{children}</>;

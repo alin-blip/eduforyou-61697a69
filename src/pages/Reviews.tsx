@@ -16,6 +16,7 @@ const reviews = [
 
 const ReviewsPage = () => (
   <Layout>
+    <SEOHead title="Student Reviews — 4.8/5 on Trustpilot" description="Read verified reviews from students who studied in the UK with EduForYou. 163+ reviews, 4.8/5 rating on Trustpilot." canonical="https://eduforyou.co.uk/reviews" />
     <section className="py-20 bg-navy-gradient">
       <div className="container mx-auto px-4 text-center">
         <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Student Reviews</h1>
