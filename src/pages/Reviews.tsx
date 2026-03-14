@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Star, ArrowRight } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 
 const reviews = [
   { name: 'Silviu Stefan Haba', course: 'Business & Tourism', funding: '£18,397/an', rating: 5, text: 'Prin EduForYou am reusit sa gasesc cel mai bun job din viata mea in industria turismului.' },
