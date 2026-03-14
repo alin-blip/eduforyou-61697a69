@@ -77,7 +77,6 @@ const App = () => (
               <Route path="/admin/blog/:id" element={<ProtectedRoute requiredRole="admin"><BlogEditor /></ProtectedRoute>} />
               <Route path="/agent" element={<ProtectedRoute requiredRole="agent"><AgentDashboard /></ProtectedRoute>} />
               <Route path="/student/*" element={<ProtectedRoute requiredRole="student"><StudentDashboard /></ProtectedRoute>} />
-              <Route path="/student/cv" element={<ProtectedRoute requiredRole="student"><CVBuilder /></ProtectedRoute>} />
               <Route path="/ceo" element={<ProtectedRoute requiredRole="admin"><CeoDashboard /></ProtectedRoute>} />
               <Route path="/legal/cookies" element={<LegalPage type="cookies" />} />
               <Route path="/legal/privacy" element={<LegalPage type="privacy" />} />

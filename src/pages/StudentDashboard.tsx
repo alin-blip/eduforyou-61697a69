@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import { Compass, FileText, ClipboardList, PoundSterling, User, Mail, Trophy, Wrench } from 'lucide-react';
 import StudentJourney from './student/StudentJourney';
@@ -8,6 +8,7 @@ import StudentFinanceTab from './student/StudentFinanceTab';
 import StudentProfile from './student/StudentProfile';
 import StudentMessages from './student/StudentMessages';
 import GamificationWidget from '@/components/student/GamificationWidget';
+import CVBuilder from './CVBuilder';
 
 const navItems = [
   { title: 'Journey', url: '/student', icon: Compass },
@@ -30,6 +31,7 @@ const StudentDashboard = () => {
         <Route path="applications" element={<StudentApplications />} />
         <Route path="finance" element={<StudentFinanceTab />} />
         <Route path="progress" element={<GamificationWidget />} />
+        <Route path="cv" element={<CVBuilder />} />
         <Route path="profile" element={<StudentProfile />} />
       </Routes>
     </DashboardLayout>
