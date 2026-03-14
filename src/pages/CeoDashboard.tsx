@@ -14,8 +14,13 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '
 import { Label } from '@/components/ui/label';
 import {
   BarChart3, Brain, CheckSquare, Plus, Target, TrendingUp, Users, Loader2, Sparkles, Trash2,
+  MessageSquare, FileText, Bell,
 } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import CeoAIChat from '@/components/ceo/CeoAIChat';
+import ContentStudio from '@/components/ceo/ContentStudio';
+import AdvancedAnalytics from '@/components/ceo/AdvancedAnalytics';
+import SmartAlerts from '@/components/ceo/SmartAlerts';
 
 const CeoDashboard = () => {
   const { user } = useAuth();
@@ -59,9 +64,7 @@ const CeoDashboard = () => {
   const generateAISummary = async () => {
     setAiLoading(true);
     try {
-      const res = await supabase.functions.invoke('ceo-ai-engine', {
-        body: { type: 'summary', stats },
-      });
+      const res = await supabase.functions.invoke('ceo-ai-engine', { body: { type: 'summary', stats } });
       if (res.error) throw res.error;
       setAiSummary(res.data?.summary || 'No summary generated.');
     } catch (e: any) {
@@ -73,9 +76,7 @@ const CeoDashboard = () => {
   const generateAITasks = async () => {
     setAiLoading(true);
     try {
-      const res = await supabase.functions.invoke('ceo-ai-engine', {
-        body: { type: 'suggest', stats },
-      });
+      const res = await supabase.functions.invoke('ceo-ai-engine', { body: { type: 'suggest', stats } });
       if (res.error) throw res.error;
       const suggestions = res.data?.suggestions || [];
       for (const s of suggestions) {
@@ -133,7 +134,6 @@ const CeoDashboard = () => {
   ];
 
   const priorityColor = (p: string) => p === 'high' ? 'destructive' : p === 'medium' ? 'default' : 'secondary';
-  const statusColor = (s: string) => s === 'completed' ? 'on-track' : s === 'on-track' ? 'default' : s === 'at-risk' ? 'secondary' : 'destructive';
 
   return (
     <Layout>
@@ -151,9 +151,12 @@ const CeoDashboard = () => {
           <Tabs value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="mb-6 flex-wrap">
               <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="chat" className="gap-1"><MessageSquare className="w-3.5 h-3.5" /> AI Chat</TabsTrigger>
+              <TabsTrigger value="content" className="gap-1"><FileText className="w-3.5 h-3.5" /> Content Studio</TabsTrigger>
               <TabsTrigger value="tasks">Tasks</TabsTrigger>
               <TabsTrigger value="okrs">OKRs</TabsTrigger>
-              <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              <TabsTrigger value="analytics" className="gap-1"><BarChart3 className="w-3.5 h-3.5" /> Analytics</TabsTrigger>
+              <TabsTrigger value="alerts" className="gap-1"><Bell className="w-3.5 h-3.5" /> Alerts</TabsTrigger>
             </TabsList>
 
             {/* OVERVIEW */}
@@ -170,8 +173,6 @@ const CeoDashboard = () => {
                   </div>
                 ))}
               </div>
-
-              {/* AI Summary */}
               <div className="bg-card rounded-xl border border-border p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="font-display text-xl font-bold text-foreground flex items-center gap-2">
@@ -188,6 +189,16 @@ const CeoDashboard = () => {
                   <p className="text-muted-foreground">Click "Generate" to get an AI-powered summary of your business metrics.</p>
                 )}
               </div>
+            </TabsContent>
+
+            {/* AI CHAT */}
+            <TabsContent value="chat">
+              <CeoAIChat stats={stats} />
+            </TabsContent>
+
+            {/* CONTENT STUDIO */}
+            <TabsContent value="content">
+              <ContentStudio />
             </TabsContent>
 
             {/* TASKS */}
@@ -244,7 +255,7 @@ const CeoDashboard = () => {
                       </TableRow>
                     ))}
                     {tasks.length === 0 && (
-                      <TableRow><TableCell colSpan={5} className="text-center text-muted-foreground py-8">No tasks yet. Create one or let AI suggest some!</TableCell></TableRow>
+                      <TableRow><TableCell colSpan={5} className="text-center text-muted-foreground py-8">No tasks yet.</TableCell></TableRow>
                     )}
                   </TableBody>
                 </Table>
@@ -296,38 +307,12 @@ const CeoDashboard = () => {
 
             {/* ANALYTICS */}
             <TabsContent value="analytics">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-card rounded-xl border border-border p-6">
-                  <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2"><BarChart3 className="w-5 h-5" /> Conversion Funnel</h3>
-                  {[
-                    { label: 'Leads', value: stats.contacts, pct: 100 },
-                    { label: 'Appointments', value: stats.appointments, pct: stats.contacts ? Math.round(stats.appointments / stats.contacts * 100) : 0 },
-                    { label: 'Applications', value: stats.applications, pct: stats.contacts ? Math.round(stats.applications / stats.contacts * 100) : 0 },
-                  ].map(item => (
-                    <div key={item.label} className="mb-3">
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className="text-foreground">{item.label}</span>
-                        <span className="text-muted-foreground">{item.value} ({item.pct}%)</span>
-                      </div>
-                      <Progress value={item.pct} className="h-2" />
-                    </div>
-                  ))}
-                </div>
-                <div className="bg-card rounded-xl border border-border p-6">
-                  <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2"><Target className="w-5 h-5" /> Quick Stats</h3>
-                  <div className="space-y-4">
-                    <div className="flex justify-between"><span className="text-muted-foreground">Conversion Rate</span>
-                      <span className="font-bold text-foreground">{stats.contacts ? Math.round(stats.applications / stats.contacts * 100) : 0}%</span>
-                    </div>
-                    <div className="flex justify-between"><span className="text-muted-foreground">Avg. per Agent</span>
-                      <span className="font-bold text-foreground">{stats.agents ? Math.round(stats.contacts / stats.agents) : 0} leads</span>
-                    </div>
-                    <div className="flex justify-between"><span className="text-muted-foreground">Task Completion</span>
-                      <span className="font-bold text-foreground">{tasks.length ? Math.round(tasks.filter(t => t.status === 'done').length / tasks.length * 100) : 0}%</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <AdvancedAnalytics />
+            </TabsContent>
+
+            {/* ALERTS */}
+            <TabsContent value="alerts">
+              <SmartAlerts />
             </TabsContent>
           </Tabs>
 
