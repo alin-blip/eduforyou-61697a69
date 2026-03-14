@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Calendar, Users } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 
 const webinars = [
   { id: '1', title: 'How to Study in the UK for Free', date: 'Every Wednesday, 7 PM', type: 'Live Webinar', spots: '50 spots', image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80' },
@@ -12,6 +13,7 @@ const webinars = [
 
 const WebinarPage = () => (
   <Layout>
+    <SEOHead title="Free Webinars — Study in the UK" description="Join our free live webinars and learn everything about studying in the UK with Student Finance. Register now!" canonical="https://eduforyou.co.uk/webinar" />
     <section className="py-20 bg-navy-gradient">
       <div className="container mx-auto px-4 text-center">
         <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Free Webinars</h1>

@@ -10,12 +10,18 @@ const TrackingProvider = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
 
   useEffect(() => {
-    initMetaPixel(META_PIXEL_ID);
-    initGA4(GA4_MEASUREMENT_ID);
+    const consent = localStorage.getItem('cookie-consent');
+    if (consent === 'all') {
+      initMetaPixel(META_PIXEL_ID);
+      initGA4(GA4_MEASUREMENT_ID);
+    }
   }, []);
 
   useEffect(() => {
-    trackPageView(location.pathname);
+    const consent = localStorage.getItem('cookie-consent');
+    if (consent === 'all') {
+      trackPageView(location.pathname);
+    }
   }, [location.pathname]);
 
   return <>{children}</>;

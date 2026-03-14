@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
+import SEOHead from '@/components/SEOHead';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -97,6 +98,7 @@ const BookAppointment = () => {
 
   return (
     <Layout>
+      <SEOHead title="Book an Appointment" description="Visit one of our campuses and speak with an advisor. Book your free consultation appointment today." canonical="https://eduforyou.co.uk/book-appointment" />
       <section className="py-12 bg-background min-h-[80vh]">
         <div className="container mx-auto px-4 max-w-2xl">
           <h1 className="font-display text-3xl font-bold text-foreground text-center mb-2">Book an Appointment</h1>

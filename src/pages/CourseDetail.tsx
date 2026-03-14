@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { coursesData } from '@/data/courses';
-import { ArrowLeft, MapPin, Clock, GraduationCap, Briefcase, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, GraduationCap, Briefcase, CheckCircle2, ArrowRight, CalendarDays } from 'lucide-react';
+import SEOHead, { courseSchema } from '@/components/SEOHead';
 
 const CourseDetail = () => {
   const { slug } = useParams();
@@ -22,6 +23,12 @@ const CourseDetail = () => {
 
   return (
     <Layout>
+      <SEOHead
+        title={`${course.title} - ${course.university}`}
+        description={course.description}
+        canonical={`https://eduforyou.co.uk/cursuri/${course.slug}`}
+        jsonLd={courseSchema({ title: course.title, description: course.description, slug: course.slug, university: course.university, price: course.price, duration: course.duration })}
+      />
       {/* Hero */}
       <section className="relative py-20 bg-navy-gradient">
         <div className="container mx-auto px-4">
@@ -42,15 +49,15 @@ const CourseDetail = () => {
                 <span className="flex items-center gap-1.5"><GraduationCap className="w-4 h-4" /> {course.university}</span>
               </div>
               <div className="text-3xl font-bold text-primary mb-6">{course.price}</div>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-3">
                 <Link to="/eligibilitate">
                   <Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2">
                     Apply Now <ArrowRight className="w-5 h-5" />
                   </Button>
                 </Link>
-                <Link to="/contact">
-                  <Button size="lg" variant="outline" className="border-secondary-foreground/30 text-secondary-foreground hover:bg-navy-light/30">
-                    Ask a Question
+                <Link to="/book-appointment">
+                  <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10 font-semibold gap-2">
+                    <CalendarDays className="w-5 h-5" /> Book Appointment
                   </Button>
                 </Link>
               </div>

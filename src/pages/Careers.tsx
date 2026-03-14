@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Briefcase, MapPin, Clock, ArrowRight } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 
 const jobs = [
   { id: '1', title: 'Student Consultant', type: 'Full-time / Remote', location: 'Remote', desc: 'Guide prospective students through their university application journey.' },
@@ -13,6 +14,7 @@ const jobs = [
 
 const CareersPage = () => (
   <Layout>
+    <SEOHead title="Careers at EduForYou" description="Join our mission to make UK university education accessible to everyone. View open positions and apply today." canonical="https://eduforyou.co.uk/careers" noindex />
     <section className="py-20 bg-navy-gradient">
       <div className="container mx-auto px-4 text-center">
         <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Careers at EduForYou</h1>

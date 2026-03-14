@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Star, ArrowRight } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 
 const reviews = [
   { name: 'Silviu Stefan Haba', course: 'Business & Tourism', funding: '£18,397/an', rating: 5, text: 'Prin EduForYou am reusit sa gasesc cel mai bun job din viata mea in industria turismului.' },
@@ -15,6 +16,7 @@ const reviews = [
 
 const ReviewsPage = () => (
   <Layout>
+    <SEOHead title="Student Reviews — 4.8/5 on Trustpilot" description="Read verified reviews from students who studied in the UK with EduForYou. 163+ reviews, 4.8/5 rating on Trustpilot." canonical="https://eduforyou.co.uk/reviews" />
     <section className="py-20 bg-navy-gradient">
       <div className="container mx-auto px-4 text-center">
         <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Student Reviews</h1>
