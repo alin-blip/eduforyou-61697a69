@@ -4,7 +4,7 @@ import { Menu, X, ChevronDown, Globe, LogOut } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Language } from '@/i18n/translations';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetClose, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { useAuth } from '@/contexts/AuthContext';
 
 const languages: { code: Language; label: string; flag: string }[] = [
@@ -21,6 +21,11 @@ const Header = () => {
   const navigate = useNavigate();
 
   const dashboardPath = roles.includes('admin') ? '/admin' : roles.includes('agent') ? '/agent' : '/student';
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/login', { replace: true });
+  };
 
   const navItems = [
     { label: t('nav.courses'), href: '/cursuri' },
@@ -106,10 +111,7 @@ const Header = () => {
                   size="sm"
                   variant="ghost"
                   className="hidden md:inline-flex text-secondary-foreground/80 hover:text-primary-foreground"
-                  onClick={async () => {
-                    await signOut();
-                    navigate('/login');
-                  }}
+                  onClick={handleSignOut}
                 >
                   <LogOut className="w-4 h-4 mr-1" />
                   Sign Out
@@ -146,33 +148,54 @@ const Header = () => {
                 <SheetTitle className="text-primary-foreground font-display">Menu</SheetTitle>
                 <nav className="flex flex-col gap-1 mt-8">
                   {navItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      to={item.href}
-                      className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground hover:bg-navy-light/30 rounded-md transition-colors"
-                    >
-                      {item.label}
-                    </Link>
+                    <SheetClose asChild key={item.href}>
+                      <Link
+                        to={item.href}
+                        className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground hover:bg-navy-light/30 rounded-md transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    </SheetClose>
                   ))}
                   <div className="border-t border-navy-light/20 my-4" />
                   {user ? (
                     <>
-                      <Link to={dashboardPath} className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground">Dashboard</Link>
-                      <button onClick={async () => { await signOut(); navigate('/'); }} className="px-4 py-3 text-left text-secondary-foreground/80 hover:text-primary-foreground">Sign Out</button>
+                      <SheetClose asChild>
+                        <Link to={dashboardPath} className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground hover:bg-navy-light/30 rounded-md transition-colors">
+                          Dashboard
+                        </Link>
+                      </SheetClose>
+                      <SheetClose asChild>
+                        <button
+                          type="button"
+                          onClick={handleSignOut}
+                          className="px-4 py-3 text-left text-secondary-foreground/80 hover:text-primary-foreground hover:bg-navy-light/30 rounded-md transition-colors"
+                        >
+                          Sign Out
+                        </button>
+                      </SheetClose>
                     </>
                   ) : (
-                    <Link to="/login" className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground">{t('nav.signIn')}</Link>
+                    <SheetClose asChild>
+                      <Link to="/login" className="px-4 py-3 text-secondary-foreground/80 hover:text-primary-foreground hover:bg-navy-light/30 rounded-md transition-colors">
+                        {t('nav.signIn')}
+                      </Link>
+                    </SheetClose>
                   )}
-                  <Link to="/book-appointment">
-                    <Button variant="outline" className="w-full mt-2 border-primary text-primary hover:bg-primary/10">
-                      {t('nav.bookAppointment') || 'Book Appointment'}
-                    </Button>
-                  </Link>
-                  <Link to="/eligibilitate">
-                    <Button className="w-full mt-2 bg-primary hover:bg-orange-dark text-primary-foreground">
-                      {t('nav.checkEligibility')}
-                    </Button>
-                  </Link>
+                  <SheetClose asChild>
+                    <Link to="/book-appointment">
+                      <Button variant="outline" className="w-full mt-2 border-primary text-primary hover:bg-primary/10">
+                        {t('nav.bookAppointment') || 'Book Appointment'}
+                      </Button>
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link to="/eligibilitate">
+                      <Button className="w-full mt-2 bg-primary hover:bg-orange-dark text-primary-foreground">
+                        {t('nav.checkEligibility')}
+                      </Button>
+                    </Link>
+                  </SheetClose>
                 </nav>
               </SheetContent>
             </Sheet>
