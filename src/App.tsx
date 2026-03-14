@@ -75,7 +75,7 @@ const App = () => (
               <Route path="/admin/blog/new" element={<ProtectedRoute requiredRole="admin"><BlogEditor /></ProtectedRoute>} />
               <Route path="/admin/blog/:id" element={<ProtectedRoute requiredRole="admin"><BlogEditor /></ProtectedRoute>} />
               <Route path="/admin/*" element={<ProtectedRoute requiredRole="admin"><AdminDashboard /></ProtectedRoute>} />
-              <Route path="/agent" element={<ProtectedRoute requiredRole="agent"><AgentDashboard /></ProtectedRoute>} />
+              <Route path="/agent/*" element={<ProtectedRoute requiredRole="agent"><AgentDashboard /></ProtectedRoute>} />
               <Route path="/student/*" element={<ProtectedRoute requiredRole="student"><StudentDashboard /></ProtectedRoute>} />
               <Route path="/ceo" element={<ProtectedRoute requiredRole="admin"><CeoDashboard /></ProtectedRoute>} />
               <Route path="/legal/cookies" element={<LegalPage type="cookies" />} />
