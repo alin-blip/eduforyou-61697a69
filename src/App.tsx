@@ -35,6 +35,7 @@ import BlogEditor from "./pages/BlogEditor";
 import BookAppointment from "./pages/BookAppointment";
 import CVBuilder from "./pages/CVBuilder";
 import CeoDashboard from "./pages/CeoDashboard";
+import PaymentSuccess from "./pages/PaymentSuccess";
 
 const queryClient = new QueryClient();
 
