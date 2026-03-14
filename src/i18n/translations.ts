@@ -226,6 +226,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.blog': 'Blog',
     'nav.contact': 'Contact',
     'nav.signIn': 'Conectare',
+    'nav.bookAppointment': 'Programează Întâlnire',
     'nav.checkEligibility': 'Verifică Eligibilitatea',
 
     'hero.badge': 'Serviciu 100% Gratuit — Doar 50 de locuri pe săptămână',
