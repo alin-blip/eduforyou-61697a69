@@ -98,9 +98,10 @@ const EligibilityPage = () => {
         description: 'Request timed out. Please try again.',
         variant: 'destructive',
       });
-    }, 12000);
+    }, 25000);
 
     try {
+      console.log('[Eligibility] Inserting contact...');
       const { error: contactError } = await supabase.from('contacts').insert({
         full_name: form.fullName,
         email: form.email,
@@ -109,19 +110,19 @@ const EligibilityPage = () => {
         course_interest: form.course,
         date_of_birth: form.dob || null,
         source: 'eligibility_quiz',
-      });
+      }).select();
+      console.log('[Eligibility] Contact insert done', { contactError });
 
       if (contactError) throw contactError;
 
-      const { error: quizError } = await supabase.from('quiz_results').insert({
+      // Fire-and-forget quiz result insert
+      supabase.from('quiz_results').insert({
         quiz_type: 'eligibility',
         answers: form as any,
         result: { eligible: form.residence !== 'Other / Not Sure' },
+      }).select().then(({ error }) => {
+        if (error) console.error('Eligibility quiz result insert failed:', error);
       });
-
-      if (quizError) {
-        console.error('Eligibility quiz result insert failed:', quizError);
-      }
 
       if (!didTimeout) setStep(4);
     } catch (err: any) {
