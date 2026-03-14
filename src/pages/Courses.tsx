@@ -23,7 +23,7 @@ const CoursesPage = () => {
 
   return (
     <Layout>
-      <SEOHead title="Free University Courses UK | EduForYou" description="Browse 50+ free university courses across Business, Computing, Psychology and more. 100% funded through Student Finance." url="/cursuri" />
+      <SEOHead title="Free University Courses UK" description="Browse 50+ free university courses across Business, Computing, Psychology and more. 100% funded through Student Finance." canonical="/cursuri" />
       <section className="py-20 bg-navy-gradient">
         <div className="container mx-auto px-4 text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
