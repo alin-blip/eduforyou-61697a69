@@ -17,11 +17,14 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { user } = useAuth();
+  const { user, roles, loading: authLoading } = useAuth();
 
   useEffect(() => {
-    if (user) navigate('/');
-  }, [user, navigate]);
+    if (user && !authLoading && roles.length > 0) {
+      const path = roles.includes('admin') ? '/admin' : roles.includes('agent') ? '/agent' : '/student';
+      navigate(path, { replace: true });
+    }
+  }, [user, roles, authLoading, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +45,7 @@ const LoginPage = () => {
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        navigate('/');
+        // Redirect handled by useEffect watching roles
       }
     } catch (error: any) {
       toast({ title: 'Error', description: error.message, variant: 'destructive' });
