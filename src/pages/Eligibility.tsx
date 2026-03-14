@@ -46,22 +46,6 @@ const EligibilityPage = () => {
 
   const updateForm = (key: string, value: string) => setForm(prev => ({ ...prev, [key]: value }));
 
-  const withTimeout = async <T,>(run: () => PromiseLike<T>, timeoutMs = 12000): Promise<T> => {
-    let timeoutId: number | undefined;
-
-    const timeoutPromise = new Promise<T>((_, reject) => {
-      timeoutId = window.setTimeout(() => {
-        reject(new Error('Request timed out. Please check your connection and try again.'));
-      }, timeoutMs);
-    });
-
-    try {
-      return await Promise.race([Promise.resolve(run()), timeoutPromise]);
-    } finally {
-      if (timeoutId) window.clearTimeout(timeoutId);
-    }
-  };
-
   const canNext = () => {
     switch (step) {
       case 0: return !!form.residence;
@@ -76,41 +60,51 @@ const EligibilityPage = () => {
     if (submitting) return;
     setSubmitting(true);
 
-    try {
-      const contactInsert = await withTimeout(
-        supabase.from('contacts').insert({
-          full_name: form.fullName,
-          email: form.email,
-          phone: form.phone,
-          residence_status: form.residence,
-          course_interest: form.course,
-          date_of_birth: form.dob || null,
-          source: 'eligibility_quiz',
-        })
-      );
-
-      if (contactInsert.error) throw contactInsert.error;
-
-      const quizInsert = await withTimeout(
-        supabase.from('quiz_results').insert({
-          quiz_type: 'eligibility',
-          answers: form as any,
-          result: { eligible: form.residence !== 'Other / Not Sure' },
-        })
-      );
-
-      if (quizInsert.error) {
-        console.error('Eligibility quiz result insert failed:', quizInsert.error);
-      }
-
-      setStep(4);
-    } catch (err: any) {
+    let didTimeout = false;
+    const safetyTimeout = window.setTimeout(() => {
+      didTimeout = true;
+      setSubmitting(false);
       toast({
         title: 'Error',
-        description: err?.message || 'Something went wrong. Please try again.',
+        description: 'Request timed out. Please try again.',
         variant: 'destructive',
       });
+    }, 12000);
+
+    try {
+      const { error: contactError } = await supabase.from('contacts').insert({
+        full_name: form.fullName,
+        email: form.email,
+        phone: form.phone,
+        residence_status: form.residence,
+        course_interest: form.course,
+        date_of_birth: form.dob || null,
+        source: 'eligibility_quiz',
+      });
+
+      if (contactError) throw contactError;
+
+      const { error: quizError } = await supabase.from('quiz_results').insert({
+        quiz_type: 'eligibility',
+        answers: form as any,
+        result: { eligible: form.residence !== 'Other / Not Sure' },
+      });
+
+      if (quizError) {
+        console.error('Eligibility quiz result insert failed:', quizError);
+      }
+
+      if (!didTimeout) setStep(4);
+    } catch (err: any) {
+      if (!didTimeout) {
+        toast({
+          title: 'Error',
+          description: err?.message || 'Something went wrong. Please try again.',
+          variant: 'destructive',
+        });
+      }
     } finally {
+      window.clearTimeout(safetyTimeout);
       setSubmitting(false);
     }
   };
