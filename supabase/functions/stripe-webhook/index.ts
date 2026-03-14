@@ -1,8 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import Stripe from "npm:stripe@18.5.0";
 import { createClient } from "npm:@supabase/supabase-js@2.57.2";
-import { render } from "npm:@react-email/render@0.0.12";
-import { PurchaseConfirmationEmail } from "../_shared/email-templates/purchase-confirmation.tsx";
+import { buildPurchaseConfirmationHtml } from "../_shared/email-templates/purchase-confirmation-html.ts";
 
 const PRICE_TO_PRODUCT: Record<string, { type: string; name: string; downloadUrl?: string }> = {
   "price_1T92CgBm1vxHnsGAuKMOu0Yn": {
@@ -116,14 +115,12 @@ serve(async (req) => {
       ? `£${(session.amount_total / 100).toFixed(2)}`
       : "£0.00";
 
-    const html = render(
-      PurchaseConfirmationEmail({
-        fullName: customerName,
-        productName: productInfo?.name || "EduForYou Product",
-        downloadUrl: productInfo?.downloadUrl,
-        amount,
-      })
-    );
+    const html = buildPurchaseConfirmationHtml({
+      fullName: customerName,
+      productName: productInfo?.name || "EduForYou Product",
+      downloadUrl: productInfo?.downloadUrl,
+      amount,
+    });
 
     const messageId = `purchase-${crypto.randomUUID()}`;
     const subject = `Your ${productInfo?.name || "purchase"} is ready — EduForYou`;
