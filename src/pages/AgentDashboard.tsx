@@ -15,6 +15,7 @@ import { coursesData } from '@/data/courses';
 const AgentDashboard = () => {
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
+  const [leaderboard, setLeaderboard] = useState<any[]>([]);
   const [referrals, setReferrals] = useState<any[]>([]);
   const [applications, setApplications] = useState<any[]>([]);
   const [profile, setProfile] = useState<any>(null);
