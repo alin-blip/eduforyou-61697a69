@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Layout from '@/components/layout/Layout';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
-import { Users, TrendingUp, Award, FileText, Plus, Copy, Link2, Trophy, X, Save } from 'lucide-react';
+import { Users, TrendingUp, Award, FileText, Plus, Copy, Link2, Trophy, X, Save, Medal } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
