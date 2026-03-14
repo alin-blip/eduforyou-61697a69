@@ -12,6 +12,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.blog': 'Blog',
     'nav.contact': 'Contact',
     'nav.signIn': 'Sign In',
+    'nav.bookAppointment': 'Book Appointment',
     'nav.checkEligibility': 'Check Eligibility',
 
     // Hero
@@ -225,6 +226,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.blog': 'Blog',
     'nav.contact': 'Contact',
     'nav.signIn': 'Conectare',
+    'nav.bookAppointment': 'Programează Întâlnire',
     'nav.checkEligibility': 'Verifică Eligibilitatea',
 
     'hero.badge': 'Serviciu 100% Gratuit — Doar 50 de locuri pe săptămână',
@@ -308,6 +310,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.blog': 'Blog',
     'nav.contact': 'Kapcsolat',
     'nav.signIn': 'Bejelentkezés',
+    'nav.bookAppointment': 'Időpont Foglalás',
     'nav.checkEligibility': 'Jogosultság Ellenőrzése',
 
     'hero.badge': '100% Ingyenes Szolgáltatás — Heti csak 50 hely',
@@ -503,6 +506,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.blog': 'Blog',
     'nav.contact': 'Kontakt',
     'nav.signIn': 'Zaloguj się',
+    'nav.bookAppointment': 'Umów Spotkanie',
     'nav.checkEligibility': 'Sprawdź Kwalifikowalność',
 
     'hero.badge': '100% Darmowa Usługa — Tylko 50 miejsc tygodniowo',
