@@ -310,6 +310,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.blog': 'Blog',
     'nav.contact': 'Kapcsolat',
     'nav.signIn': 'Bejelentkezés',
+    'nav.bookAppointment': 'Időpont Foglalás',
     'nav.checkEligibility': 'Jogosultság Ellenőrzése',
 
     'hero.badge': '100% Ingyenes Szolgáltatás — Heti csak 50 hely',
