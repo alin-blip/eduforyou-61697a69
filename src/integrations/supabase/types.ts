@@ -796,6 +796,16 @@ export type Database = {
         Args: { payload: Json; queue_name: string }
         Returns: number
       }
+      get_agent_leaderboard: {
+        Args: never
+        Returns: {
+          agent_display: string
+          agent_rank: number
+          converted: number
+          total_commission: number
+          total_referrals: number
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
