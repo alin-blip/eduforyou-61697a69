@@ -46,7 +46,7 @@ const EligibilityPage = () => {
 
   const updateForm = (key: string, value: string) => setForm(prev => ({ ...prev, [key]: value }));
 
-  const withTimeout = async <T,>(promise: Promise<T>, timeoutMs = 12000): Promise<T> => {
+  const withTimeout = async <T,>(run: () => Promise<T>, timeoutMs = 12000): Promise<T> => {
     let timeoutId: number | undefined;
 
     const timeoutPromise = new Promise<T>((_, reject) => {
@@ -56,7 +56,7 @@ const EligibilityPage = () => {
     });
 
     try {
-      return await Promise.race([promise, timeoutPromise]);
+      return await Promise.race([run(), timeoutPromise]);
     } finally {
       if (timeoutId) window.clearTimeout(timeoutId);
     }
