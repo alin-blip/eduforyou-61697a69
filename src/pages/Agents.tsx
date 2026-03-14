@@ -73,7 +73,7 @@ const AgentsPage = () => {
           </div>
           <div className="bg-gradient-to-br from-primary/5 to-gold/5 rounded-2xl p-8 md:p-12 border border-primary/10 text-center">
             <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-              {isSubscribed ? 'You're an Active Agent!' : 'Ready to Get Started?'}
+              {isSubscribed ? "You're an Active Agent!" : 'Ready to Get Started?'}
             </h2>
             <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
               {isSubscribed
