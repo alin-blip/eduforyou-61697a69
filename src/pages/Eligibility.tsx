@@ -59,6 +59,18 @@ const EligibilityPage = () => {
   const handleSubmit = async () => {
     if (submitting) return;
     setSubmitting(true);
+
+    let didTimeout = false;
+    const safetyTimeout = window.setTimeout(() => {
+      didTimeout = true;
+      setSubmitting(false);
+      toast({
+        title: 'Error',
+        description: 'Request timed out. Please try again.',
+        variant: 'destructive',
+      });
+    }, 12000);
+
     try {
       const { error: contactError } = await supabase.from('contacts').insert({
         full_name: form.fullName,
@@ -69,17 +81,30 @@ const EligibilityPage = () => {
         date_of_birth: form.dob || null,
         source: 'eligibility_quiz',
       });
+
       if (contactError) throw contactError;
 
-      await supabase.from('quiz_results').insert({
+      const { error: quizError } = await supabase.from('quiz_results').insert({
         quiz_type: 'eligibility',
         answers: form as any,
         result: { eligible: form.residence !== 'Other / Not Sure' },
       });
-      setStep(4);
+
+      if (quizError) {
+        console.error('Eligibility quiz result insert failed:', quizError);
+      }
+
+      if (!didTimeout) setStep(4);
     } catch (err: any) {
-      toast({ title: 'Error', description: err?.message || 'Something went wrong. Please try again.', variant: 'destructive' });
+      if (!didTimeout) {
+        toast({
+          title: 'Error',
+          description: err?.message || 'Something went wrong. Please try again.',
+          variant: 'destructive',
+        });
+      }
     } finally {
+      window.clearTimeout(safetyTimeout);
       setSubmitting(false);
     }
   };
