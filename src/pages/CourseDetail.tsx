@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { coursesData } from '@/data/courses';
-import { ArrowLeft, MapPin, Clock, GraduationCap, Briefcase, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, GraduationCap, Briefcase, CheckCircle2, ArrowRight, CalendarDays } from 'lucide-react';
+import SEOHead, { courseSchema } from '@/components/SEOHead';
 
 const CourseDetail = () => {
   const { slug } = useParams();
