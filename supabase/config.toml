@@ -13,3 +13,13 @@ project_id = "qeudaftsfrougfamywrz"
     verify_jwt = false
   [functions.send-appointment-reminders]
     verify_jwt = false
+  [functions.skill-scanner]
+    verify_jwt = false
+  [functions.ikigai-builder]
+    verify_jwt = false
+  [functions.offer-builder]
+    verify_jwt = false
+  [functions.profile-builder]
+    verify_jwt = false
+  [functions.outreach-generator]
+    verify_jwt = false

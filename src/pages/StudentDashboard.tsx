@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import DashboardLayout from '@/components/layout/DashboardLayout';
-import { Compass, FileText, ClipboardList, PoundSterling, User, Mail, Trophy, Wrench } from 'lucide-react';
+import { Compass, FileText, ClipboardList, PoundSterling, User, Mail, Trophy, Wrench, Rocket } from 'lucide-react';
 import StudentJourney from './student/StudentJourney';
 import StudentDocuments from './student/StudentDocuments';
 import StudentApplications from './student/StudentApplications';
@@ -9,6 +9,13 @@ import StudentProfile from './student/StudentProfile';
 import StudentMessages from './student/StudentMessages';
 import GamificationWidget from '@/components/student/GamificationWidget';
 import CVBuilder from './CVBuilder';
+import DefineYourPath from './wizard/DefineYourPath';
+import SkillScanner from './wizard/SkillScanner';
+import IkigaiBuilder from './wizard/IkigaiBuilder';
+import OfferBuilder from './wizard/OfferBuilder';
+import ProfileBuilder from './wizard/ProfileBuilder';
+import OutreachGenerator from './wizard/OutreachGenerator';
+import FreedomPlanExport from './wizard/FreedomPlanExport';
 
 const navItems = [
   { title: 'Journey', url: '/student', icon: Compass },
@@ -17,6 +24,7 @@ const navItems = [
   { title: 'Applications', url: '/student/applications', icon: ClipboardList },
   { title: 'Finance', url: '/student/finance', icon: PoundSterling },
   { title: 'Progress', url: '/student/progress', icon: Trophy },
+  { title: 'Launchpad', url: '/student/launchpad', icon: Rocket },
   { title: 'CV Builder', url: '/student/cv', icon: Wrench },
   { title: 'Profile', url: '/student/profile', icon: User },
 ];
@@ -31,6 +39,13 @@ const StudentDashboard = () => {
         <Route path="applications" element={<StudentApplications />} />
         <Route path="finance" element={<StudentFinanceTab />} />
         <Route path="progress" element={<GamificationWidget />} />
+        <Route path="launchpad" element={<DefineYourPath />} />
+        <Route path="launchpad/skills" element={<SkillScanner />} />
+        <Route path="launchpad/ikigai" element={<IkigaiBuilder />} />
+        <Route path="launchpad/offer" element={<OfferBuilder />} />
+        <Route path="launchpad/profile" element={<ProfileBuilder />} />
+        <Route path="launchpad/outreach" element={<OutreachGenerator />} />
+        <Route path="launchpad/export" element={<FreedomPlanExport />} />
         <Route path="cv" element={<CVBuilder />} />
         <Route path="profile" element={<StudentProfile />} />
       </Routes>
