@@ -9,8 +9,24 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+const STORAGE_KEY = 'eduforyou-language';
+const VALID_LANGS: Language[] = ['en', 'ro', 'hu', 'pl'];
+
+function getInitialLanguage(): Language {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY) as Language;
+    if (stored && VALID_LANGS.includes(stored)) return stored;
+  } catch {}
+  return 'ro';
+}
+
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+
+  const setLanguage = useCallback((lang: Language) => {
+    setLanguageState(lang);
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch {}
+  }, []);
 
   const t = useCallback((key: string): string => {
     return translations[language]?.[key] || translations['en']?.[key] || key;
