@@ -10,7 +10,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'eduforyou-language';
-const VALID_LANGS: Language[] = ['en', 'ro', 'hu', 'pl'];
+const VALID_LANGS: Language[] = ['en', 'ro', 'hu', 'pl', 'uk'];
 
 function getInitialLanguage(): Language {
   try {

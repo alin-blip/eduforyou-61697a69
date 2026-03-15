@@ -107,6 +107,23 @@ export const calculateLeadScore = (): LeadScore => {
   return { total, breakdown: { engagement, intent, fit }, grade };
 };
 
+// Initialize Meta Pixel — call once on app start
+export const initMetaPixel = (_pixelId: string) => {
+  // Meta Pixel init handled via index.html snippet; this is a no-op placeholder
+  // for environments where dynamic init is needed.
+};
+
+// Initialize GA4 — call once on app start
+export const initGA4 = (_measurementId: string) => {
+  // GA4 init handled via index.html snippet; this is a no-op placeholder
+  // for environments where dynamic init is needed.
+};
+
+// Track a lead event — wraps trackEvents.leadCaptured for convenience
+export const trackLead = (data: { email?: string; phone?: string; name?: string; source?: string }) => {
+  track("lead_captured", "conversion", { ...data });
+};
+
 // Track page views — fires internal + GA + Meta Pixel
 export const trackPageView = (path: string, title?: string) => {
   track("page_view", "page_view", { path, title: title || document.title });
