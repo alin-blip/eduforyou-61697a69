@@ -267,6 +267,8 @@ export type Database = {
           scheduled_date: string | null
           status: string | null
           title: string
+          week: number | null
+          year: number | null
         }
         Insert: {
           content_id?: string | null
@@ -277,6 +279,8 @@ export type Database = {
           scheduled_date?: string | null
           status?: string | null
           title: string
+          week?: number | null
+          year?: number | null
         }
         Update: {
           content_id?: string | null
@@ -287,6 +291,8 @@ export type Database = {
           scheduled_date?: string | null
           status?: string | null
           title?: string
+          week?: number | null
+          year?: number | null
         }
         Relationships: [
           {
