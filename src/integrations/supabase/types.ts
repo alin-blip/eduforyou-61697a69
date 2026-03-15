@@ -59,6 +59,39 @@ export type Database = {
         }
         Relationships: []
       }
+      agent_approvals: {
+        Row: {
+          agent_id: string
+          created_at: string
+          details: Json | null
+          id: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string | null
+          type: string
+        }
+        Insert: {
+          agent_id: string
+          created_at?: string
+          details?: Json | null
+          id?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string | null
+          type: string
+        }
+        Update: {
+          agent_id?: string
+          created_at?: string
+          details?: Json | null
+          id?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string | null
+          type?: string
+        }
+        Relationships: []
+      }
       agent_memberships: {
         Row: {
           agent_id: string
@@ -83,6 +116,39 @@ export type Database = {
           started_at?: string
           status?: string
           tier?: string
+        }
+        Relationships: []
+      }
+      agent_workflow_runs: {
+        Row: {
+          completed_at: string | null
+          error: string | null
+          id: string
+          input_data: Json | null
+          output_data: Json | null
+          started_at: string
+          status: string | null
+          workflow_name: string
+        }
+        Insert: {
+          completed_at?: string | null
+          error?: string | null
+          id?: string
+          input_data?: Json | null
+          output_data?: Json | null
+          started_at?: string
+          status?: string | null
+          workflow_name: string
+        }
+        Update: {
+          completed_at?: string | null
+          error?: string | null
+          id?: string
+          input_data?: Json | null
+          output_data?: Json | null
+          started_at?: string
+          status?: string | null
+          workflow_name?: string
         }
         Relationships: []
       }
@@ -337,6 +403,33 @@ export type Database = {
         }
         Relationships: []
       }
+      ceo_agent_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          role: string
+          session_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+          session_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+          session_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       ceo_okrs: {
         Row: {
           created_at: string
@@ -414,6 +507,44 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      commissions: {
+        Row: {
+          agent_id: string
+          amount: number
+          created_at: string
+          id: string
+          paid_at: string | null
+          referral_id: string | null
+          status: string | null
+        }
+        Insert: {
+          agent_id: string
+          amount?: number
+          created_at?: string
+          id?: string
+          paid_at?: string | null
+          referral_id?: string | null
+          status?: string | null
+        }
+        Update: {
+          agent_id?: string
+          amount?: number
+          created_at?: string
+          id?: string
+          paid_at?: string | null
+          referral_id?: string | null
+          status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "commissions_referral_id_fkey"
+            columns: ["referral_id"]
+            isOneToOne: false
+            referencedRelation: "referrals"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       contacts: {
         Row: {
@@ -540,6 +671,53 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      deals: {
+        Row: {
+          agent_id: string | null
+          contact_id: string | null
+          created_at: string
+          id: string
+          notes: string | null
+          stage: string | null
+          status: string | null
+          title: string | null
+          updated_at: string
+          value: number | null
+        }
+        Insert: {
+          agent_id?: string | null
+          contact_id?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          stage?: string | null
+          status?: string | null
+          title?: string | null
+          updated_at?: string
+          value?: number | null
+        }
+        Update: {
+          agent_id?: string | null
+          contact_id?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          stage?: string | null
+          status?: string | null
+          title?: string | null
+          updated_at?: string
+          value?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "deals_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       edu_application_steps: {
         Row: {
@@ -896,6 +1074,92 @@ export type Database = {
         }
         Relationships: []
       }
+      job_applications: {
+        Row: {
+          cover_letter: string | null
+          created_at: string
+          cv_url: string | null
+          email: string
+          full_name: string
+          id: string
+          notes: string | null
+          phone: string | null
+          position_id: string | null
+          status: string | null
+        }
+        Insert: {
+          cover_letter?: string | null
+          created_at?: string
+          cv_url?: string | null
+          email: string
+          full_name: string
+          id?: string
+          notes?: string | null
+          phone?: string | null
+          position_id?: string | null
+          status?: string | null
+        }
+        Update: {
+          cover_letter?: string | null
+          created_at?: string
+          cv_url?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          notes?: string | null
+          phone?: string | null
+          position_id?: string | null
+          status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "job_applications_position_id_fkey"
+            columns: ["position_id"]
+            isOneToOne: false
+            referencedRelation: "job_positions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      job_positions: {
+        Row: {
+          created_at: string
+          department: string | null
+          description: string | null
+          id: string
+          is_active: boolean | null
+          location: string | null
+          requirements: string | null
+          title: string
+          type: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          department?: string | null
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          location?: string | null
+          requirements?: string | null
+          title: string
+          type?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          department?: string | null
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          location?: string | null
+          requirements?: string | null
+          title?: string
+          type?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       messages: {
         Row: {
           content: string
@@ -1162,6 +1426,7 @@ export type Database = {
           course_interest: string | null
           created_at: string
           id: string
+          notes: string | null
           referred_email: string
           referred_name: string
           referred_phone: string | null
@@ -1175,6 +1440,7 @@ export type Database = {
           course_interest?: string | null
           created_at?: string
           id?: string
+          notes?: string | null
           referred_email: string
           referred_name: string
           referred_phone?: string | null
@@ -1188,6 +1454,7 @@ export type Database = {
           course_interest?: string | null
           created_at?: string
           id?: string
+          notes?: string | null
           referred_email?: string
           referred_name?: string
           referred_phone?: string | null
@@ -1497,6 +1764,51 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      touchpoints: {
+        Row: {
+          contact_id: string | null
+          content: string | null
+          created_at: string
+          created_by: string | null
+          deal_id: string | null
+          id: string
+          type: string
+        }
+        Insert: {
+          contact_id?: string | null
+          content?: string | null
+          created_at?: string
+          created_by?: string | null
+          deal_id?: string | null
+          id?: string
+          type: string
+        }
+        Update: {
+          contact_id?: string | null
+          content?: string | null
+          created_at?: string
+          created_by?: string | null
+          deal_id?: string | null
+          id?: string
+          type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "touchpoints_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "touchpoints_deal_id_fkey"
+            columns: ["deal_id"]
+            isOneToOne: false
+            referencedRelation: "deals"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
