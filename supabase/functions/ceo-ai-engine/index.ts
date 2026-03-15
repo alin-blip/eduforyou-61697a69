@@ -16,7 +16,8 @@ serve(async (req) => {
 
     // ── CHAT (streaming) ──
     if (type === "chat") {
-      const { messages, stats } = body;
+      const { stats } = body;
+      const messages = Array.isArray(body.messages) ? body.messages : [];
       const systemPrompt = `You are a CEO AI assistant for EduForYou, a UK education platform. You have real-time access to these business metrics:
 - Total Leads: ${stats?.contacts || 0}
 - Applications: ${stats?.applications || 0}
