@@ -152,6 +152,152 @@ export type Database = {
         }
         Relationships: []
       }
+      agent_workflows: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean | null
+          name: string
+          steps: Json | null
+          trigger_type: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          name: string
+          steps?: Json | null
+          trigger_type?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          steps?: Json | null
+          trigger_type?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ai_alerts: {
+        Row: {
+          created_at: string
+          id: string
+          message: string | null
+          read: boolean | null
+          severity: string | null
+          title: string
+          type: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message?: string | null
+          read?: boolean | null
+          severity?: string | null
+          title: string
+          type?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string | null
+          read?: boolean | null
+          severity?: string | null
+          title?: string
+          type?: string | null
+        }
+        Relationships: []
+      }
+      ai_content: {
+        Row: {
+          content: string
+          content_type: string | null
+          created_at: string
+          created_by: string | null
+          id: string
+          scheduled_for: string | null
+          status: string | null
+          title: string | null
+          tone: string | null
+          topic: string | null
+          updated_at: string
+        }
+        Insert: {
+          content: string
+          content_type?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          scheduled_for?: string | null
+          status?: string | null
+          title?: string | null
+          tone?: string | null
+          topic?: string | null
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          content_type?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          scheduled_for?: string | null
+          status?: string | null
+          title?: string | null
+          tone?: string | null
+          topic?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ai_content_calendar: {
+        Row: {
+          content_id: string | null
+          content_type: string | null
+          created_at: string
+          id: string
+          notes: string | null
+          scheduled_date: string | null
+          status: string | null
+          title: string
+        }
+        Insert: {
+          content_id?: string | null
+          content_type?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          scheduled_date?: string | null
+          status?: string | null
+          title: string
+        }
+        Update: {
+          content_id?: string | null
+          content_type?: string | null
+          created_at?: string
+          id?: string
+          notes?: string | null
+          scheduled_date?: string | null
+          status?: string | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ai_content_calendar_content_id_fkey"
+            columns: ["content_id"]
+            isOneToOne: false
+            referencedRelation: "ai_content"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       applications: {
         Row: {
           agent_id: string | null
@@ -1825,6 +1971,39 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      written_questions: {
+        Row: {
+          category: string | null
+          course_slug: string | null
+          created_at: string
+          difficulty: string | null
+          id: string
+          is_active: boolean | null
+          max_words: number | null
+          question_text: string
+        }
+        Insert: {
+          category?: string | null
+          course_slug?: string | null
+          created_at?: string
+          difficulty?: string | null
+          id?: string
+          is_active?: boolean | null
+          max_words?: number | null
+          question_text: string
+        }
+        Update: {
+          category?: string | null
+          course_slug?: string | null
+          created_at?: string
+          difficulty?: string | null
+          id?: string
+          is_active?: boolean | null
+          max_words?: number | null
+          question_text?: string
         }
         Relationships: []
       }
