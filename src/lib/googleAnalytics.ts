@@ -1,30 +1,68 @@
-// Google Analytics 4 helpers
-// Re-exports from tracking.ts for convenience + additional GA-specific helpers
+/**
+ * Google Analytics (gtag.js) Helper
+ * Measurement ID: G-XZSG2SSFVS
+ */
 
-export { initGA4, trackEvent, trackPageView } from './tracking';
-
-export const trackGA4Event = (eventName: string, params?: Record<string, any>) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', eventName, params);
+declare global {
+  interface Window {
+    gtag: (...args: unknown[]) => void;
   }
+}
+
+const GA_ID = "G-XZSG2SSFVS";
+
+const isGtagLoaded = (): boolean => typeof window !== "undefined" && typeof window.gtag === "function";
+
+/** Send a GA4 event */
+export const gtagEvent = (eventName: string, params?: Record<string, string | number | boolean>) => {
+  if (!isGtagLoaded()) return;
+  window.gtag("event", eventName, params);
 };
 
-export const trackConversion = (conversionId: string, value?: number) => {
-  trackGA4Event('conversion', {
-    send_to: conversionId,
-    value,
-    currency: 'GBP',
+/** Track a page view (called automatically by gtag config, but can be used for SPA navigation) */
+export const gtagPageView = (path: string, title?: string) => {
+  if (!isGtagLoaded()) return;
+  window.gtag("config", GA_ID, {
+    page_path: path,
+    page_title: title || document.title,
   });
 };
 
-export const trackFormSubmission = (formName: string, formId?: string) => {
-  trackGA4Event('form_submission', { form_name: formName, form_id: formId });
-};
+/** Pre-defined GA4 events for EduForYou */
+export const gaEvents = {
+  /** User completes eligibility quiz */
+  quizCompleted: (eligible: boolean) =>
+    gtagEvent("quiz_completed", { eligible: String(eligible), event_category: "engagement" }),
 
-export const trackCTAClick = (ctaName: string, location: string) => {
-  trackGA4Event('cta_click', { cta_name: ctaName, cta_location: location });
-};
+  /** User starts ebook checkout */
+  beginCheckout: (bookName: string, price: number) =>
+    gtagEvent("begin_checkout", { currency: "GBP", value: price, items: bookName }),
 
-export const trackEligibilityCheck = (result: 'eligible' | 'not_eligible', details?: Record<string, any>) => {
-  trackGA4Event('eligibility_check', { result, ...details });
+  /** User completes purchase */
+  purchase: (bookName: string, price: number) =>
+    gtagEvent("purchase", { currency: "GBP", value: price, transaction_id: `txn_${Date.now()}`, items: bookName }),
+
+  /** User submits contact form */
+  contactFormSubmitted: (subject: string) =>
+    gtagEvent("generate_lead", { event_category: "contact", event_label: subject }),
+
+  /** User registers for webinar */
+  webinarRegistered: () =>
+    gtagEvent("sign_up", { method: "webinar" }),
+
+  /** User downloads a free guide */
+  guideDownloaded: (guideName: string) =>
+    gtagEvent("generate_lead", { event_category: "guide_download", event_label: guideName }),
+
+  /** User subscribes to newsletter */
+  newsletterSubscribed: () =>
+    gtagEvent("sign_up", { method: "newsletter" }),
+
+  /** User applies for career */
+  careerApplied: (position: string) =>
+    gtagEvent("generate_lead", { event_category: "career_application", event_label: position }),
+
+  /** Calculator used */
+  calculatorUsed: (amount: number) =>
+    gtagEvent("calculator_used", { event_category: "engagement", value: amount }),
 };

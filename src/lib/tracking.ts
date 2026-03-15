@@ -1,104 +1,254 @@
-// Tracking utilities for Meta Pixel and GA4
-// Pixel ID and GA4 Measurement ID should be set via env vars or config
+/**
+ * E.D.U. Method - Event Tracking System
+ * Tracks user interactions for lead scoring and funnel analytics
+ * Integrated with Meta Pixel + Google Analytics
+ *
+ * FIX (2025-03): Updated all Lead-generating events to pass user data
+ * (email, phone) to Meta Pixel for improved match quality and attribution.
+ */
 
-declare global {
-  interface Window {
-    fbq: (...args: any[]) => void;
-    gtag: (...args: any[]) => void;
-    dataLayer: any[];
-  }
+import { pixelEvents } from "./metaPixel";
+import { gaEvents, gtagPageView } from "./googleAnalytics";
+
+export interface TrackingEvent {
+  event: string;
+  category: "page_view" | "engagement" | "conversion" | "form" | "quiz" | "calculator" | "webinar" | "course" | "sales";
+  properties?: Record<string, string | number | boolean>;
+  timestamp: number;
+  sessionId: string;
+  userId?: string;
 }
 
-// Initialize Meta Pixel
-export const initMetaPixel = (pixelId?: string) => {
-  if (!pixelId || typeof window === 'undefined') return;
-  if (window.fbq) return; // already initialized
-
-  const script = document.createElement('script');
-  script.innerHTML = `
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '${pixelId}');
-    fbq('track', 'PageView');
-  `;
-  document.head.appendChild(script);
-
-  // NoScript fallback
-  const noscript = document.createElement('noscript');
-  const img = document.createElement('img');
-  img.height = 1;
-  img.width = 1;
-  img.style.display = 'none';
-  img.src = `https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`;
-  noscript.appendChild(img);
-  document.body.appendChild(noscript);
-};
-
-// Initialize GA4
-export const initGA4 = (measurementId?: string) => {
-  if (!measurementId || typeof window === 'undefined') return;
-  if (document.querySelector(`script[src*="${measurementId}"]`)) return;
-
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-  document.head.appendChild(script);
-
-  const configScript = document.createElement('script');
-  configScript.innerHTML = `
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '${measurementId}');
-  `;
-  document.head.appendChild(configScript);
-};
-
-// Track events
-export const trackEvent = (eventName: string, params?: Record<string, any>) => {
-  // Meta Pixel
-  if (typeof window !== 'undefined' && window.fbq) {
-    window.fbq('track', eventName, params);
+// Generate session ID
+const getSessionId = (): string => {
+  let sid = sessionStorage.getItem("edu_session_id");
+  if (!sid) {
+    sid = `sess_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+    sessionStorage.setItem("edu_session_id", sid);
   }
-
-  // GA4
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', eventName, params);
-  }
+  return sid;
 };
 
-// Common tracking events
-export const trackPageView = (pageName: string) => {
-  trackEvent('PageView', { page_title: pageName });
+// Event queue for batching
+let eventQueue: TrackingEvent[] = [];
+let flushTimeout: ReturnType<typeof setTimeout> | null = null;
+
+const flushEvents = () => {
+  if (eventQueue.length === 0) return;
+  const events = [...eventQueue];
+  eventQueue = [];
+
+  // Store locally for lead scoring
+  const stored = JSON.parse(localStorage.getItem("edu_events") || "[]");
+  localStorage.setItem("edu_events", JSON.stringify([...stored, ...events].slice(-500)));
 };
 
-export const trackLead = (source: string, extra?: Record<string, any>) => {
-  trackEvent('Lead', { content_name: source, ...extra });
+export const track = (
+  event: string,
+  category: TrackingEvent["category"],
+  properties?: Record<string, string | number | boolean>
+) => {
+  const trackingEvent: TrackingEvent = {
+    event,
+    category,
+    properties,
+    timestamp: Date.now(),
+    sessionId: getSessionId(),
+    userId: localStorage.getItem("edu_user_id") || undefined,
+  };
+
+  eventQueue.push(trackingEvent);
+
+  // Flush after 2 seconds of inactivity
+  if (flushTimeout) clearTimeout(flushTimeout);
+  flushTimeout = setTimeout(flushEvents, 2000);
 };
 
-export const trackCompleteRegistration = (method: string) => {
-  trackEvent('CompleteRegistration', { content_name: method });
+// Lead scoring based on events
+export interface LeadScore {
+  total: number;
+  breakdown: {
+    engagement: number;
+    intent: number;
+    fit: number;
+  };
+  grade: "A" | "B" | "C" | "D";
+}
+
+export const calculateLeadScore = (): LeadScore => {
+  const events: TrackingEvent[] = JSON.parse(localStorage.getItem("edu_events") || "[]");
+
+  let engagement = 0;
+  let intent = 0;
+  let fit = 0;
+
+  events.forEach((e) => {
+    switch (e.event) {
+      case "page_view": engagement += 1; break;
+      case "course_viewed": intent += 5; break;
+      case "quiz_started": intent += 10; break;
+      case "quiz_completed": intent += 20; fit += 15; break;
+      case "calculator_used": intent += 15; break;
+      case "webinar_registered": intent += 25; engagement += 10; break;
+      case "contact_form_submitted": intent += 30; break;
+      case "course_applied": intent += 40; fit += 20; break;
+      default: engagement += 1;
+    }
+  });
+
+  // Cap scores
+  engagement = Math.min(engagement, 30);
+  intent = Math.min(intent, 40);
+  fit = Math.min(fit, 30);
+
+  const total = engagement + intent + fit;
+  const grade = total >= 70 ? "A" : total >= 50 ? "B" : total >= 25 ? "C" : "D";
+
+  return { total, breakdown: { engagement, intent, fit }, grade };
 };
 
-export const trackInitiateCheckout = (product: string, value?: number) => {
-  trackEvent('InitiateCheckout', { content_name: product, value, currency: 'GBP' });
+// Track page views — fires internal + GA + Meta Pixel
+export const trackPageView = (path: string, title?: string) => {
+  track("page_view", "page_view", { path, title: title || document.title });
+  gtagPageView(path, title);
+  // Meta Pixel PageView fires automatically from index.html on each page load
 };
 
-export const trackPurchase = (product: string, value: number) => {
-  trackEvent('Purchase', { content_name: product, value, currency: 'GBP' });
-};
+// Predefined tracking events — fires internal + Meta Pixel + GA
+export const trackEvents = {
+  /** User views a content page (ebook, audiobook, course) — fires ViewContent */
+  contentViewed: (contentName: string, contentType?: string, value?: number) => {
+    track("content_viewed", "page_view", { contentName, ...(value !== undefined && { value }) });
+    pixelEvents.viewContent(contentName, contentType, value, value !== undefined ? "GBP" : undefined);
+  },
 
-export const trackViewContent = (contentType: string, contentId: string) => {
-  trackEvent('ViewContent', { content_type: contentType, content_id: contentId });
-};
+  /** User views a course detail page — fires ViewContent */
+  courseViewed: (courseId: string, courseName: string) => {
+    track("course_viewed", "course", { courseId, courseName });
+    pixelEvents.viewContent(courseName, "course");
+  },
 
-export const trackSchedule = (source: string) => {
-  trackEvent('Schedule', { content_name: source });
-};
+  /** User clicks "Buy Now" / "Cumpara Acum" — fires AddToCart */
+  addToCart: (contentName: string, price: number) => {
+    track("add_to_cart", "conversion", { contentName, price });
+    pixelEvents.addToCart(contentName, price, "GBP");
+  },
 
-export const trackSearch = (query: string) => {
-  trackEvent('Search', { search_string: query });
+  quizStarted: () => {
+    track("quiz_started", "quiz");
+  },
+
+  /**
+   * User completes eligibility quiz — fires Lead with user data for matching.
+   * FIX: Now passes email + phone for better Meta attribution.
+   */
+  quizCompleted: (
+    eligible: boolean,
+    userData?: { email?: string; phone?: string; firstName?: string; lastName?: string }
+  ) => {
+    track("quiz_completed", "quiz", { eligible });
+    pixelEvents.quizCompleted(eligible, userData);
+    gaEvents.quizCompleted(eligible);
+  },
+
+  /**
+   * User completes eligibility form — fires Lead with user data for matching.
+   * FIX: Now passes email + phone for better Meta attribution.
+   */
+  eligibilityCompleted: (
+    eligible: boolean,
+    userData?: { email?: string; phone?: string; firstName?: string; lastName?: string }
+  ) => {
+    track("eligibility_completed", "form", { eligible });
+    pixelEvents.lead("Eligibility Form", userData, { eligible: String(eligible) });
+  },
+
+  /** User completes Ikigai assessment — fires Lead with user data */
+  ikigaiCompleted: (email?: string, phone?: string) => {
+    track("ikigai_completed", "quiz", { ...(email && { email }) });
+    pixelEvents.lead("Ikigai Assessment", { email, phone });
+  },
+
+  /** User submits lead magnet form — fires Lead */
+  leadMagnetSubmitted: (guideName: string, userData?: { email?: string; phone?: string }) => {
+    track("lead_magnet_submitted", "form", { guideName });
+    pixelEvents.lead(guideName, userData);
+  },
+
+  /**
+   * User creates an account — fires CompleteRegistration with user data.
+   * FIX: Now passes email + phone for better Meta attribution.
+   */
+  accountCreated: (
+    method: string = "email",
+    userData?: { email?: string; phone?: string; firstName?: string; lastName?: string }
+  ) => {
+    track("account_created", "conversion", { method });
+    pixelEvents.completeRegistration(method, userData);
+  },
+
+  calculatorUsed: (amount: number) => {
+    track("calculator_used", "calculator", { estimatedAmount: amount });
+    gaEvents.calculatorUsed(amount);
+  },
+
+  /**
+   * User registers for webinar — fires Lead with user data.
+   * FIX: Now fires Lead (not CompleteRegistration) with email + phone for matching.
+   */
+  webinarRegistered: (email: string, phone?: string, firstName?: string) => {
+    track("webinar_registered", "webinar", { email });
+    pixelEvents.webinarRegistered({ email, phone, firstName });
+    gaEvents.webinarRegistered();
+  },
+
+  /**
+   * User submits contact form — fires Contact with user data.
+   * FIX: Now passes email + phone for better Meta attribution.
+   */
+  contactFormSubmitted: (subject: string, userData?: { email?: string; phone?: string }) => {
+    track("contact_form_submitted", "form", { subject });
+    pixelEvents.contactFormSubmitted(subject, userData);
+    gaEvents.contactFormSubmitted(subject);
+  },
+
+  courseApplied: (courseId: string) => {
+    track("course_applied", "conversion", { courseId });
+  },
+
+  ctaClicked: (ctaName: string, location: string) => {
+    track("cta_clicked", "engagement", { ctaName, location });
+  },
+
+  /** User initiates Stripe checkout — fires InitiateCheckout */
+  ebookCheckoutStarted: (bookName: string, price: number) => {
+    track("ebook_checkout_started", "conversion", { bookName, price });
+    pixelEvents.initiateCheckout(bookName, price);
+    gaEvents.beginCheckout(bookName, price);
+  },
+
+  /** User completes a purchase — fires Purchase */
+  ebookPurchased: (bookName: string, price: number) => {
+    track("ebook_purchased", "conversion", { bookName, price });
+    pixelEvents.purchase(bookName, price);
+    gaEvents.purchase(bookName, price);
+  },
+
+  guideDownloaded: (guideName: string) => {
+    track("guide_downloaded", "conversion", { guideName });
+    pixelEvents.guideDownloaded(guideName);
+    gaEvents.guideDownloaded(guideName);
+  },
+
+  newsletterSubscribed: (email?: string) => {
+    track("newsletter_subscribed", "conversion", {});
+    pixelEvents.newsletterSubscribed(email ? { email } : undefined);
+    gaEvents.newsletterSubscribed();
+  },
+
+  careerApplied: (position: string) => {
+    track("career_applied", "form", { position });
+    pixelEvents.careerApplied(position);
+    gaEvents.careerApplied(position);
+  },
 };
