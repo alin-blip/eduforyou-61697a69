@@ -50,10 +50,17 @@ serve(async (req) => {
     }
 
     const sub = subscriptions.data[0];
+    const endValue = sub.current_period_end;
+    let subscriptionEnd: string;
+    if (typeof endValue === 'number') {
+      subscriptionEnd = new Date(endValue * 1000).toISOString();
+    } else {
+      subscriptionEnd = String(endValue);
+    }
     return new Response(JSON.stringify({
       subscribed: true,
       product_id: sub.items.data[0].price.product,
-      subscription_end: new Date(sub.current_period_end * 1000).toISOString(),
+      subscription_end: subscriptionEnd,
     }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
