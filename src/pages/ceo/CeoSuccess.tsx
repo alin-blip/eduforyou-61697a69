@@ -46,7 +46,7 @@ const CeoSuccess = () => {
   }, {});
   const courseData = Object.entries(courseEnrollments)
     .map(([course, count]) => ({ course: course.length > 20 ? course.slice(0, 20) + '...' : course, count }))
-    .sort((a, b) => b.count - a.count)
+    .sort((a, b) => (b.count as number) - (a.count as number))
     .slice(0, 10);
 
   // Monthly enrollment trend
