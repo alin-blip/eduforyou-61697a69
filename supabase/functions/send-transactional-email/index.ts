@@ -119,6 +119,8 @@ Deno.serve(async (req) => {
         subject,
         html,
         from: FROM_ADDRESS,
+        purpose: "transactional",
+        label: templateName,
       }),
     })
 
