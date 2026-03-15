@@ -59,6 +59,33 @@ export type Database = {
         }
         Relationships: []
       }
+      agent_memberships: {
+        Row: {
+          agent_id: string
+          created_at: string
+          id: string
+          started_at: string
+          status: string
+          tier: string
+        }
+        Insert: {
+          agent_id: string
+          created_at?: string
+          id?: string
+          started_at?: string
+          status?: string
+          tier?: string
+        }
+        Update: {
+          agent_id?: string
+          created_at?: string
+          id?: string
+          started_at?: string
+          status?: string
+          tier?: string
+        }
+        Relationships: []
+      }
       applications: {
         Row: {
           agent_id: string | null
@@ -274,6 +301,42 @@ export type Database = {
         }
         Relationships: []
       }
+      career_applications: {
+        Row: {
+          career_id: string | null
+          cover_letter: string | null
+          created_at: string
+          cv_url: string | null
+          email: string
+          full_name: string
+          id: string
+          phone: string | null
+          status: string
+        }
+        Insert: {
+          career_id?: string | null
+          cover_letter?: string | null
+          created_at?: string
+          cv_url?: string | null
+          email: string
+          full_name: string
+          id?: string
+          phone?: string | null
+          status?: string
+        }
+        Update: {
+          career_id?: string | null
+          cover_letter?: string | null
+          created_at?: string
+          cv_url?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          phone?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       ceo_okrs: {
         Row: {
           created_at: string
@@ -397,6 +460,224 @@ export type Database = {
         }
         Relationships: []
       }
+      contracts: {
+        Row: {
+          agent_id: string
+          contract_type: string | null
+          created_at: string
+          expires_at: string | null
+          id: string
+          notes: string | null
+          signed_at: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          agent_id: string
+          contract_type?: string | null
+          created_at?: string
+          expires_at?: string | null
+          id?: string
+          notes?: string | null
+          signed_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          agent_id?: string
+          contract_type?: string | null
+          created_at?: string
+          expires_at?: string | null
+          id?: string
+          notes?: string | null
+          signed_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      courses: {
+        Row: {
+          campus: string | null
+          category: string | null
+          created_at: string
+          description: string | null
+          duration: string | null
+          id: string
+          image_url: string | null
+          is_active: boolean | null
+          level: string | null
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          campus?: string | null
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          duration?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean | null
+          level?: string | null
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          campus?: string | null
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          duration?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean | null
+          level?: string | null
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      edu_application_steps: {
+        Row: {
+          application_id: string
+          completed_at: string | null
+          created_at: string
+          id: string
+          status: string
+          step_key: string
+        }
+        Insert: {
+          application_id: string
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          status?: string
+          step_key: string
+        }
+        Update: {
+          application_id?: string
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          status?: string
+          step_key?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "edu_application_steps_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "edu_applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      edu_applications: {
+        Row: {
+          course_name: string | null
+          course_slug: string | null
+          created_at: string
+          eligibility_data: Json | null
+          generated_content: string | null
+          id: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          course_name?: string | null
+          course_slug?: string | null
+          created_at?: string
+          eligibility_data?: Json | null
+          generated_content?: string | null
+          id?: string
+          status?: string
+          user_id: string
+        }
+        Update: {
+          course_name?: string | null
+          course_slug?: string | null
+          created_at?: string
+          eligibility_data?: Json | null
+          generated_content?: string | null
+          id?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      edu_plans: {
+        Row: {
+          course_name: string | null
+          course_slug: string | null
+          created_at: string
+          id: string
+          plan_items: Json | null
+          status: string | null
+          user_id: string
+        }
+        Insert: {
+          course_name?: string | null
+          course_slug?: string | null
+          created_at?: string
+          id?: string
+          plan_items?: Json | null
+          status?: string | null
+          user_id: string
+        }
+        Update: {
+          course_name?: string | null
+          course_slug?: string | null
+          created_at?: string
+          id?: string
+          plan_items?: Json | null
+          status?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      eligibility_results: {
+        Row: {
+          age: number | null
+          answers: Json | null
+          application_started: boolean | null
+          created_at: string
+          eligible: boolean | null
+          email_sent: boolean | null
+          id: string
+          ikigai_completed: boolean | null
+          qualification: string | null
+          user_id: string | null
+        }
+        Insert: {
+          age?: number | null
+          answers?: Json | null
+          application_started?: boolean | null
+          created_at?: string
+          eligible?: boolean | null
+          email_sent?: boolean | null
+          id?: string
+          ikigai_completed?: boolean | null
+          qualification?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          age?: number | null
+          answers?: Json | null
+          application_started?: boolean | null
+          created_at?: string
+          eligible?: boolean | null
+          email_sent?: boolean | null
+          id?: string
+          ikigai_completed?: boolean | null
+          qualification?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       email_send_log: {
         Row: {
           created_at: string
@@ -491,6 +772,36 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      email_sequences: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean | null
+          name: string
+          steps: Json | null
+          trigger_event: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          name: string
+          steps?: Json | null
+          trigger_event?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          steps?: Json | null
+          trigger_event?: string | null
+          updated_at?: string
+        }
+        Relationships: []
       }
       email_templates: {
         Row: {
@@ -612,6 +923,36 @@ export type Database = {
           receiver_id?: string
           sender_id?: string
           subject?: string | null
+        }
+        Relationships: []
+      }
+      newsletter_subscribers: {
+        Row: {
+          created_at: string
+          email: string
+          gdpr_consent: boolean | null
+          id: string
+          lead_magnet: string | null
+          name: string | null
+          source: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          gdpr_consent?: boolean | null
+          id?: string
+          lead_magnet?: string | null
+          name?: string | null
+          source?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          gdpr_consent?: boolean | null
+          id?: string
+          lead_magnet?: string | null
+          name?: string | null
+          source?: string | null
         }
         Relationships: []
       }
@@ -1088,6 +1429,72 @@ export type Database = {
           id?: string
           metadata?: Json | null
           reason?: string
+        }
+        Relationships: []
+      }
+      test_attempts: {
+        Row: {
+          answers: Json | null
+          attempt_type: string | null
+          course_slug: string | null
+          created_at: string
+          duration_seconds: number | null
+          evaluated_at: string | null
+          feedback: Json | null
+          id: string
+          max_score: number | null
+          passed: boolean | null
+          questions_answered: number | null
+          score: number | null
+          status: string | null
+          submitted_at: string | null
+          test_type: string | null
+          time_taken: number | null
+          total_questions: number | null
+          total_words: number | null
+          user_id: string
+        }
+        Insert: {
+          answers?: Json | null
+          attempt_type?: string | null
+          course_slug?: string | null
+          created_at?: string
+          duration_seconds?: number | null
+          evaluated_at?: string | null
+          feedback?: Json | null
+          id?: string
+          max_score?: number | null
+          passed?: boolean | null
+          questions_answered?: number | null
+          score?: number | null
+          status?: string | null
+          submitted_at?: string | null
+          test_type?: string | null
+          time_taken?: number | null
+          total_questions?: number | null
+          total_words?: number | null
+          user_id: string
+        }
+        Update: {
+          answers?: Json | null
+          attempt_type?: string | null
+          course_slug?: string | null
+          created_at?: string
+          duration_seconds?: number | null
+          evaluated_at?: string | null
+          feedback?: Json | null
+          id?: string
+          max_score?: number | null
+          passed?: boolean | null
+          questions_answered?: number | null
+          score?: number | null
+          status?: string | null
+          submitted_at?: string | null
+          test_type?: string | null
+          time_taken?: number | null
+          total_questions?: number | null
+          total_words?: number | null
+          user_id?: string
         }
         Relationships: []
       }
