@@ -47,8 +47,12 @@ const CeoAiChat = () => {
     }
 
     try {
+      const allMessages = [
+        ...messages.map(m => ({ role: m.role, content: m.content })),
+        { role: 'user', content: userMessage }
+      ];
       const res = await supabase.functions.invoke('ceo-ai-engine', {
-        body: { type: 'chat', message: userMessage },
+        body: { type: 'chat', messages: allMessages },
       });
 
       if (res.error) throw res.error;
