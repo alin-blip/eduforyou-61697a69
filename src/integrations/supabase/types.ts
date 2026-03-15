@@ -1091,6 +1091,1308 @@ export type Database = {
         }
         Relationships: []
       }
+      deals: {
+        Row: {
+          id: string
+          contact_id: string | null
+          title: string
+          stage: string
+          value: number | null
+          course_slug: string | null
+          campus_id: string | null
+          probability: number | null
+          expected_close_date: string | null
+          lost_reason: string | null
+          assigned_to: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          contact_id?: string | null
+          title: string
+          stage?: string
+          value?: number | null
+          course_slug?: string | null
+          campus_id?: string | null
+          probability?: number | null
+          expected_close_date?: string | null
+          lost_reason?: string | null
+          assigned_to?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          contact_id?: string | null
+          title?: string
+          stage?: string
+          value?: number | null
+          course_slug?: string | null
+          campus_id?: string | null
+          probability?: number | null
+          expected_close_date?: string | null
+          lost_reason?: string | null
+          assigned_to?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      touchpoints: {
+        Row: {
+          id: string
+          contact_id: string
+          type: string
+          title: string | null
+          description: string | null
+          created_by: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          contact_id: string
+          type: string
+          title?: string | null
+          description?: string | null
+          created_by?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          contact_id?: string
+          type?: string
+          title?: string | null
+          description?: string | null
+          created_by?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      edu_applications: {
+        Row: {
+          id: string
+          user_id: string
+          current_phase: string
+          current_step: number
+          assigned_consultant: string | null
+          university_choice: string | null
+          course_choice: string | null
+          application_status: string | null
+          documents_status: string | null
+          finance_status: string | null
+          eligibility_status: string | null
+          course_match_status: string | null
+          test_prep_status: string | null
+          cv_status: string | null
+          university_response: string | null
+          offer_status: string | null
+          enrollment_confirmed: boolean
+          edu_plan_status: string | null
+          ikigai_top_domain: string | null
+          ikigai_second_domain: string | null
+          ikigai_recommended_courses: Json | null
+          ikigai_completed_at: string | null
+          started_at: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          current_phase?: string
+          current_step?: number
+          assigned_consultant?: string | null
+          university_choice?: string | null
+          course_choice?: string | null
+          application_status?: string | null
+          documents_status?: string | null
+          finance_status?: string | null
+          eligibility_status?: string | null
+          course_match_status?: string | null
+          test_prep_status?: string | null
+          cv_status?: string | null
+          university_response?: string | null
+          offer_status?: string | null
+          enrollment_confirmed?: boolean
+          edu_plan_status?: string | null
+          ikigai_top_domain?: string | null
+          ikigai_second_domain?: string | null
+          ikigai_recommended_courses?: Json | null
+          ikigai_completed_at?: string | null
+          started_at?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          current_phase?: string
+          current_step?: number
+          assigned_consultant?: string | null
+          university_choice?: string | null
+          course_choice?: string | null
+          application_status?: string | null
+          documents_status?: string | null
+          finance_status?: string | null
+          eligibility_status?: string | null
+          course_match_status?: string | null
+          test_prep_status?: string | null
+          cv_status?: string | null
+          university_response?: string | null
+          offer_status?: string | null
+          enrollment_confirmed?: boolean
+          edu_plan_status?: string | null
+          ikigai_top_domain?: string | null
+          ikigai_second_domain?: string | null
+          ikigai_recommended_courses?: Json | null
+          ikigai_completed_at?: string | null
+          started_at?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      edu_application_steps: {
+        Row: {
+          id: string
+          application_id: string
+          step_key: string
+          step_label: string | null
+          phase: string | null
+          status: string
+          completed_at: string | null
+          notes: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          application_id: string
+          step_key: string
+          step_label?: string | null
+          phase?: string | null
+          status?: string
+          completed_at?: string | null
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          application_id?: string
+          step_key?: string
+          step_label?: string | null
+          phase?: string | null
+          status?: string
+          completed_at?: string | null
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_badges: {
+        Row: {
+          id: string
+          user_id: string
+          badge_key: string
+          badge_name: string | null
+          badge_description: string | null
+          badge_icon: string | null
+          badge_color: string | null
+          points_reward: number
+          unlocked_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          badge_key: string
+          badge_name?: string | null
+          badge_description?: string | null
+          badge_icon?: string | null
+          badge_color?: string | null
+          points_reward?: number
+          unlocked_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          badge_key?: string
+          badge_name?: string | null
+          badge_description?: string | null
+          badge_icon?: string | null
+          badge_color?: string | null
+          points_reward?: number
+          unlocked_at?: string
+        }
+        Relationships: []
+      }
+      eligibility_results: {
+        Row: {
+          id: string
+          user_id: string | null
+          email: string | null
+          name: string | null
+          phone: string | null
+          years_of_financing: number | null
+          qualification: string | null
+          age: number | null
+          residency_years: number | null
+          immigration_status: string | null
+          date_of_birth: string | null
+          eligible: boolean | null
+          eligibility_type: string | null
+          eligible_levels: Json | null
+          reason: string | null
+          max_years: number | null
+          email_sent: boolean
+          ikigai_completed: boolean
+          application_started: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          email?: string | null
+          name?: string | null
+          phone?: string | null
+          years_of_financing?: number | null
+          qualification?: string | null
+          age?: number | null
+          residency_years?: number | null
+          immigration_status?: string | null
+          date_of_birth?: string | null
+          eligible?: boolean | null
+          eligibility_type?: string | null
+          eligible_levels?: Json | null
+          reason?: string | null
+          max_years?: number | null
+          email_sent?: boolean
+          ikigai_completed?: boolean
+          application_started?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string | null
+          email?: string | null
+          name?: string | null
+          phone?: string | null
+          years_of_financing?: number | null
+          qualification?: string | null
+          age?: number | null
+          residency_years?: number | null
+          immigration_status?: string | null
+          date_of_birth?: string | null
+          eligible?: boolean | null
+          eligibility_type?: string | null
+          eligible_levels?: Json | null
+          reason?: string | null
+          max_years?: number | null
+          email_sent?: boolean
+          ikigai_completed?: boolean
+          application_started?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ai_agents: {
+        Row: {
+          id: string
+          name: string
+          type: string
+          status: string
+          description: string | null
+          config: Json | null
+          department: string | null
+          system_prompt: string | null
+          autonomy_level: string
+          last_run_at: string | null
+          next_run_at: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          type: string
+          status?: string
+          description?: string | null
+          config?: Json | null
+          department?: string | null
+          system_prompt?: string | null
+          autonomy_level?: string
+          last_run_at?: string | null
+          next_run_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          type?: string
+          status?: string
+          description?: string | null
+          config?: Json | null
+          department?: string | null
+          system_prompt?: string | null
+          autonomy_level?: string
+          last_run_at?: string | null
+          next_run_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ai_agent_logs: {
+        Row: {
+          id: string
+          agent_id: string | null
+          action: string | null
+          input: Json | null
+          output: Json | null
+          success: boolean | null
+          duration_ms: number | null
+          error: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          agent_id?: string | null
+          action?: string | null
+          input?: Json | null
+          output?: Json | null
+          success?: boolean | null
+          duration_ms?: number | null
+          error?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          agent_id?: string | null
+          action?: string | null
+          input?: Json | null
+          output?: Json | null
+          success?: boolean | null
+          duration_ms?: number | null
+          error?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      ai_tasks: {
+        Row: {
+          id: string
+          title: string
+          description: string | null
+          assigned_to: string | null
+          priority: string
+          status: string
+          due_date: string | null
+          completed_at: string | null
+          created_by: string | null
+          agent_id: string | null
+          contact_id: string | null
+          deal_id: string | null
+          metadata: Json | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          description?: string | null
+          assigned_to?: string | null
+          priority?: string
+          status?: string
+          due_date?: string | null
+          completed_at?: string | null
+          created_by?: string | null
+          agent_id?: string | null
+          contact_id?: string | null
+          deal_id?: string | null
+          metadata?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          description?: string | null
+          assigned_to?: string | null
+          priority?: string
+          status?: string
+          due_date?: string | null
+          completed_at?: string | null
+          created_by?: string | null
+          agent_id?: string | null
+          contact_id?: string | null
+          deal_id?: string | null
+          metadata?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ai_alerts: {
+        Row: {
+          id: string
+          agent_id: string | null
+          type: string | null
+          title: string | null
+          message: string | null
+          is_read: boolean
+          is_dismissed: boolean
+          action_url: string | null
+          metadata: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          agent_id?: string | null
+          type?: string | null
+          title?: string | null
+          message?: string | null
+          is_read?: boolean
+          is_dismissed?: boolean
+          action_url?: string | null
+          metadata?: Json | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          agent_id?: string | null
+          type?: string | null
+          title?: string | null
+          message?: string | null
+          is_read?: boolean
+          is_dismissed?: boolean
+          action_url?: string | null
+          metadata?: Json | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      ai_content: {
+        Row: {
+          id: string
+          type: string
+          title: string | null
+          content: string | null
+          meta_description: string | null
+          tags: Json | null
+          topic: string | null
+          tone: string | null
+          language: string
+          status: string
+          created_by_agent: string | null
+          cmo_score: number | null
+          publish_date: string | null
+          published_url: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          type: string
+          title?: string | null
+          content?: string | null
+          meta_description?: string | null
+          tags?: Json | null
+          topic?: string | null
+          tone?: string | null
+          language?: string
+          status?: string
+          created_by_agent?: string | null
+          cmo_score?: number | null
+          publish_date?: string | null
+          published_url?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          type?: string
+          title?: string | null
+          content?: string | null
+          meta_description?: string | null
+          tags?: Json | null
+          topic?: string | null
+          tone?: string | null
+          language?: string
+          status?: string
+          created_by_agent?: string | null
+          cmo_score?: number | null
+          publish_date?: string | null
+          published_url?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ai_content_calendar: {
+        Row: {
+          id: string
+          week: number | null
+          year: number | null
+          plan: Json | null
+          status: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          week?: number | null
+          year?: number | null
+          plan?: Json | null
+          status?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          week?: number | null
+          year?: number | null
+          plan?: Json | null
+          status?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      commissions: {
+        Row: {
+          id: string
+          agent_id: string
+          deal_id: string | null
+          student_id: string | null
+          amount: number
+          type: string | null
+          status: string
+          paid_at: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          agent_id: string
+          deal_id?: string | null
+          student_id?: string | null
+          amount: number
+          type?: string | null
+          status?: string
+          paid_at?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          agent_id?: string
+          deal_id?: string | null
+          student_id?: string | null
+          amount?: number
+          type?: string | null
+          status?: string
+          paid_at?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      agent_memberships: {
+        Row: {
+          id: string
+          user_id: string
+          stripe_customer_id: string | null
+          stripe_subscription_id: string | null
+          plan_type: string
+          status: string
+          started_at: string
+          expires_at: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          plan_type?: string
+          status?: string
+          started_at?: string
+          expires_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          plan_type?: string
+          status?: string
+          started_at?: string
+          expires_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      written_questions: {
+        Row: {
+          id: string
+          course_slug: string
+          question_text: string
+          model_answer: string | null
+          min_words: number | null
+          max_words: number | null
+          max_score: number | null
+          order_index: number | null
+          evaluation_criteria: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          course_slug: string
+          question_text: string
+          model_answer?: string | null
+          min_words?: number | null
+          max_words?: number | null
+          max_score?: number | null
+          order_index?: number | null
+          evaluation_criteria?: Json | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          course_slug?: string
+          question_text?: string
+          model_answer?: string | null
+          min_words?: number | null
+          max_words?: number | null
+          max_score?: number | null
+          order_index?: number | null
+          evaluation_criteria?: Json | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      test_attempts: {
+        Row: {
+          id: string
+          user_id: string
+          course_slug: string
+          attempt_type: string | null
+          answers: Json | null
+          feedback: Json | null
+          score: number | null
+          max_score: number | null
+          passed: boolean | null
+          time_taken: number | null
+          status: string
+          created_at: string
+          evaluated_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          course_slug: string
+          attempt_type?: string | null
+          answers?: Json | null
+          feedback?: Json | null
+          score?: number | null
+          max_score?: number | null
+          passed?: boolean | null
+          time_taken?: number | null
+          status?: string
+          created_at?: string
+          evaluated_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          course_slug?: string
+          attempt_type?: string | null
+          answers?: Json | null
+          feedback?: Json | null
+          score?: number | null
+          max_score?: number | null
+          passed?: boolean | null
+          time_taken?: number | null
+          status?: string
+          created_at?: string
+          evaluated_at?: string | null
+        }
+        Relationships: []
+      }
+      personalized_tests: {
+        Row: {
+          id: string
+          user_id: string
+          course_slug: string
+          personal_info: Json | null
+          generated_content: string | null
+          status: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          course_slug: string
+          personal_info?: Json | null
+          generated_content?: string | null
+          status?: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          course_slug?: string
+          personal_info?: Json | null
+          generated_content?: string | null
+          status?: string
+          created_at?: string
+        }
+        Relationships: []
+      }
+      edu_plans: {
+        Row: {
+          id: string
+          user_id: string
+          course_slug: string | null
+          course_name: string | null
+          eligibility_data: Json | null
+          generated_content: string | null
+          status: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          course_slug?: string | null
+          course_name?: string | null
+          eligibility_data?: Json | null
+          generated_content?: string | null
+          status?: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          course_slug?: string | null
+          course_name?: string | null
+          eligibility_data?: Json | null
+          generated_content?: string | null
+          status?: string
+          created_at?: string
+        }
+        Relationships: []
+      }
+      agent_workflows: {
+        Row: {
+          id: string
+          name: string
+          slug: string | null
+          description: string | null
+          department: string | null
+          steps: Json
+          is_active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          slug?: string | null
+          description?: string | null
+          department?: string | null
+          steps?: Json
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          slug?: string | null
+          description?: string | null
+          department?: string | null
+          steps?: Json
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      agent_workflow_runs: {
+        Row: {
+          id: string
+          workflow_id: string | null
+          workflow_name: string | null
+          current_step: number
+          total_steps: number | null
+          status: string
+          input: Json | null
+          output: Json | null
+          error: string | null
+          started_at: string | null
+          completed_at: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          workflow_id?: string | null
+          workflow_name?: string | null
+          current_step?: number
+          total_steps?: number | null
+          status?: string
+          input?: Json | null
+          output?: Json | null
+          error?: string | null
+          started_at?: string | null
+          completed_at?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          workflow_id?: string | null
+          workflow_name?: string | null
+          current_step?: number
+          total_steps?: number | null
+          status?: string
+          input?: Json | null
+          output?: Json | null
+          error?: string | null
+          started_at?: string | null
+          completed_at?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      agent_approvals: {
+        Row: {
+          id: string
+          workflow_run_id: string | null
+          agent_type: string | null
+          type: string | null
+          title: string | null
+          description: string | null
+          preview_data: Json | null
+          status: string
+          reviewer_notes: string | null
+          reviewed_at: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          workflow_run_id?: string | null
+          agent_type?: string | null
+          type?: string | null
+          title?: string | null
+          description?: string | null
+          preview_data?: Json | null
+          status?: string
+          reviewer_notes?: string | null
+          reviewed_at?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          workflow_run_id?: string | null
+          agent_type?: string | null
+          type?: string | null
+          title?: string | null
+          description?: string | null
+          preview_data?: Json | null
+          status?: string
+          reviewer_notes?: string | null
+          reviewed_at?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      finance_estimates: {
+        Row: {
+          id: string
+          contact_id: string | null
+          user_id: string | null
+          email: string | null
+          course_id: string | null
+          tuition_fee: number | null
+          maintenance_loan: number | null
+          total_estimate: number | null
+          living_location: string | null
+          household_income: number | null
+          inputs: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          contact_id?: string | null
+          user_id?: string | null
+          email?: string | null
+          course_id?: string | null
+          tuition_fee?: number | null
+          maintenance_loan?: number | null
+          total_estimate?: number | null
+          living_location?: string | null
+          household_income?: number | null
+          inputs?: Json | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          contact_id?: string | null
+          user_id?: string | null
+          email?: string | null
+          course_id?: string | null
+          tuition_fee?: number | null
+          maintenance_loan?: number | null
+          total_estimate?: number | null
+          living_location?: string | null
+          household_income?: number | null
+          inputs?: Json | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      ceo_agent_messages: {
+        Row: {
+          id: string
+          role: string | null
+          content: string | null
+          source: string
+          metadata: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          role?: string | null
+          content?: string | null
+          source?: string
+          metadata?: Json | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          role?: string | null
+          content?: string | null
+          source?: string
+          metadata?: Json | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      job_positions: {
+        Row: {
+          id: string
+          title: string
+          slug: string
+          description: string | null
+          type: string
+          status: string
+          requirements: string | null
+          questions: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          slug: string
+          description?: string | null
+          type?: string
+          status?: string
+          requirements?: string | null
+          questions?: Json | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          slug?: string
+          description?: string | null
+          type?: string
+          status?: string
+          requirements?: string | null
+          questions?: Json | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      job_applications: {
+        Row: {
+          id: string
+          position_id: string | null
+          full_name: string
+          email: string
+          phone: string | null
+          linkedin_url: string | null
+          years_experience: number | null
+          cv_file_url: string | null
+          answers: Json | null
+          score: number | null
+          status: string
+          ai_analysis_summary: string | null
+          ai_analysis_match_percent: number | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          position_id?: string | null
+          full_name: string
+          email: string
+          phone?: string | null
+          linkedin_url?: string | null
+          years_experience?: number | null
+          cv_file_url?: string | null
+          answers?: Json | null
+          score?: number | null
+          status?: string
+          ai_analysis_summary?: string | null
+          ai_analysis_match_percent?: number | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          position_id?: string | null
+          full_name?: string
+          email?: string
+          phone?: string | null
+          linkedin_url?: string | null
+          years_experience?: number | null
+          cv_file_url?: string | null
+          answers?: Json | null
+          score?: number | null
+          status?: string
+          ai_analysis_summary?: string | null
+          ai_analysis_match_percent?: number | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      newsletter_subscribers: {
+        Row: {
+          id: string
+          email: string
+          name: string | null
+          phone: string | null
+          source: string | null
+          lead_magnet: string | null
+          utm_source: string | null
+          utm_medium: string | null
+          utm_campaign: string | null
+          gdpr_consent: boolean
+          subscribed_at: string
+          unsubscribed_at: string | null
+        }
+        Insert: {
+          id?: string
+          email: string
+          name?: string | null
+          phone?: string | null
+          source?: string | null
+          lead_magnet?: string | null
+          utm_source?: string | null
+          utm_medium?: string | null
+          utm_campaign?: string | null
+          gdpr_consent?: boolean
+          subscribed_at?: string
+          unsubscribed_at?: string | null
+        }
+        Update: {
+          id?: string
+          email?: string
+          name?: string | null
+          phone?: string | null
+          source?: string | null
+          lead_magnet?: string | null
+          utm_source?: string | null
+          utm_medium?: string | null
+          utm_campaign?: string | null
+          gdpr_consent?: boolean
+          subscribed_at?: string
+          unsubscribed_at?: string | null
+        }
+        Relationships: []
+      }
+      email_sequences: {
+        Row: {
+          id: string
+          name: string
+          trigger_event: string
+          is_active: boolean
+          steps: Json
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          trigger_event: string
+          is_active?: boolean
+          steps?: Json
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          trigger_event?: string
+          is_active?: boolean
+          steps?: Json
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      test_prep_attempts: {
+        Row: {
+          id: string
+          user_id: string
+          course_slug: string
+          test_type: string
+          score: number | null
+          total_questions: number | null
+          answers: Json | null
+          feedback: Json | null
+          completed_at: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          course_slug: string
+          test_type: string
+          score?: number | null
+          total_questions?: number | null
+          answers?: Json | null
+          feedback?: Json | null
+          completed_at?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          course_slug?: string
+          test_type?: string
+          score?: number | null
+          total_questions?: number | null
+          answers?: Json | null
+          feedback?: Json | null
+          completed_at?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      contracts: {
+        Row: {
+          id: string
+          agent_id: string
+          contract_type: string
+          status: string
+          signed_at: string | null
+          terms: Json | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          agent_id: string
+          contract_type: string
+          status?: string
+          signed_at?: string | null
+          terms?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          agent_id?: string
+          contract_type?: string
+          status?: string
+          signed_at?: string | null
+          terms?: Json | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      careers: {
+        Row: {
+          id: string
+          title: string
+          slug: string
+          department: string | null
+          location: string | null
+          type: string
+          description: string | null
+          requirements: Json | null
+          is_active: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          slug: string
+          department?: string | null
+          location?: string | null
+          type?: string
+          description?: string | null
+          requirements?: Json | null
+          is_active?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          slug?: string
+          department?: string | null
+          location?: string | null
+          type?: string
+          description?: string | null
+          requirements?: Json | null
+          is_active?: boolean
+          created_at?: string
+        }
+        Relationships: []
+      }
+      career_applications: {
+        Row: {
+          id: string
+          career_id: string | null
+          full_name: string
+          email: string
+          phone: string | null
+          cv_url: string | null
+          cover_letter: string | null
+          status: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          career_id?: string | null
+          full_name: string
+          email: string
+          phone?: string | null
+          cv_url?: string | null
+          cover_letter?: string | null
+          status?: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          career_id?: string | null
+          full_name?: string
+          email?: string
+          phone?: string | null
+          cv_url?: string | null
+          cover_letter?: string | null
+          status?: string
+          created_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
