@@ -79,7 +79,7 @@ const CeoAiChat = () => {
   };
 
   const clearChat = async () => {
-    await supabase.from('ceo_agent_messages').delete().eq('source', 'ceo_chat');
+    await (supabase.from('ceo_agent_messages') as any).delete().eq('source', 'ceo_chat');
     setMessages([]);
     toast({ title: 'Chat cleared' });
   };
