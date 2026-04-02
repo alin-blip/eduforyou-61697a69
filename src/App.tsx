@@ -69,6 +69,10 @@ const RoLanding = lazy(() => import("./pages/RoLanding"));
 const LeadMagnet = lazy(() => import("./pages/LeadMagnet"));
 const CareerApply = lazy(() => import("./pages/CareerApply"));
 
+// Apply pages (EN + RO)
+const ApplyPage = lazy(() => import("./pages/Apply"));
+const ApplyRoPage = lazy(() => import("./pages/ApplyRo"));
+
 // Dashboards
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const AgentDashboard = lazy(() => import("./pages/AgentDashboard"));
@@ -166,6 +170,10 @@ const AppContent = () => {
             <Route path="/book-appointment" element={<BookAppointment />} />
             <Route path="/cv-builder" element={<CVBuilder />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
+            {/* Apply pages */}
+            <Route path="/apply" element={<ApplyPage />} />
+            <Route path="/ro/apply" element={<ApplyRoPage />} />
+            <Route path="/apply/ro" element={<ApplyRoPage />} />
 
             {/* Auth pages */}
             <Route path="/login" element={<LoginPage />} />
