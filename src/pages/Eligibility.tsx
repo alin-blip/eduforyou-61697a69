@@ -110,7 +110,7 @@ const EligibilityPage = () => {
         course_interest: form.course,
         date_of_birth: form.dob || null,
         source: 'eligibility_quiz',
-      }).select();
+      });
       console.log('[Eligibility] Contact insert done', { contactError });
 
       if (contactError) throw contactError;
