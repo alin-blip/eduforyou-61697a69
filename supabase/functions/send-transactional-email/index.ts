@@ -1,8 +1,12 @@
 import { createClient } from 'npm:@supabase/supabase-js@2'
-import { render } from 'npm:@react-email/render@0.0.12'
+import { renderToStaticMarkup } from 'npm:react-dom@18.3.1/server'
 import { ContactConfirmationEmail } from '../_shared/email-templates/contact-confirmation.tsx'
 import { AppointmentConfirmationEmail } from '../_shared/email-templates/appointment-confirmation.tsx'
 import { WelcomeEmail } from '../_shared/email-templates/welcome.tsx'
+
+function render(element: any): string {
+  return '<!DOCTYPE html>' + renderToStaticMarkup(element)
+}
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
