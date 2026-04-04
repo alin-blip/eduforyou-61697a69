@@ -1,8 +1,12 @@
 import { createClient } from 'npm:@supabase/supabase-js@2'
-import { render } from 'npm:@react-email/render@0.0.12'
 import { ContactConfirmationEmail } from '../_shared/email-templates/contact-confirmation.tsx'
 import { AppointmentConfirmationEmail } from '../_shared/email-templates/appointment-confirmation.tsx'
 import { WelcomeEmail } from '../_shared/email-templates/welcome.tsx'
+
+// Inline render: these email components return HTML strings directly
+function render(component: string): string {
+  return component
+}
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',

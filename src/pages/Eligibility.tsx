@@ -120,7 +120,7 @@ const EligibilityPage = () => {
         quiz_type: 'eligibility',
         answers: form as any,
         result: { eligible: form.residence !== 'Other / Not Sure' },
-      }).select().then(({ error }) => {
+      }).then(({ error }) => {
         if (error) console.error('Eligibility quiz result insert failed:', error);
       });
 
