@@ -68,6 +68,7 @@ const BlackbookSales = lazy(() => import("./pages/BlackbookSales"));
 const RoLanding = lazy(() => import("./pages/RoLanding"));
 const LeadMagnet = lazy(() => import("./pages/LeadMagnet"));
 const CareerApply = lazy(() => import("./pages/CareerApply"));
+const AdminJobPage = lazy(() => import("./pages/AdminJobPage"));
 
 // Apply pages (EN + RO)
 const ApplyPage = lazy(() => import("./pages/Apply"));
@@ -151,6 +152,7 @@ const AppContent = () => {
             <Route path="/student-finance" element={<StudentFinancePage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/careers/:slug/apply" element={<CareerApply />} />
+            <Route path="/careers/admin" element={<AdminJobPage />} />
             <Route path="/reviews" element={<ReviewsPage />} />
             <Route path="/testimoniale" element={<TestimonialsHub />} />
             <Route path="/success-stories" element={<SuccessStories />} />
