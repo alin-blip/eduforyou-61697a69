@@ -80,7 +80,7 @@ const AdminCampuses = () => {
           <p className="text-sm text-muted-foreground mt-1">{campuses.length} campuses</p>
         </div>
         <Button
-          className="bg-[#E67E22] hover:bg-[#d35400]"
+          className="bg-[#D4AF37] hover:bg-[#d35400]"
           onClick={() => { setEditing({ ...emptyCampus }); setOpen(true); }}
         >
           <Plus className="w-4 h-4 mr-1" /> Add Campus
@@ -93,7 +93,7 @@ const AdminCampuses = () => {
             <CardContent className="p-5 space-y-3">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-[#E67E22]" />
+                  <MapPin className="w-5 h-5 text-[#D4AF37]" />
                   <h3 className="font-semibold text-[#1a252f]">{campus.name}</h3>
                 </div>
                 <div className="flex items-center gap-2">
@@ -133,7 +133,7 @@ const AdminCampuses = () => {
                   <span className="text-xs text-muted-foreground">Active</span>
                 </div>
                 {campus.google_maps_url && (
-                  <a href={campus.google_maps_url} target="_blank" rel="noreferrer" className="text-xs text-[#E67E22] flex items-center gap-1 hover:underline">
+                  <a href={campus.google_maps_url} target="_blank" rel="noreferrer" className="text-xs text-[#D4AF37] flex items-center gap-1 hover:underline">
                     <ExternalLink className="w-3 h-3" /> View on Map
                   </a>
                 )}
@@ -173,7 +173,7 @@ const AdminCampuses = () => {
             </div>
           )}
           <DialogFooter>
-            <Button onClick={() => saveCampus.mutate(editing)} className="bg-[#E67E22] hover:bg-[#d35400]">Save</Button>
+            <Button onClick={() => saveCampus.mutate(editing)} className="bg-[#D4AF37] hover:bg-[#d35400]">Save</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

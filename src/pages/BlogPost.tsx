@@ -95,7 +95,7 @@ const BlogPost = () => {
             <h3 className="font-display text-xl font-bold text-foreground mb-3">Ready to Start Your Journey?</h3>
             <p className="text-muted-foreground mb-6">Check your eligibility in 2 minutes — completely free.</p>
             <Link to="/eligibilitate">
-              <Button className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2">
+              <Button className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2">
                 Check Eligibility <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>

@@ -51,7 +51,7 @@ const coursesData: Record<string, CourseData> = {
       'Acces la comunitatea globală PMI',
       'Creștere salarială medie de 20%',
     ],
-    gradient: 'from-orange-400 to-red-500',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
   },
   'digital-marketing': {
     title: 'Digital Marketing Masterclass',
@@ -77,7 +77,7 @@ const coursesData: Record<string, CourseData> = {
       'Competențe SEO, PPC și SMM',
       'Pregătire pentru roluri de marketing digital',
     ],
-    gradient: 'from-amber-400 to-orange-500',
+    gradient: 'from-[#EAC67E] to-[#D4AF37]',
   },
   'data-analytics': {
     title: 'Data Analytics & Business Intelligence',
@@ -103,7 +103,7 @@ const coursesData: Record<string, CourseData> = {
       'Proiect real în portofoliu',
       'Pregătire pentru roluri de Data Analyst',
     ],
-    gradient: 'from-red-400 to-orange-500',
+    gradient: 'from-[#C6A248] to-[#D4AF37]',
   },
 };
 
@@ -126,7 +126,7 @@ const defaultCourse: CourseData = {
     'Competențe practice dovedite',
     'Suport pentru carieră',
   ],
-  gradient: 'from-orange-500 to-amber-500',
+  gradient: 'from-[#D4AF37] to-[#EAC67E]',
 };
 
 const ProfessionalCourseDetail = () => {
@@ -168,13 +168,13 @@ const ProfessionalCourseDetail = () => {
               <p className="text-gray-600 mb-10 leading-relaxed">{course.longDescription}</p>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                <BookOpen className="w-6 h-6 inline mr-2 text-orange-500" />
+                <BookOpen className="w-6 h-6 inline mr-2 text-[#D4AF37]" />
                 Module
               </h2>
               <div className="space-y-3 mb-10">
                 {course.modules.map((mod, i) => (
                   <div key={i} className="flex items-center gap-3 bg-gray-50 rounded-lg p-4 border border-gray-100">
-                    <div className="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-[#D4AF37]/20 text-[#C6A248] flex items-center justify-center text-sm font-bold flex-shrink-0">
                       {i + 1}
                     </div>
                     <span className="text-gray-700">{mod}</span>
@@ -200,20 +200,20 @@ const ProfessionalCourseDetail = () => {
                 <p className="text-gray-500 text-sm mb-6">Plată integrală sau în rate</p>
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <Clock className="w-4 h-4 text-orange-500" /> {course.duration}
+                    <Clock className="w-4 h-4 text-[#D4AF37]" /> {course.duration}
                   </div>
                   <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <Calendar className="w-4 h-4 text-orange-500" /> Următoarea serie: TBD
+                    <Calendar className="w-4 h-4 text-[#D4AF37]" /> Următoarea serie: TBD
                   </div>
                   <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <Award className="w-4 h-4 text-orange-500" /> Certificare inclusă
+                    <Award className="w-4 h-4 text-[#D4AF37]" /> Certificare inclusă
                   </div>
                   <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <Users className="w-4 h-4 text-orange-500" /> Max 25 participanți
+                    <Users className="w-4 h-4 text-[#D4AF37]" /> Max 25 participanți
                   </div>
                 </div>
                 <Link to="/contact">
-                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg py-3 gap-2">
+                  <Button className="w-full bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg py-3 gap-2">
                     Înscrie-te Acum <ArrowRight className="w-5 h-5" />
                   </Button>
                 </Link>

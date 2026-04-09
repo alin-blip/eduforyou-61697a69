@@ -342,7 +342,7 @@ const EligibilityPage = () => {
                             <Button
                               onClick={handleCreateAccount}
                               disabled={creatingAccount || !password || !confirmPassword}
-                              className="w-full bg-primary hover:bg-orange-dark text-primary-foreground gap-2"
+                              className="w-full bg-primary hover:bg-gold-dark text-primary-foreground gap-2"
                             >
                               {creatingAccount ? 'Creating Account...' : 'Create Account'}
                             </Button>
@@ -377,11 +377,11 @@ const EligibilityPage = () => {
                 <ArrowLeft className="w-4 h-4" /> Back
               </Button>
               {step < 3 ? (
-                <Button onClick={() => setStep(s => s + 1)} disabled={!canNext()} className="bg-primary hover:bg-orange-dark text-primary-foreground gap-2">
+                <Button onClick={() => setStep(s => s + 1)} disabled={!canNext()} className="bg-primary hover:bg-gold-dark text-primary-foreground gap-2">
                   Next <ArrowRight className="w-4 h-4" />
                 </Button>
               ) : (
-                <Button onClick={handleSubmit} disabled={!canNext() || submitting} className="bg-primary hover:bg-orange-dark text-primary-foreground gap-2">
+                <Button onClick={handleSubmit} disabled={!canNext() || submitting} className="bg-primary hover:bg-gold-dark text-primary-foreground gap-2">
                   {submitting ? 'Submitting...' : 'Submit'} <ArrowRight className="w-4 h-4" />
                 </Button>
               )}

@@ -46,7 +46,7 @@ const IkigaiCountdownTimer = () => {
 
   return (
     <div className="text-center">
-      <p className="mb-4 text-sm font-medium uppercase tracking-wider text-orange-600">
+      <p className="mb-4 text-sm font-medium uppercase tracking-wider text-[#C6A248]">
         Webinarul începe în:
       </p>
       <CountdownTimer targetDate={targetDate} />

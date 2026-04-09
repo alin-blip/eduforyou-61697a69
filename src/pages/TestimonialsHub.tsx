@@ -89,9 +89,9 @@ const TestimonialsHub = () => {
       {/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 md:py-24">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <Star className="h-12 w-12 text-orange-400 mx-auto mb-4" />
+          <Star className="h-12 w-12 text-[#D4AF37] mx-auto mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Ce Spun <span className="text-orange-400">Studenții</span> Noștri
+            Ce Spun <span className="text-[#D4AF37]">Studenții</span> Noștri
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Peste 7,000 de studenți și-au transformat viața prin EduForYou. Citește și privește
@@ -101,14 +101,14 @@ const TestimonialsHub = () => {
       </section>
 
       {/* Stats Bar */}
-      <section className="py-8 bg-orange-500 text-white">
+      <section className="py-8 bg-[#D4AF37] text-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {stats.map((s, i) => (
               <div key={i} className="flex flex-col items-center">
                 <s.icon className="w-6 h-6 mb-1" />
                 <div className="text-2xl font-bold">{s.value}</div>
-                <div className="text-orange-100 text-xs">{s.label}</div>
+                <div className="text-[#EAC67E] text-xs">{s.label}</div>
               </div>
             ))}
           </div>
@@ -135,7 +135,7 @@ const TestimonialsHub = () => {
                 </div>
                 <div className="p-5">
                   <h3 className="font-bold text-gray-900">{v.name}</h3>
-                  <p className="text-orange-600 text-sm">{v.course}</p>
+                  <p className="text-[#C6A248] text-sm">{v.course}</p>
                   <p className="text-gray-600 text-sm mt-2 italic">"{v.quote}"</p>
                 </div>
               </Card>
@@ -157,15 +157,15 @@ const TestimonialsHub = () => {
                   {Array.from({ length: 5 }).map((_, j) => (
                     <Star
                       key={j}
-                      className={`w-4 h-4 ${j < t.stars ? 'text-orange-400 fill-orange-400' : 'text-gray-300'}`}
+                      className={`w-4 h-4 ${j < t.stars ? 'text-[#D4AF37] fill-[#D4AF37]' : 'text-gray-300'}`}
                     />
                   ))}
                 </div>
-                <Quote className="w-6 h-6 text-orange-200 mb-2" />
+                <Quote className="w-6 h-6 text-[#EAC67E] mb-2" />
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">{t.text}</p>
                 <div className="border-t border-gray-100 pt-3">
                   <h4 className="font-bold text-gray-900 text-sm">{t.name}</h4>
-                  <p className="text-orange-600 text-xs">{t.course}</p>
+                  <p className="text-[#C6A248] text-xs">{t.course}</p>
                   <p className="text-gray-400 text-xs">Finanțare: {t.funding}</p>
                 </div>
               </Card>
@@ -175,14 +175,14 @@ const TestimonialsHub = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-orange-500 to-red-500 text-white">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-[#D4AF37] to-[#C6A248] text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl font-bold mb-4">Scrie-ți Propria Poveste de Succes</h2>
-          <p className="text-orange-100 text-lg mb-8">
+          <p className="text-[#EAC67E] text-lg mb-8">
             Verifică eligibilitatea și fă primul pas spre studii universitare gratuite în UK.
           </p>
           <Link to="/eligibilitate">
-            <Button className="bg-white text-orange-600 hover:bg-orange-50 font-semibold text-lg px-8 py-3 gap-2">
+            <Button className="bg-white text-[#C6A248] hover:bg-[#D4AF37]/10 font-semibold text-lg px-8 py-3 gap-2">
               Verifică Eligibilitatea <ArrowRight className="w-5 h-5" />
             </Button>
           </Link>

@@ -121,8 +121,8 @@ const materialCategories: MaterialCategory[] = [
     title: 'Materiale Social Media',
     description: 'Conținut vizual optimizat pentru toate platformele de social media.',
     icon: Share2,
-    color: 'text-[#E67E22]',
-    bg: 'bg-orange-50 dark:bg-orange-950/30',
+    color: 'text-[#D4AF37]',
+    bg: 'bg-[#D4AF37]/10 dark:bg-[#D4AF37]/10',
     items: [
       {
         name: 'Kit Instagram - Postări',
@@ -243,7 +243,7 @@ const AgentMaterials = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex-shrink-0 border-[#E67E22] text-[#E67E22] hover:bg-[#E67E22] hover:text-white"
+                      className="flex-shrink-0 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-white"
                       onClick={() => handleDownload(item.name)}
                     >
                       <Download className="w-4 h-4" />
@@ -257,9 +257,9 @@ const AgentMaterials = () => {
       ))}
 
       {/* Help Section */}
-      <Card className="shadow-sm border-[#E67E22]/20 bg-gradient-to-r from-[#E67E22]/5 to-orange-50 dark:to-orange-950/20">
+      <Card className="shadow-sm border-[#D4AF37]/20 bg-gradient-to-r from-[#D4AF37]/5 to-[#D4AF37]/10 dark:to-[#D4AF37]/10">
         <CardContent className="p-6 flex items-center gap-4">
-          <BookOpen className="w-8 h-8 text-[#E67E22] flex-shrink-0" />
+          <BookOpen className="w-8 h-8 text-[#D4AF37] flex-shrink-0" />
           <div>
             <p className="font-semibold text-foreground">Ai nevoie de materiale personalizate?</p>
             <p className="text-sm text-muted-foreground mt-1">

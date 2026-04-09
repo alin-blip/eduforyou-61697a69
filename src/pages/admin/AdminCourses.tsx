@@ -89,7 +89,7 @@ const AdminCourses = () => {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input placeholder="Search courses..." value={search} onChange={e => setSearch(e.target.value)} className="pl-9 w-48" />
             </div>
-            <Button size="sm" onClick={openNew} className="bg-[#E67E22] hover:bg-[#d35400]">
+            <Button size="sm" onClick={openNew} className="bg-[#D4AF37] hover:bg-[#d35400]">
               <Plus className="w-4 h-4 mr-1" /> Add Course
             </Button>
           </div>
@@ -168,7 +168,7 @@ const AdminCourses = () => {
               <div><Label>University</Label><Input value={editing.university} onChange={e => setEditing({ ...editing, university: e.target.value })} /></div>
             </div>
           )}
-          <DialogFooter><Button onClick={save} className="bg-[#E67E22] hover:bg-[#d35400]">Save</Button></DialogFooter>
+          <DialogFooter><Button onClick={save} className="bg-[#D4AF37] hover:bg-[#d35400]">Save</Button></DialogFooter>
         </DialogContent>
       </Dialog>
     </div>

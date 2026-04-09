@@ -36,7 +36,7 @@ const STEP_ICONS: Record<string, React.ElementType> = {
 
 const PHASE_CONFIG: Record<EduPhase, { label: string; gradient: string; color: string; icon: React.ElementType }> = {
   evaluate: { label: 'Evaluate', gradient: 'from-blue-500 to-cyan-400', color: 'text-blue-500', icon: BookOpen },
-  deliver: { label: 'Deliver', gradient: 'from-orange-500 to-purple-500', color: 'text-orange-500', icon: FileText },
+  deliver: { label: 'Deliver', gradient: 'from-[#D4AF37] to-purple-500', color: 'text-[#D4AF37]', icon: FileText },
   unlock: { label: 'Unlock', gradient: 'from-green-500 to-lime-400', color: 'text-green-500', icon: GraduationCap },
 };
 

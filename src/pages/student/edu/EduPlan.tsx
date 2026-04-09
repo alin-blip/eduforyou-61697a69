@@ -160,7 +160,7 @@ const EduPlan = () => {
               };
               const categoryColors: Record<string, string> = {
                 evaluate: 'text-blue-500',
-                deliver: 'text-orange-500',
+                deliver: 'text-[#D4AF37]',
                 unlock: 'text-green-500',
               };
 

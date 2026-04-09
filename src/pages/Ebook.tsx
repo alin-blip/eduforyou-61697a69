@@ -82,7 +82,7 @@ const EbookPage = () => {
               </div>
 
               <Button size="lg" onClick={() => handleCheckout('ebook')} disabled={!!loadingProduct}
-                className="bg-primary hover:bg-orange-dark text-primary-foreground font-bold gap-2 text-lg px-10">
+                className="bg-primary hover:bg-gold-dark text-primary-foreground font-bold gap-2 text-lg px-10">
                 {loadingProduct === 'ebook' ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Get the Book — £5 <ArrowRight className="w-5 h-5" /></>}
               </Button>
             </motion.div>
@@ -113,7 +113,7 @@ const EbookPage = () => {
             <span className="text-4xl font-bold text-primary">£7</span>
           </div>
           <Button size="lg" onClick={() => handleCheckout('audiobook')} disabled={!!loadingProduct}
-            className="bg-primary hover:bg-orange-dark text-primary-foreground font-bold gap-2 text-lg px-10">
+            className="bg-primary hover:bg-gold-dark text-primary-foreground font-bold gap-2 text-lg px-10">
             {loadingProduct === 'audiobook' ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Get the Audiobook — £7 <ArrowRight className="w-5 h-5" /></>}
           </Button>
         </div>

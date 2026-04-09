@@ -89,7 +89,7 @@ const Index = () => {
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-8">
               <Link to="/eligibilitate">
-                <Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2 text-base px-8">
+                <Button size="lg" className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2 text-base px-8">
                   {t('hero.cta1')} <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
@@ -264,7 +264,7 @@ const Index = () => {
           </div>
           <div className="text-center mt-10">
             <Link to="/eligibilitate">
-              <Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2">
+              <Button size="lg" className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2">
                 {t('hero.cta1')} <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
@@ -282,7 +282,7 @@ const Index = () => {
               <motion.p variants={fadeUp} className="text-secondary-foreground/70 mb-8">{t('ikigai.subtitle')}</motion.p>
               <motion.div variants={fadeUp}>
                 <Link to="/ikigai">
-                  <Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2 text-base px-10">
+                  <Button size="lg" className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2 text-base px-10">
                     {t('ikigai.cta')} <ArrowRight className="w-5 h-5" />
                   </Button>
                 </Link>
@@ -324,7 +324,7 @@ const Index = () => {
               </motion.div>
               <motion.div variants={fadeUp}>
                 <Link to="/calculator-finantare">
-                  <Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2">
+                  <Button size="lg" className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2">
                     {t('finance.cta')} <Calculator className="w-5 h-5" />
                   </Button>
                 </Link>
@@ -416,7 +416,7 @@ const Index = () => {
                     <option>Accounting & Finance</option>
                     <option>Not Sure Yet</option>
                   </select>
-                  <Button type="submit" size="lg" className="w-full bg-primary hover:bg-orange-dark text-primary-foreground font-semibold">
+                  <Button type="submit" size="lg" className="w-full bg-primary hover:bg-gold-dark text-primary-foreground font-semibold">
                     {t('eligibility.submit')}
                   </Button>
                   <p className="text-xs text-muted-foreground text-center">{t('eligibility.privacy')}</p>
@@ -538,7 +538,7 @@ const Index = () => {
             ))}
           </div>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/student-finance"><Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold">{t('sf.cta1')}</Button></Link>
+            <Link to="/student-finance"><Button size="lg" className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold">{t('sf.cta1')}</Button></Link>
             <Link to="/calculator-finantare"><Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold">{t('sf.cta2')}</Button></Link>
           </div>
         </div>
@@ -552,7 +552,7 @@ const Index = () => {
             <motion.p variants={fadeUp} className="text-secondary-foreground/70 max-w-2xl mx-auto mb-8">{t('cta.subtitle')}</motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4">
               <Link to="/eligibilitate">
-                <Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2 text-base px-10">
+                <Button size="lg" className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2 text-base px-10">
                   {t('cta.primary')} <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>

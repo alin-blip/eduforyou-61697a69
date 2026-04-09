@@ -51,7 +51,7 @@ const StudentFinancePage = () => (
         <div className="text-center">
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/calculator-finantare">
-              <Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2">
+              <Button size="lg" className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2">
                 Calculate Your Finance <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>

@@ -58,7 +58,7 @@ const RoLanding = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-orange-600 via-orange-500 to-red-500 text-white py-20 md:py-32">
+      <section className="relative bg-gradient-to-br from-[#C6A248] via-[#D4AF37] to-[#C6A248] text-white py-20 md:py-32">
         <div className="absolute inset-0 bg-black/20" />
         <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
           <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 mb-6">
@@ -67,16 +67,16 @@ const RoLanding = () => {
           <h1 className="text-3xl md:text-6xl font-bold mb-6">
             Studiază La Universitate în UK — Gratuit
           </h1>
-          <p className="text-orange-100 text-lg md:text-xl max-w-3xl mx-auto mb-4">
+          <p className="text-[#EAC67E] text-lg md:text-xl max-w-3xl mx-auto mb-4">
             Peste <strong className="text-white">7,000 de români</strong> au accesat deja studii
             universitare gratuite prin EduForYou și Student Finance England.
           </p>
-          <p className="text-orange-200 mb-8">
+          <p className="text-[#EAC67E] mb-8">
             Nu plătești nimic din buzunar. Rambursezi doar după ce câștigi peste £25,000/an.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/eligibilitate">
-              <Button className="bg-white text-orange-600 hover:bg-orange-50 font-semibold text-lg px-8 py-3 gap-2">
+              <Button className="bg-white text-[#C6A248] hover:bg-[#D4AF37]/10 font-semibold text-lg px-8 py-3 gap-2">
                 Verifică Eligibilitatea <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
@@ -100,7 +100,7 @@ const RoLanding = () => {
               { value: '100%', label: 'Gratuit' },
             ].map((s, i) => (
               <div key={i}>
-                <div className="text-2xl md:text-3xl font-bold text-orange-400">{s.value}</div>
+                <div className="text-2xl md:text-3xl font-bold text-[#D4AF37]">{s.value}</div>
                 <div className="text-gray-400 text-sm">{s.label}</div>
               </div>
             ))}
@@ -119,8 +119,8 @@ const RoLanding = () => {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((b, i) => (
-              <Card key={i} className="p-6 hover:shadow-md transition-shadow border-t-4 border-t-orange-400">
-                <b.icon className="w-10 h-10 text-orange-500 mb-4" />
+              <Card key={i} className="p-6 hover:shadow-md transition-shadow border-t-4 border-t-[#D4AF37]">
+                <b.icon className="w-10 h-10 text-[#D4AF37] mb-4" />
                 <h3 className="font-bold text-gray-900 text-lg mb-2">{b.title}</h3>
                 <p className="text-gray-600 text-sm">{b.desc}</p>
               </Card>
@@ -147,7 +147,7 @@ const RoLanding = () => {
             </div>
           </Card>
           <Link to="/eligibilitate">
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg px-8 py-3 gap-2">
+            <Button className="bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg px-8 py-3 gap-2">
               Verifică Eligibilitatea Completă <ArrowRight className="w-5 h-5" />
             </Button>
           </Link>
@@ -166,12 +166,12 @@ const RoLanding = () => {
               <Card key={i} className="p-5">
                 <div className="flex gap-0.5 mb-2">
                   {Array.from({ length: 5 }).map((_, j) => (
-                    <Star key={j} className="w-4 h-4 text-orange-400 fill-orange-400" />
+                    <Star key={j} className="w-4 h-4 text-[#D4AF37] fill-[#D4AF37]" />
                   ))}
                 </div>
                 <p className="text-gray-600 text-sm mb-3 italic">"{t.text}"</p>
                 <p className="font-bold text-gray-900 text-sm">{t.name}</p>
-                <p className="text-orange-600 text-xs">{t.course}</p>
+                <p className="text-[#C6A248] text-xs">{t.course}</p>
               </Card>
             ))}
           </div>
@@ -188,7 +188,7 @@ const RoLanding = () => {
             Verifică eligibilitatea în mai puțin de 2 minute. Gratuit și fără obligații.
           </p>
           <Link to="/eligibilitate">
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg px-8 py-3 gap-2">
+            <Button className="bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg px-8 py-3 gap-2">
               Începe Acum — Este Gratuit <ArrowRight className="w-5 h-5" />
             </Button>
           </Link>

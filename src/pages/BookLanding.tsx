@@ -31,9 +31,9 @@ const BookLanding = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left — Info */}
             <div>
-              <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/30 rounded-full px-4 py-1.5 mb-6">
-                <BookOpen className="w-4 h-4 text-orange-400" />
-                <span className="text-orange-300 text-sm font-medium">Ebook Exclusiv</span>
+              <div className="inline-flex items-center gap-2 bg-[#D4AF37]/20 border border-[#D4AF37]/30 rounded-full px-4 py-1.5 mb-6">
+                <BookOpen className="w-4 h-4 text-[#D4AF37]" />
+                <span className="text-[#EAC67E] text-sm font-medium">Ebook Exclusiv</span>
               </div>
               <h1 className="text-3xl md:text-5xl font-bold mb-6">
                 Ghidul Complet pentru Studii Gratuite în UK
@@ -45,13 +45,13 @@ const BookLanding = () => {
               <div className="flex items-center gap-4 mb-8">
                 <div className="flex gap-0.5">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-orange-400 fill-orange-400" />
+                    <Star key={i} className="w-5 h-5 text-[#D4AF37] fill-[#D4AF37]" />
                   ))}
                 </div>
                 <span className="text-gray-400 text-sm">4.9/5 — 500+ cititori</span>
               </div>
               <Link to="/ebook">
-                <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg px-8 py-3 gap-2">
+                <Button className="bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg px-8 py-3 gap-2">
                   Descarcă Ebook-ul <Download className="w-5 h-5" />
                 </Button>
               </Link>
@@ -59,7 +59,7 @@ const BookLanding = () => {
 
             {/* Right — Book Cover Placeholder */}
             <div className="flex justify-center">
-              <div className="w-72 md:w-80 aspect-[3/4] bg-gradient-to-br from-orange-500 to-red-600 rounded-xl shadow-2xl flex flex-col items-center justify-center p-8 text-center relative overflow-hidden">
+              <div className="w-72 md:w-80 aspect-[3/4] bg-gradient-to-br from-[#D4AF37] to-[#C6A248] rounded-xl shadow-2xl flex flex-col items-center justify-center p-8 text-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-black/10" />
                 <div className="relative z-10">
                   <BookOpen className="w-16 h-16 text-white/90 mx-auto mb-4" />
@@ -101,7 +101,7 @@ const BookLanding = () => {
               { value: '120+', label: 'Pagini' },
             ].map((s, i) => (
               <Card key={i} className="p-6 text-center">
-                <div className="text-3xl font-bold text-orange-600">{s.value}</div>
+                <div className="text-3xl font-bold text-[#C6A248]">{s.value}</div>
                 <div className="text-gray-500 text-sm">{s.label}</div>
               </Card>
             ))}
@@ -110,15 +110,15 @@ const BookLanding = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-orange-500 to-red-500 text-white">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-[#D4AF37] to-[#C6A248] text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <Shield className="w-10 h-10 mx-auto mb-4 text-orange-200" />
+          <Shield className="w-10 h-10 mx-auto mb-4 text-[#EAC67E]" />
           <h2 className="text-3xl font-bold mb-4">Descarcă Ghidul Gratuit Acum</h2>
-          <p className="text-orange-100 text-lg mb-8">
+          <p className="text-[#EAC67E] text-lg mb-8">
             Fă primul pas spre studii universitare gratuite în UK.
           </p>
           <Link to="/ebook">
-            <Button className="bg-white text-orange-600 hover:bg-orange-50 font-semibold text-lg px-8 py-3 gap-2">
+            <Button className="bg-white text-[#C6A248] hover:bg-[#D4AF37]/10 font-semibold text-lg px-8 py-3 gap-2">
               Descarcă Acum <ArrowRight className="w-5 h-5" />
             </Button>
           </Link>

@@ -108,8 +108,8 @@ ${course.careers.map((c) => `• ${c}`).join('\n')}
         {keySellingPoints.map((point) => (
           <Card key={point.title} className="shadow-sm">
             <CardContent className="p-5">
-              <div className="w-10 h-10 rounded-lg bg-[#E67E22]/10 flex items-center justify-center mb-3">
-                <point.icon className="w-5 h-5 text-[#E67E22]" />
+              <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center mb-3">
+                <point.icon className="w-5 h-5 text-[#D4AF37]" />
               </div>
               <h3 className="font-semibold text-foreground text-sm">{point.title}</h3>
               <p className="text-xs text-muted-foreground mt-1">{point.description}</p>
@@ -139,7 +139,7 @@ ${course.careers.map((c) => `• ${c}`).join('\n')}
                   size="sm"
                   className={
                     selectedCategory === cat
-                      ? 'bg-[#E67E22] hover:bg-[#E67E22]/90 text-white'
+                      ? 'bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-white'
                       : ''
                   }
                   onClick={() => setSelectedCategory(cat)}
@@ -172,7 +172,7 @@ ${course.careers.map((c) => `• ${c}`).join('\n')}
                         <CardDescription className="mt-1">{course.university}</CardDescription>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Badge className="bg-[#E67E22] text-white">{course.level}</Badge>
+                        <Badge className="bg-[#D4AF37] text-white">{course.level}</Badge>
                         <Badge variant="secondary">{course.category}</Badge>
                       </div>
                     </div>
@@ -220,7 +220,7 @@ ${course.careers.map((c) => `• ${c}`).join('\n')}
                 {/* Modules */}
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
-                    <BookOpen className="w-4 h-4 text-[#E67E22]" />
+                    <BookOpen className="w-4 h-4 text-[#D4AF37]" />
                     Module Principale
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -235,7 +235,7 @@ ${course.careers.map((c) => `• ${c}`).join('\n')}
                 {/* Careers */}
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
-                    <Target className="w-4 h-4 text-[#E67E22]" />
+                    <Target className="w-4 h-4 text-[#D4AF37]" />
                     Cariere după Absolvire
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -250,7 +250,7 @@ ${course.careers.map((c) => `• ${c}`).join('\n')}
                 {/* Campuses */}
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-[#E67E22]" />
+                    <MapPin className="w-4 h-4 text-[#D4AF37]" />
                     Campus-uri Disponibile
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -266,7 +266,7 @@ ${course.careers.map((c) => `• ${c}`).join('\n')}
                 <div className="border-t border-border pt-4">
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="text-sm font-semibold text-foreground flex items-center gap-2">
-                      <Briefcase className="w-4 h-4 text-[#E67E22]" />
+                      <Briefcase className="w-4 h-4 text-[#D4AF37]" />
                       Script de Prezentare
                     </h4>
                     <Button
@@ -274,7 +274,7 @@ ${course.careers.map((c) => `• ${c}`).join('\n')}
                       className={
                         copiedId === course.id
                           ? 'bg-emerald-500 hover:bg-emerald-500 text-white'
-                          : 'bg-[#E67E22] hover:bg-[#E67E22]/90 text-white'
+                          : 'bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-white'
                       }
                       onClick={() => handleCopy(course.id, pitchScript)}
                     >

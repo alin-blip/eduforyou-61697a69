@@ -22,7 +22,7 @@ const AboutPage = () => (
             <p className="text-muted-foreground mb-4">EduForYou was founded with a simple belief: everyone who qualifies for a UK university education should have access to it, regardless of their background or financial situation.</p>
             <p className="text-muted-foreground mb-6">We've helped over 7,000 students access university education and secure more than £138M in Student Finance funding. Our service is 100% free because universities pay us when students successfully enrol.</p>
             <Link to="/eligibilitate">
-              <Button className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2">
+              <Button className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2">
                 Start Your Journey <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>

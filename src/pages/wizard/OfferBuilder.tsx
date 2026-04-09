@@ -75,7 +75,7 @@ export default function OfferBuilder() {
   const packageConfig = [
     { key: 'starter', icon: Zap, label: 'Starter', color: 'from-blue-500 to-cyan-500' },
     { key: 'standard', icon: Star, label: 'Standard', color: 'from-primary to-accent', popular: true },
-    { key: 'premium', icon: Crown, label: 'Premium', color: 'from-amber-500 to-orange-500' },
+    { key: 'premium', icon: Crown, label: 'Premium', color: 'from-[#EAC67E] to-[#D4AF37]' },
   ];
 
   const getPackageData = (key: string): PackageData | null => { if (!result) return null; return result[`${key}_package` as keyof OfferResult] as unknown as PackageData; };

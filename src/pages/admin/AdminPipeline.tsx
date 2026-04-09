@@ -29,7 +29,7 @@ const stageLabels: Record<string, string> = {
 const stageColors: Record<string, string> = {
   new: 'bg-green-500/10 border-green-500/30',
   contacted: 'bg-yellow-500/10 border-yellow-500/30',
-  qualified: 'bg-orange-500/10 border-orange-500/30',
+  qualified: 'bg-[#D4AF37]/10 border-[#D4AF37]/30',
   converted: 'bg-blue-500/10 border-blue-500/30',
 };
 

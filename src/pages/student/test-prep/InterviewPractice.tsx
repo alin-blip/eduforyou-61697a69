@@ -145,7 +145,7 @@ const InterviewPractice = () => {
     <div className="space-y-6 max-w-2xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
-          <MessageSquare className="w-6 h-6 text-orange-500" />
+          <MessageSquare className="w-6 h-6 text-[#D4AF37]" />
           Practică Interviu
         </h1>
         <p className="text-muted-foreground mt-1">
@@ -172,8 +172,8 @@ const InterviewPractice = () => {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center shrink-0">
-              <User className="w-4 h-4 text-orange-500" />
+            <div className="w-8 h-8 rounded-full bg-[#D4AF37]/20 dark:bg-[#D4AF37]/20 flex items-center justify-center shrink-0">
+              <User className="w-4 h-4 text-[#D4AF37]" />
             </div>
             <p className="text-foreground font-medium pt-1">{currentQuestion.question}</p>
           </div>

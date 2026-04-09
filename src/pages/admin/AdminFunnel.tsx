@@ -14,7 +14,7 @@ const STAGE_LABELS: Record<string, string> = {
   qualified: 'Qualified',
   converted: 'Converted',
 };
-const STAGE_COLORS = ['#3b82f6', '#f59e0b', '#E67E22', '#22c55e'];
+const STAGE_COLORS = ['#3b82f6', '#f59e0b', '#D4AF37', '#22c55e'];
 
 const AdminFunnel = () => {
   const [dateRange, setDateRange] = useState('30');
@@ -106,7 +106,7 @@ const AdminFunnel = () => {
         <Card className="shadow-sm">
           <CardContent className="pt-6">
             <p className="text-sm text-muted-foreground">Overall Conversion</p>
-            <p className="text-3xl font-bold text-[#E67E22]">{overallConversion}%</p>
+            <p className="text-3xl font-bold text-[#D4AF37]">{overallConversion}%</p>
           </CardContent>
         </Card>
       </div>
@@ -153,7 +153,7 @@ const AdminFunnel = () => {
                 </div>
                 <div className="w-full bg-gray-100 rounded-full h-2.5">
                   <div
-                    className="bg-[#E67E22] h-2.5 rounded-full transition-all"
+                    className="bg-[#D4AF37] h-2.5 rounded-full transition-all"
                     style={{ width: `${stage.conversion}%` }}
                   />
                 </div>

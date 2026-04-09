@@ -29,7 +29,7 @@ export default function ProfileBuilder() {
 
   const platformConfig = {
     facebook: { icon: Facebook, name: 'Facebook', color: 'bg-blue-600', description: 'Business page profile' },
-    instagram: { icon: Instagram, name: 'Instagram', color: 'bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400', description: 'Bio & content strategy' },
+    instagram: { icon: Instagram, name: 'Instagram', color: 'bg-gradient-to-br from-purple-600 via-pink-500 to-[#D4AF37]', description: 'Bio & content strategy' },
     linkedin: { icon: Linkedin, name: 'LinkedIn', color: 'bg-blue-700', description: 'Professional profile' },
     tiktok: { icon: Music2, name: 'TikTok', color: 'bg-foreground', description: 'Creator profile' }
   };

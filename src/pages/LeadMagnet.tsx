@@ -41,7 +41,7 @@ const guidesConfig: Record<string, GuideConfig> = {
       'Sfaturi de la studenți care au reușit',
     ],
     icon: BookOpen,
-    gradient: 'from-orange-500 to-red-500',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
     leadMagnet: 'ghid-gratuit',
   },
   'ghid-finantare': {
@@ -57,7 +57,7 @@ const guidesConfig: Record<string, GuideConfig> = {
       'Greșeli frecvente de evitat',
     ],
     icon: PoundSterling,
-    gradient: 'from-amber-500 to-orange-500',
+    gradient: 'from-[#EAC67E] to-[#D4AF37]',
     leadMagnet: 'ghid-finantare',
   },
   'ghid-transformare': {
@@ -73,7 +73,7 @@ const guidesConfig: Record<string, GuideConfig> = {
       'Studii de caz cu povești reale',
     ],
     icon: Lightbulb,
-    gradient: 'from-red-500 to-rose-500',
+    gradient: 'from-[#C6A248] to-[#0A1628]',
     leadMagnet: 'ghid-transformare',
   },
 };
@@ -151,9 +151,9 @@ const LeadMagnet = () => {
                   </div>
                 ))}
               </div>
-              <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+              <div className="bg-[#D4AF37]/10 rounded-lg p-4 border border-[#D4AF37]/30">
                 <div className="flex items-center gap-2 mb-2">
-                  <Shield className="w-5 h-5 text-orange-500" />
+                  <Shield className="w-5 h-5 text-[#D4AF37]" />
                   <span className="font-bold text-gray-900 text-sm">100% Gratuit</span>
                 </div>
                 <p className="text-gray-600 text-sm">
@@ -210,7 +210,7 @@ const LeadMagnet = () => {
                         />
                         <Label htmlFor="gdpr" className="text-xs text-gray-500 leading-tight cursor-pointer">
                           Sunt de acord cu prelucrarea datelor personale conform{' '}
-                          <a href="/legal" className="text-orange-600 underline">
+                          <a href="/legal" className="text-[#C6A248] underline">
                             Politicii de Confidențialitate
                           </a>
                           . Pot să mă dezabonez oricând.
@@ -219,7 +219,7 @@ const LeadMagnet = () => {
                       <Button
                         type="submit"
                         disabled={loading || !gdpr}
-                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg py-3 gap-2"
+                        className="w-full bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg py-3 gap-2"
                       >
                         {loading ? (
                           <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Se procesează...</>

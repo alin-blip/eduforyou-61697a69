@@ -11,7 +11,7 @@ interface EDUPhaseBadgeProps {
 
 const PHASE_CONFIG: Record<EduPhase, { letter: string; bg: string; activeBg: string; icon: React.ElementType }> = {
   evaluate: { letter: 'E', bg: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300', activeBg: 'bg-blue-500 text-white', icon: BookOpen },
-  deliver: { letter: 'D', bg: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300', activeBg: 'bg-orange-500 text-white', icon: FileText },
+  deliver: { letter: 'D', bg: 'bg-[#D4AF37]/20 text-[#C6A248] dark:bg-[#D4AF37]/30 dark:text-[#EAC67E]', activeBg: 'bg-[#D4AF37] text-white', icon: FileText },
   unlock: { letter: 'U', bg: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300', activeBg: 'bg-green-500 text-white', icon: GraduationCap },
 };
 

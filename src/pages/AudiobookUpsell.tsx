@@ -32,7 +32,7 @@ const AudiobookUpsell = () => {
             <span className="text-green-300 text-sm font-medium">Ofertă Specială — Doar Acum</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-bold mb-6">
-            Adaugă <span className="text-orange-400">Audiobook-ul</span> la Comanda Ta
+            Adaugă <span className="text-[#D4AF37]">Audiobook-ul</span> la Comanda Ta
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
             Ai obținut ebook-ul — acum primește și versiunea audio la un preț special disponibil
@@ -42,7 +42,7 @@ const AudiobookUpsell = () => {
           {/* Price card */}
           <Card className="max-w-md mx-auto p-8 bg-gray-800 border-gray-700 text-left">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center flex-shrink-0">
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#C6A248] flex items-center justify-center flex-shrink-0">
                 <Headphones className="w-8 h-8 text-white" />
               </div>
               <div>
@@ -51,11 +51,11 @@ const AudiobookUpsell = () => {
               </div>
             </div>
             <div className="flex items-baseline gap-3 mb-6">
-              <span className="text-4xl font-bold text-orange-400">£7.99</span>
+              <span className="text-4xl font-bold text-[#D4AF37]">£7.99</span>
               <span className="text-gray-500 line-through text-lg">£19.99</span>
               <span className="bg-red-500/20 text-red-400 text-xs font-bold rounded-full px-2 py-0.5">-60%</span>
             </div>
-            <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg py-3 gap-2 mb-3">
+            <Button className="w-full bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg py-3 gap-2 mb-3">
               <Zap className="w-5 h-5" /> Adaugă Audiobook-ul — £7.99
             </Button>
             <Link to="/thank-you-ebook">
@@ -91,11 +91,11 @@ const AudiobookUpsell = () => {
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4 max-w-lg">
           <Card className="p-6 text-center">
-            <Volume2 className="w-12 h-12 text-orange-500 mx-auto mb-3" />
+            <Volume2 className="w-12 h-12 text-[#D4AF37] mx-auto mb-3" />
             <h3 className="font-bold text-gray-900 mb-2">Ascultă un Fragment</h3>
             <p className="text-gray-500 text-sm mb-4">Previzualizare din primul capitol</p>
             <div className="bg-gray-200 rounded-full h-2 mb-2">
-              <div className="bg-orange-500 rounded-full h-2 w-1/3" />
+              <div className="bg-[#D4AF37] rounded-full h-2 w-1/3" />
             </div>
             <div className="flex justify-between text-xs text-gray-400">
               <span>1:24</span>
@@ -106,14 +106,14 @@ const AudiobookUpsell = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-gradient-to-br from-orange-500 to-red-500 text-white">
+      <section className="py-16 bg-gradient-to-br from-[#D4AF37] to-[#C6A248] text-white">
         <div className="container mx-auto px-4 text-center max-w-2xl">
-          <Clock className="w-10 h-10 mx-auto mb-4 text-orange-200" />
+          <Clock className="w-10 h-10 mx-auto mb-4 text-[#EAC67E]" />
           <h2 className="text-2xl font-bold mb-4">Această Ofertă Este Disponibilă Doar Acum</h2>
-          <p className="text-orange-100 mb-6">
+          <p className="text-[#EAC67E] mb-6">
             Prețul special de £7.99 este valabil doar pe această pagină. Nu vei mai vedea această ofertă.
           </p>
-          <Button className="bg-white text-orange-600 hover:bg-orange-50 font-semibold text-lg px-8 py-3 gap-2">
+          <Button className="bg-white text-[#C6A248] hover:bg-[#D4AF37]/10 font-semibold text-lg px-8 py-3 gap-2">
             Da, Vreau Audiobook-ul — £7.99 <ArrowRight className="w-5 h-5" />
           </Button>
         </div>

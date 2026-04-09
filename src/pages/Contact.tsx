@@ -114,7 +114,7 @@ const ContactPage = () => {
                     <option>Other</option>
                   </select>
                   <textarea placeholder="Your Message *" required rows={5} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" />
-                  <Button type="submit" size="lg" disabled={submitting} className="w-full bg-primary hover:bg-orange-dark text-primary-foreground font-semibold">
+                  <Button type="submit" size="lg" disabled={submitting} className="w-full bg-primary hover:bg-gold-dark text-primary-foreground font-semibold">
                     {submitting ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Sending...</> : 'Send Message'}
                   </Button>
                 </form>

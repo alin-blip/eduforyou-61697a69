@@ -39,7 +39,7 @@ const CookieBanner = () => {
           <Button variant="outline" size="sm" onClick={handleReject}>
             {t('cookie.reject')}
           </Button>
-          <Button size="sm" onClick={handleAccept} className="bg-primary hover:bg-orange-dark text-primary-foreground">
+          <Button size="sm" onClick={handleAccept} className="bg-primary hover:bg-gold-dark text-primary-foreground">
             {t('cookie.accept')}
           </Button>
         </div>

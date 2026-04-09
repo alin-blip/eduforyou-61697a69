@@ -15,7 +15,7 @@ const courses = [
     duration: '12 săptămâni',
     price: '£1,200',
     description: 'Obține certificarea PMP recunoscută internațional și avansează în cariera de project management.',
-    gradient: 'from-orange-400 to-red-500',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
   },
   {
     title: 'Digital Marketing Masterclass',
@@ -24,7 +24,7 @@ const courses = [
     duration: '8 săptămâni',
     price: '£850',
     description: 'Învață SEO, PPC, Social Media Marketing și Content Strategy de la profesioniști din industrie.',
-    gradient: 'from-amber-400 to-orange-500',
+    gradient: 'from-[#EAC67E] to-[#D4AF37]',
   },
   {
     title: 'Data Analytics & Business Intelligence',
@@ -33,7 +33,7 @@ const courses = [
     duration: '10 săptămâni',
     price: '£1,500',
     description: 'Stăpânește Power BI, SQL și Python pentru analiză de date și luarea deciziilor bazate pe date.',
-    gradient: 'from-red-400 to-orange-500',
+    gradient: 'from-[#C6A248] to-[#D4AF37]',
   },
   {
     title: 'Health & Social Care Level 5',
@@ -42,7 +42,7 @@ const courses = [
     duration: '16 săptămâni',
     price: '£1,800',
     description: 'Calificare profesională în managementul serviciilor de sănătate și asistență socială.',
-    gradient: 'from-orange-500 to-amber-600',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
   },
   {
     title: 'Accounting & Bookkeeping',
@@ -51,7 +51,7 @@ const courses = [
     duration: '6 săptămâni',
     price: '£650',
     description: 'Fundamentele contabilității și bookkeeping-ului pentru antreprenori și profesioniști.',
-    gradient: 'from-red-500 to-rose-500',
+    gradient: 'from-[#C6A248] to-[#0A1628]',
   },
   {
     title: 'Cyber Security Fundamentals',
@@ -60,7 +60,7 @@ const courses = [
     duration: '10 săptămâni',
     price: '£1,350',
     description: 'Principiile securității cibernetice, ethical hacking și protecția datelor.',
-    gradient: 'from-amber-500 to-red-400',
+    gradient: 'from-[#EAC67E] to-[#C6A248]',
   },
   {
     title: 'Leadership & Management',
@@ -69,7 +69,7 @@ const courses = [
     duration: '8 săptămâni',
     price: '£950',
     description: 'Dezvoltă abilități de leadership, comunicare și management al echipelor.',
-    gradient: 'from-orange-600 to-amber-500',
+    gradient: 'from-[#C6A248] to-[#EAC67E]',
   },
   {
     title: 'Social Media Management',
@@ -78,7 +78,7 @@ const courses = [
     duration: '6 săptămâni',
     price: '£550',
     description: 'Strategii avansate de social media pentru branduri și business-uri.',
-    gradient: 'from-red-400 to-orange-400',
+    gradient: 'from-[#C6A248] to-[#D4AF37]',
   },
   {
     title: 'Web Development Bootcamp',
@@ -87,7 +87,7 @@ const courses = [
     duration: '14 săptămâni',
     price: '£2,200',
     description: 'Full-stack web development cu React, Node.js și baze de date moderne.',
-    gradient: 'from-amber-400 to-red-500',
+    gradient: 'from-[#EAC67E] to-[#C6A248]',
   },
 ];
 
@@ -103,7 +103,7 @@ const ProfessionalCourses = () => {
       {/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 md:py-24">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <BookOpen className="h-12 w-12 text-orange-400 mx-auto mb-4" />
+          <BookOpen className="h-12 w-12 text-[#D4AF37] mx-auto mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Cursuri Profesionale</h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Cursuri scurte și intensive care îți oferă competențe practice și certificări
@@ -124,8 +124,8 @@ const ProfessionalCourses = () => {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                   activeCategory === cat
-                    ? 'bg-orange-500 text-white'
-                    : 'bg-white text-gray-600 hover:bg-orange-50 border border-gray-200'
+                    ? 'bg-[#D4AF37] text-white'
+                    : 'bg-white text-gray-600 hover:bg-[#D4AF37]/10 border border-gray-200'
                 }`}
               >
                 {cat}
@@ -139,7 +139,7 @@ const ProfessionalCourses = () => {
               <Card key={i} className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col">
                 <div className={`h-3 bg-gradient-to-r ${course.gradient}`} />
                 <div className="p-6 flex flex-col flex-1">
-                  <span className="text-xs font-medium text-orange-600 bg-orange-50 rounded-full px-3 py-1 self-start mb-3">
+                  <span className="text-xs font-medium text-[#C6A248] bg-[#D4AF37]/10 rounded-full px-3 py-1 self-start mb-3">
                     {course.category}
                   </span>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{course.title}</h3>
@@ -153,7 +153,7 @@ const ProfessionalCourses = () => {
                     </span>
                   </div>
                   <Link to={`/cursuri-profesionale/${course.slug}`}>
-                    <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold gap-2">
+                    <Button className="w-full bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold gap-2">
                       Vezi Detalii <ArrowRight className="w-4 h-4" />
                     </Button>
                   </Link>

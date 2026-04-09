@@ -65,7 +65,7 @@ const BlackbookSales = () => {
             <span className="text-red-300 text-sm font-medium">Acces Exclusiv — Ediție Limitată</span>
           </div>
           <h1 className="text-3xl md:text-6xl font-bold mb-6">
-            The <span className="text-orange-400">Blackbook</span>
+            The <span className="text-[#D4AF37]">Blackbook</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-4">
             Secretele Pe Care Nimeni Nu Ți Le Spune Despre Studii Gratuite în UK
@@ -77,7 +77,7 @@ const BlackbookSales = () => {
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="flex gap-0.5">
               {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="w-5 h-5 text-orange-400 fill-orange-400" />
+                <Star key={i} className="w-5 h-5 text-[#D4AF37] fill-[#D4AF37]" />
               ))}
             </div>
             <span className="text-gray-400">4.9/5 de la 300+ cumpărători</span>
@@ -136,7 +136,7 @@ const BlackbookSales = () => {
           <div className="space-y-3">
             {chapters.map((ch, i) => (
               <div key={i} className="flex items-center gap-4 bg-white rounded-lg p-4 border border-gray-100">
-                <div className="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                <div className="w-8 h-8 rounded-full bg-[#D4AF37]/20 text-[#C6A248] flex items-center justify-center text-sm font-bold flex-shrink-0">
                   {i + 1}
                 </div>
                 <span className="text-gray-700 font-medium">{ch}</span>
@@ -150,15 +150,15 @@ const BlackbookSales = () => {
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">
-            Bonusuri Incluse <span className="text-orange-500">(Valoare: £{totalBonusValue})</span>
+            Bonusuri Incluse <span className="text-[#D4AF37]">(Valoare: £{totalBonusValue})</span>
           </h2>
           <p className="text-gray-500 text-center mb-12">Primești gratuit alături de Blackbook</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {bonuses.map((b, i) => (
-              <Card key={i} className="p-5 border-2 border-orange-100">
+              <Card key={i} className="p-5 border-2 border-[#D4AF37]/20">
                 <div className="flex items-start justify-between mb-2">
                   <h3 className="font-bold text-gray-900">{b.title}</h3>
-                  <span className="text-orange-600 font-bold text-sm">{b.value}</span>
+                  <span className="text-[#C6A248] font-bold text-sm">{b.value}</span>
                 </div>
                 <p className="text-gray-600 text-sm">{b.desc}</p>
               </Card>
@@ -178,10 +178,10 @@ const BlackbookSales = () => {
               <Card key={i} className="p-6">
                 <div className="flex gap-0.5 mb-3">
                   {Array.from({ length: t.stars }).map((_, j) => (
-                    <Star key={j} className="w-4 h-4 text-orange-400 fill-orange-400" />
+                    <Star key={j} className="w-4 h-4 text-[#D4AF37] fill-[#D4AF37]" />
                   ))}
                 </div>
-                <Quote className="w-5 h-5 text-orange-200 mb-2" />
+                <Quote className="w-5 h-5 text-[#EAC67E] mb-2" />
                 <p className="text-gray-600 text-sm mb-4">{t.text}</p>
                 <p className="font-bold text-gray-900 text-sm">— {t.name}</p>
               </Card>
@@ -193,11 +193,11 @@ const BlackbookSales = () => {
       {/* Pricing CTA */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="container mx-auto px-4 text-center max-w-lg">
-          <Award className="w-12 h-12 text-orange-400 mx-auto mb-6" />
+          <Award className="w-12 h-12 text-[#D4AF37] mx-auto mb-6" />
           <h2 className="text-3xl font-bold mb-4">Obține Blackbook-ul Acum</h2>
           <Card className="p-8 bg-gray-800 border-gray-700 mb-6">
             <div className="text-gray-400 line-through text-lg mb-1">£97</div>
-            <div className="text-5xl font-bold text-orange-400 mb-2">£27</div>
+            <div className="text-5xl font-bold text-[#D4AF37] mb-2">£27</div>
             <p className="text-gray-400 text-sm mb-6">Ofertă limitată — preț special de lansare</p>
             <div className="space-y-2 text-sm text-gray-300 mb-6">
               {['Blackbook complet (8 capitole)', `Bonusuri în valoare de £${totalBonusValue}`, 'Actualizări gratuite pe viață', 'Garanție 30 de zile'].map((item, i) => (
@@ -208,7 +208,7 @@ const BlackbookSales = () => {
               ))}
             </div>
             <Link to="/ebook">
-              <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg py-3 gap-2">
+              <Button className="w-full bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg py-3 gap-2">
                 <Zap className="w-5 h-5" /> Cumpără Acum — £27
               </Button>
             </Link>

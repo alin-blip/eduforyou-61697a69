@@ -216,9 +216,9 @@ const AgentCourseVideouriAI = () => {
       </div>
 
       {/* Info Card */}
-      <Card className="shadow-sm border-[#E67E22]/20 bg-gradient-to-r from-[#E67E22]/5 to-orange-50 dark:to-orange-950/20">
+      <Card className="shadow-sm border-[#D4AF37]/20 bg-gradient-to-r from-[#D4AF37]/5 to-[#D4AF37]/10 dark:to-[#D4AF37]/10">
         <CardContent className="p-6 flex items-center gap-4">
-          <Sparkles className="w-8 h-8 text-[#E67E22] flex-shrink-0" />
+          <Sparkles className="w-8 h-8 text-[#D4AF37] flex-shrink-0" />
           <div>
             <p className="font-semibold text-foreground">Scripturi generate cu AI</p>
             <p className="text-sm text-muted-foreground mt-1">
@@ -247,7 +247,7 @@ const AgentCourseVideouriAI = () => {
               size="sm"
               className={
                 selectedCategory === cat
-                  ? 'bg-[#E67E22] hover:bg-[#E67E22]/90 text-white'
+                  ? 'bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-white'
                   : ''
               }
               onClick={() => setSelectedCategory(cat)}
@@ -265,8 +265,8 @@ const AgentCourseVideouriAI = () => {
             <CardHeader>
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-[#E67E22]/10 flex items-center justify-center">
-                    <template.icon className="w-5 h-5 text-[#E67E22]" />
+                  <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center">
+                    <template.icon className="w-5 h-5 text-[#D4AF37]" />
                   </div>
                   <div>
                     <CardTitle className="text-base">{template.title}</CardTitle>
@@ -293,7 +293,7 @@ const AgentCourseVideouriAI = () => {
                   className={`absolute top-2 right-2 ${
                     copiedId === template.id
                       ? 'bg-emerald-500 hover:bg-emerald-500 text-white'
-                      : 'bg-[#E67E22] hover:bg-[#E67E22]/90 text-white'
+                      : 'bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-white'
                   }`}
                   onClick={() => handleCopy(template.id, template.script)}
                 >

@@ -148,7 +148,7 @@ const AdminSMS = () => {
             <Button
               onClick={() => sendSms.mutate()}
               disabled={!recipientPhone || !message}
-              className="bg-[#E67E22] hover:bg-[#d35400]"
+              className="bg-[#D4AF37] hover:bg-[#d35400]"
             >
               <Send className="w-4 h-4 mr-1" /> Send SMS
             </Button>

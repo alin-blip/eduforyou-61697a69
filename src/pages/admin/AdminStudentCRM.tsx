@@ -134,9 +134,9 @@ const AdminStudentCRM = () => {
         </Card>
         <Card className="shadow-sm">
           <CardContent className="pt-6 flex items-center gap-3">
-            <GitBranch className="w-8 h-8 text-[#E67E22]" />
+            <GitBranch className="w-8 h-8 text-[#D4AF37]" />
             <div>
-              <p className="text-2xl font-bold text-[#E67E22]">{totalDeals}</p>
+              <p className="text-2xl font-bold text-[#D4AF37]">{totalDeals}</p>
               <p className="text-xs text-muted-foreground">Total Deals</p>
             </div>
           </CardContent>
@@ -229,7 +229,7 @@ const AdminStudentCRM = () => {
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <User className="w-5 h-5 text-[#E67E22]" />
+              <User className="w-5 h-5 text-[#D4AF37]" />
               {selectedContact?.full_name}
             </DialogTitle>
           </DialogHeader>
@@ -298,7 +298,7 @@ const AdminStudentCRM = () => {
                                 </div>
                                 <div className="w-full bg-gray-100 rounded-full h-1.5">
                                   <div
-                                    className="bg-[#E67E22] h-1.5 rounded-full"
+                                    className="bg-[#D4AF37] h-1.5 rounded-full"
                                     style={{ width: `${deal.probability}%` }}
                                   />
                                 </div>
@@ -319,7 +319,7 @@ const AdminStudentCRM = () => {
                       {getContactTouchpoints(selectedContact.id).map((tp: any, i: number) => (
                         <div key={tp.id} className="flex gap-3 pb-4">
                           <div className="flex flex-col items-center">
-                            <div className="w-3 h-3 rounded-full bg-[#E67E22] mt-1.5" />
+                            <div className="w-3 h-3 rounded-full bg-[#D4AF37] mt-1.5" />
                             {i < getContactTouchpoints(selectedContact.id).length - 1 && (
                               <div className="w-0.5 flex-1 bg-border" />
                             )}

@@ -95,7 +95,7 @@ const AgentsPage = () => {
               ) : (
                 <>
                   <Button size="lg" onClick={handleSubscribe} disabled={loading}
-                    className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2">
+                    className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2">
                     {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Subscribe — £97/month <ArrowRight className="w-5 h-5" /></>}
                   </Button>
                   {!user && (

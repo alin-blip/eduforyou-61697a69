@@ -51,7 +51,7 @@ const ReviewsPage = () => (
         </div>
         <div className="text-center mt-10">
           <Link to="/eligibilitate">
-            <Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2">
+            <Button size="lg" className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2">
               Start Your Success Story <ArrowRight className="w-5 h-5" />
             </Button>
           </Link>

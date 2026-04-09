@@ -117,7 +117,7 @@ const AdminHr = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card className="shadow-sm">
           <CardContent className="pt-6 flex items-center gap-3">
-            <Briefcase className="w-8 h-8 text-[#E67E22]" />
+            <Briefcase className="w-8 h-8 text-[#D4AF37]" />
             <div>
               <p className="text-2xl font-bold text-[#1a252f]">{positions.length}</p>
               <p className="text-xs text-muted-foreground">Open Positions</p>
@@ -158,7 +158,7 @@ const AdminHr = () => {
               <h2 className="font-display text-xl font-bold text-foreground">Job Positions</h2>
               <Button
                 size="sm"
-                className="bg-[#E67E22] hover:bg-[#d35400]"
+                className="bg-[#D4AF37] hover:bg-[#d35400]"
                 onClick={() => { setEditing({ ...emptyPosition }); setPosOpen(true); }}
               >
                 <Plus className="w-4 h-4 mr-1" /> Add Position
@@ -327,7 +327,7 @@ const AdminHr = () => {
             </div>
           )}
           <DialogFooter>
-            <Button onClick={() => savePosition.mutate(editing)} className="bg-[#E67E22] hover:bg-[#d35400]">
+            <Button onClick={() => savePosition.mutate(editing)} className="bg-[#D4AF37] hover:bg-[#d35400]">
               Save
             </Button>
           </DialogFooter>

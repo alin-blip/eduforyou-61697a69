@@ -152,7 +152,7 @@ const Documents = () => {
 
       <div>
         <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
-          <FileText className="w-6 h-6 text-orange-500" />
+          <FileText className="w-6 h-6 text-[#D4AF37]" />
           Documente
         </h1>
         <p className="text-muted-foreground mt-1">

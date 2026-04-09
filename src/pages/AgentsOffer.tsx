@@ -34,7 +34,7 @@ const tiers = [
       'Materiale de marketing de bază',
       'Suport prin email și chat',
     ],
-    gradient: 'from-amber-400 to-orange-500',
+    gradient: 'from-[#EAC67E] to-[#D4AF37]',
     highlight: false,
   },
   {
@@ -48,7 +48,7 @@ const tiers = [
       'Suport prioritar dedicat',
       'Acces la baza de date de leaduri',
     ],
-    gradient: 'from-orange-500 to-red-500',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
     highlight: true,
   },
   {
@@ -63,7 +63,7 @@ const tiers = [
       'Suport dedicat 24/7',
       'Primul acces la programe noi',
     ],
-    gradient: 'from-red-500 to-rose-600',
+    gradient: 'from-[#C6A248] to-[#0A1628]',
     highlight: false,
   },
 ];
@@ -74,21 +74,21 @@ const milestones = [
     students: '25 studenți',
     reward: 'Vacanță în Dubai',
     desc: 'All-inclusive, 5 zile în Dubai pentru tine și un însoțitor. Zbor, cazare și activități incluse.',
-    gradient: 'from-orange-400 to-amber-500',
+    gradient: 'from-[#D4AF37] to-[#EAC67E]',
   },
   {
     icon: Car,
     students: '100 studenți',
     reward: 'BMW Seria 3',
     desc: 'Un BMW Seria 3 nou-nouț, sau echivalentul în cash. Tu alegi.',
-    gradient: 'from-red-500 to-orange-500',
+    gradient: 'from-[#C6A248] to-[#D4AF37]',
   },
   {
     icon: Building2,
     students: '200 studenți',
     reward: 'Oportunitate de Franciză',
     desc: 'Deschide-ți propria franciză EduForYou. Devino partener și construiește-ți afacerea.',
-    gradient: 'from-rose-500 to-red-500',
+    gradient: 'from-[#C6A248] to-[#0A1628]',
   },
 ];
 
@@ -109,12 +109,12 @@ const AgentsOffer = () => {
       {/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20 md:py-28">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/30 rounded-full px-4 py-1.5 mb-6">
-            <Star className="w-4 h-4 text-orange-400" />
-            <span className="text-orange-300 text-sm font-medium">Recrutăm Agenți — Locuri Limitate</span>
+          <div className="inline-flex items-center gap-2 bg-[#D4AF37]/20 border border-[#D4AF37]/30 rounded-full px-4 py-1.5 mb-6">
+            <Star className="w-4 h-4 text-[#D4AF37]" />
+            <span className="text-[#EAC67E] text-sm font-medium">Recrutăm Agenți — Locuri Limitate</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Devino Agent <span className="text-orange-400">EduForYou</span>
+            Devino Agent <span className="text-[#D4AF37]">EduForYou</span>
           </h1>
           <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-4">
             Câștigă comisioane de până la <strong className="text-white">£1,000 per student</strong> ajutând
@@ -125,7 +125,7 @@ const AgentsOffer = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/auth/register">
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg px-8 py-3 gap-2">
+              <Button className="bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg px-8 py-3 gap-2">
                 Înscrie-te Ca Agent <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
@@ -139,7 +139,7 @@ const AgentsOffer = () => {
       </section>
 
       {/* Stats Bar */}
-      <section className="py-8 bg-orange-500 text-white">
+      <section className="py-8 bg-[#D4AF37] text-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
@@ -150,7 +150,7 @@ const AgentsOffer = () => {
             ].map((stat, i) => (
               <div key={i}>
                 <div className="text-2xl md:text-3xl font-bold">{stat.value}</div>
-                <div className="text-orange-100 text-sm">{stat.label}</div>
+                <div className="text-[#EAC67E] text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -171,7 +171,7 @@ const AgentsOffer = () => {
               <Card
                 key={i}
                 className={`overflow-hidden transition-shadow hover:shadow-xl ${
-                  tier.highlight ? 'ring-2 ring-orange-500 shadow-lg scale-105' : ''
+                  tier.highlight ? 'ring-2 ring-[#D4AF37] shadow-lg scale-105' : ''
                 }`}
               >
                 <div className={`bg-gradient-to-br ${tier.gradient} p-6 text-white text-center`}>
@@ -197,7 +197,7 @@ const AgentsOffer = () => {
                     <Button
                       className={`w-full mt-6 font-semibold ${
                         tier.highlight
-                          ? 'bg-orange-500 hover:bg-orange-600 text-white'
+                          ? 'bg-[#D4AF37] hover:bg-[#C6A248] text-white'
                           : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
                       }`}
                     >
@@ -215,7 +215,7 @@ const AgentsOffer = () => {
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-12">
-            <Trophy className="w-12 h-12 text-orange-500 mx-auto mb-4" />
+            <Trophy className="w-12 h-12 text-[#D4AF37] mx-auto mb-4" />
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Bonusuri de Milestone
             </h2>
@@ -249,7 +249,7 @@ const AgentsOffer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefitsGrid.map((b, i) => (
               <Card key={i} className="p-5 hover:shadow-md transition-shadow">
-                <b.icon className="w-8 h-8 text-orange-500 mb-3" />
+                <b.icon className="w-8 h-8 text-[#D4AF37] mb-3" />
                 <h3 className="font-bold text-gray-900 mb-2">{b.title}</h3>
                 <p className="text-sm text-gray-600">{b.desc}</p>
               </Card>
@@ -270,7 +270,7 @@ const AgentsOffer = () => {
               { step: '4', title: 'Câștigi comision', desc: 'Primești comisionul imediat ce studentul este înscris cu succes.' },
             ].map((s, i) => (
               <div key={i} className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold flex-shrink-0">
+                <div className="w-10 h-10 rounded-full bg-[#D4AF37] text-white flex items-center justify-center font-bold flex-shrink-0">
                   {s.step}
                 </div>
                 <div>
@@ -284,17 +284,17 @@ const AgentsOffer = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-orange-500 to-red-500 text-white">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-[#D4AF37] to-[#C6A248] text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <Gift className="w-12 h-12 mx-auto mb-4 text-orange-200" />
+          <Gift className="w-12 h-12 mx-auto mb-4 text-[#EAC67E]" />
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Începe Să Câștigi Astăzi
           </h2>
-          <p className="text-orange-100 text-lg mb-8">
+          <p className="text-[#EAC67E] text-lg mb-8">
             Alătură-te celor peste 500 de agenți care câștigă comisioane ajutând românii să acceseze educație gratuită în UK.
           </p>
           <Link to="/auth/register">
-            <Button className="bg-white text-orange-600 hover:bg-orange-50 font-semibold text-lg px-8 py-3 gap-2">
+            <Button className="bg-white text-[#C6A248] hover:bg-[#D4AF37]/10 font-semibold text-lg px-8 py-3 gap-2">
               Înscrie-te Ca Agent <ArrowRight className="w-5 h-5" />
             </Button>
           </Link>

@@ -9,61 +9,61 @@ const universities = [
     name: 'Global Banking School',
     location: 'London, Birmingham, Manchester, Leeds',
     programs: ['Business Management', 'Computing', 'Healthcare', 'Accounting & Finance'],
-    gradient: 'from-orange-500 to-red-500',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
   },
   {
     name: 'QA Higher Education',
     location: 'London, Birmingham, Manchester',
     programs: ['Digital Technology', 'Cyber Security', 'Data Analytics', 'Cloud Computing'],
-    gradient: 'from-amber-500 to-orange-500',
+    gradient: 'from-[#EAC67E] to-[#D4AF37]',
   },
   {
     name: 'Regent College London',
     location: 'London (Wembley)',
     programs: ['Business & Management', 'Health & Social Care', 'Computing', 'Tourism'],
-    gradient: 'from-red-500 to-rose-500',
+    gradient: 'from-[#C6A248] to-[#0A1628]',
   },
   {
     name: 'Solent University',
     location: 'Southampton',
     programs: ['Engineering', 'Business', 'Media', 'Sport Science'],
-    gradient: 'from-orange-600 to-amber-500',
+    gradient: 'from-[#C6A248] to-[#EAC67E]',
   },
   {
     name: 'London Metropolitan University',
     location: 'London',
     programs: ['Architecture', 'Computing', 'Business', 'Law'],
-    gradient: 'from-red-400 to-orange-500',
+    gradient: 'from-[#C6A248] to-[#D4AF37]',
   },
   {
     name: 'Northumbria University',
     location: 'Newcastle, London',
     programs: ['Business', 'Engineering', 'Health Sciences', 'Design'],
-    gradient: 'from-amber-400 to-red-400',
+    gradient: 'from-[#EAC67E] to-[#C6A248]',
   },
   {
     name: 'Ulster University',
     location: 'Belfast, Birmingham, London',
     programs: ['Business', 'Computing', 'Engineering', 'Health'],
-    gradient: 'from-orange-400 to-amber-600',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
   },
   {
     name: 'University of Bolton',
     location: 'Bolton, Manchester',
     programs: ['Engineering', 'Business', 'Creative Technologies', 'Health'],
-    gradient: 'from-red-500 to-orange-600',
+    gradient: 'from-[#C6A248] to-[#D4AF37]',
   },
   {
     name: 'LSST (London School of Science & Technology)',
     location: 'London, Birmingham',
     programs: ['Business Management', 'Health & Social Care', 'Computing', 'Accounting'],
-    gradient: 'from-amber-500 to-red-500',
+    gradient: 'from-[#EAC67E] to-[#C6A248]',
   },
   {
     name: 'University of Bedfordshire',
     location: 'Luton, Bedford, London',
     programs: ['Business', 'Computing', 'Media', 'Psychology'],
-    gradient: 'from-orange-500 to-rose-400',
+    gradient: 'from-[#D4AF37] to-rose-400',
   },
 ];
 
@@ -73,7 +73,7 @@ const Partners = () => {
       {/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 md:py-24">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <GraduationCap className="h-12 w-12 text-orange-400 mx-auto mb-4" />
+          <GraduationCap className="h-12 w-12 text-[#D4AF37] mx-auto mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Universitățile Noastre Partenere
           </h1>
@@ -85,7 +85,7 @@ const Partners = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-10 bg-orange-50 border-b border-orange-100">
+      <section className="py-10 bg-[#D4AF37]/10 border-b border-[#D4AF37]/20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
@@ -95,7 +95,7 @@ const Partners = () => {
               { value: '7,000+', label: 'Studenți Înscriși' },
             ].map((stat, i) => (
               <div key={i}>
-                <div className="text-2xl md:text-3xl font-bold text-orange-600">{stat.value}</div>
+                <div className="text-2xl md:text-3xl font-bold text-[#C6A248]">{stat.value}</div>
                 <div className="text-sm text-gray-600">{stat.label}</div>
               </div>
             ))}
@@ -120,13 +120,13 @@ const Partners = () => {
                 <div className="p-5">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{uni.name}</h3>
                   <div className="flex items-center gap-1.5 text-sm text-gray-500 mb-3">
-                    <MapPin className="w-4 h-4 text-orange-500 flex-shrink-0" />
+                    <MapPin className="w-4 h-4 text-[#D4AF37] flex-shrink-0" />
                     <span>{uni.location}</span>
                   </div>
                   <div className="space-y-1.5">
                     {uni.programs.map((prog, j) => (
                       <div key={j} className="flex items-center gap-2 text-sm text-gray-600">
-                        <BookOpen className="w-3.5 h-3.5 text-orange-400 flex-shrink-0" />
+                        <BookOpen className="w-3.5 h-3.5 text-[#D4AF37] flex-shrink-0" />
                         <span>{prog}</span>
                       </div>
                     ))}
@@ -139,14 +139,14 @@ const Partners = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-orange-500 to-orange-600 text-white">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-[#D4AF37] to-[#C6A248] text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl font-bold mb-4">Găsește Programul Potrivit Pentru Tine</h2>
-          <p className="text-orange-100 text-lg mb-8">
+          <p className="text-[#EAC67E] text-lg mb-8">
             Verifică eligibilitatea și descoperă ce programe sunt disponibile pentru tine — totul gratuit.
           </p>
           <Link to="/eligibilitate">
-            <Button className="bg-white text-orange-600 hover:bg-orange-50 font-semibold text-lg px-8 py-3 gap-2">
+            <Button className="bg-white text-[#C6A248] hover:bg-[#D4AF37]/10 font-semibold text-lg px-8 py-3 gap-2">
               Verifică Eligibilitatea <ArrowRight className="w-5 h-5" />
             </Button>
           </Link>

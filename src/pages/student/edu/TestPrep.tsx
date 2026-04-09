@@ -33,9 +33,9 @@ const testTypes = [
     description: 'Simulare de interviu cu întrebări frecvente. Pregătește-te pentru interviul real.',
     icon: MessageSquare,
     route: '/student/test-prep/interview',
-    color: 'text-orange-500',
-    bgColor: 'bg-orange-50 dark:bg-orange-950/20',
-    borderColor: 'border-orange-200 dark:border-orange-800',
+    color: 'text-[#D4AF37]',
+    bgColor: 'bg-[#D4AF37]/10 dark:bg-[#D4AF37]/10',
+    borderColor: 'border-[#D4AF37]/30 dark:border-[#C6A248]',
     duration: '30 min',
   },
   {

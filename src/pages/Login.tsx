@@ -93,7 +93,7 @@ const LoginPage = () => {
                 </button>
               </div>
 
-              <Button type="submit" size="lg" disabled={loading} className="w-full bg-primary hover:bg-orange-dark text-primary-foreground font-semibold">
+              <Button type="submit" size="lg" disabled={loading} className="w-full bg-primary hover:bg-gold-dark text-primary-foreground font-semibold">
                 {loading ? 'Loading...' : isRegister ? 'Create Account' : 'Sign In'}
               </Button>
             </form>

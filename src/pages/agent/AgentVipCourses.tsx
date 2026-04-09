@@ -112,7 +112,7 @@ const AgentVipCourses = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#E67E22]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#D4AF37]" />
       </div>
     );
   }
@@ -132,12 +132,12 @@ const AgentVipCourses = () => {
       </div>
 
       {/* Progress Card */}
-      <Card className="shadow-sm border-[#E67E22]/20 bg-gradient-to-r from-[#E67E22]/5 to-orange-50 dark:to-orange-950/20">
+      <Card className="shadow-sm border-[#D4AF37]/20 bg-gradient-to-r from-[#D4AF37]/5 to-[#D4AF37]/10 dark:to-[#D4AF37]/10">
         <CardContent className="p-6">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-full bg-[#E67E22]/10 flex items-center justify-center">
-                <Crown className="w-7 h-7 text-[#E67E22]" />
+              <div className="w-14 h-14 rounded-full bg-[#D4AF37]/10 flex items-center justify-center">
+                <Crown className="w-7 h-7 text-[#D4AF37]" />
               </div>
               <div>
                 <p className="font-bold text-foreground text-lg">
@@ -149,7 +149,7 @@ const AgentVipCourses = () => {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <Trophy className="w-5 h-5 text-[#E67E22]" />
+              <Trophy className="w-5 h-5 text-[#D4AF37]" />
               <span className="text-sm text-muted-foreground">
                 Următorul curs la{' '}
                 <span className="font-semibold text-foreground">
@@ -162,7 +162,7 @@ const AgentVipCourses = () => {
           <div className="mt-4">
             <div className="w-full bg-muted rounded-full h-3">
               <div
-                className="h-3 rounded-full bg-gradient-to-r from-[#E67E22] to-orange-400 transition-all"
+                className="h-3 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#D4AF37] transition-all"
                 style={{
                   width: `${(unlockedCount / vipCourses.length) * 100}%`,
                 }}
@@ -234,7 +234,7 @@ const AgentVipCourses = () => {
                     </div>
                     <div className="w-full bg-muted rounded-full h-1.5">
                       <div
-                        className="h-1.5 rounded-full bg-[#E67E22]"
+                        className="h-1.5 rounded-full bg-[#D4AF37]"
                         style={{ width: '0%' }}
                       />
                     </div>
@@ -243,7 +243,7 @@ const AgentVipCourses = () => {
                 <Button
                   className={`w-full mt-4 ${
                     isUnlocked
-                      ? 'bg-[#E67E22] hover:bg-[#E67E22]/90 text-white'
+                      ? 'bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-white'
                       : 'bg-muted text-muted-foreground cursor-not-allowed'
                   }`}
                   disabled={!isUnlocked}

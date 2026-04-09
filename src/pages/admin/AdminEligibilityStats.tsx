@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { CheckCircle, XCircle, Users, GraduationCap } from 'lucide-react';
 
-const COLORS = ['#22c55e', '#ef4444', '#f59e0b', '#3b82f6', '#8b5cf6', '#E67E22', '#06b6d4'];
+const COLORS = ['#22c55e', '#ef4444', '#f59e0b', '#3b82f6', '#8b5cf6', '#D4AF37', '#06b6d4'];
 
 const AdminEligibilityStats = () => {
   const { data: results = [], isLoading } = useQuery({
@@ -100,9 +100,9 @@ const AdminEligibilityStats = () => {
         </Card>
         <Card className="shadow-sm">
           <CardContent className="pt-6 flex items-center gap-3">
-            <GraduationCap className="w-8 h-8 text-[#E67E22]" />
+            <GraduationCap className="w-8 h-8 text-[#D4AF37]" />
             <div>
-              <p className="text-2xl font-bold text-[#E67E22]">{appStartedCount}</p>
+              <p className="text-2xl font-bold text-[#D4AF37]">{appStartedCount}</p>
               <p className="text-xs text-muted-foreground">Apps Started</p>
             </div>
           </CardContent>
@@ -150,7 +150,7 @@ const AdminEligibilityStats = () => {
                   <XAxis dataKey="name" tick={{ fontSize: 12 }} angle={-20} textAnchor="end" height={60} />
                   <YAxis />
                   <Tooltip />
-                  <Bar dataKey="value" fill="#E67E22" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="value" fill="#D4AF37" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

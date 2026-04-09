@@ -76,7 +76,7 @@ const Footer = () => {
                 placeholder={t('footer.emailPlaceholder')}
                 className="bg-navy-light/30 border-navy-light/20 text-secondary-foreground placeholder:text-secondary-foreground/40"
               />
-              <Button size="sm" className="bg-primary hover:bg-orange-dark text-primary-foreground shrink-0">
+              <Button size="sm" className="bg-primary hover:bg-gold-dark text-primary-foreground shrink-0">
                 {t('footer.subscribe')}
               </Button>
             </div>

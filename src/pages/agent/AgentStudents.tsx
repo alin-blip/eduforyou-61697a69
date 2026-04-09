@@ -98,7 +98,7 @@ const AgentStudents = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#E67E22]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#D4AF37]" />
       </div>
     );
   }
@@ -126,7 +126,7 @@ const AgentStudents = () => {
           <Card
             key={s.key}
             className={`shadow-sm cursor-pointer transition-shadow hover:shadow-md ${
-              statusFilter === s.key ? 'ring-2 ring-[#E67E22]' : ''
+              statusFilter === s.key ? 'ring-2 ring-[#D4AF37]' : ''
             }`}
             onClick={() => setStatusFilter(s.key)}
           >
@@ -173,7 +173,7 @@ const AgentStudents = () => {
       <Card className="shadow-sm">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Users className="w-5 h-5 text-[#E67E22]" />
+            <Users className="w-5 h-5 text-[#D4AF37]" />
             Lista Studenților ({filtered.length})
           </CardTitle>
         </CardHeader>
@@ -237,15 +237,15 @@ const AgentStudents = () => {
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Users className="w-5 h-5 text-[#E67E22]" />
+              <Users className="w-5 h-5 text-[#D4AF37]" />
               Detalii Student
             </DialogTitle>
           </DialogHeader>
           {selectedStudent && (
             <div className="space-y-4">
               <div className="flex items-center gap-3 p-4 rounded-lg bg-muted/30">
-                <div className="w-12 h-12 rounded-full bg-[#E67E22]/10 flex items-center justify-center">
-                  <Users className="w-6 h-6 text-[#E67E22]" />
+                <div className="w-12 h-12 rounded-full bg-[#D4AF37]/10 flex items-center justify-center">
+                  <Users className="w-6 h-6 text-[#D4AF37]" />
                 </div>
                 <div>
                   <p className="font-semibold text-foreground text-lg">

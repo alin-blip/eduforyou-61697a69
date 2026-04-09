@@ -13,7 +13,7 @@ const webinars = [
     link: '/webinar/university',
     schedule: 'În fiecare miercuri, ora 19:00',
     spots: '50 locuri',
-    gradient: 'from-orange-500 to-red-500',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
     tag: 'Pentru Studenți',
   },
   {
@@ -24,7 +24,7 @@ const webinars = [
     link: '/webinar/agents',
     schedule: 'Prima luni din fiecare lună, ora 20:00',
     spots: '30 locuri',
-    gradient: 'from-amber-500 to-orange-500',
+    gradient: 'from-[#EAC67E] to-[#D4AF37]',
     tag: 'Pentru Agenți',
   },
   {
@@ -35,7 +35,7 @@ const webinars = [
     link: '/webinar/ikigai',
     schedule: 'Acces limitat — vezi countdown',
     spots: '20 locuri',
-    gradient: 'from-red-500 to-rose-500',
+    gradient: 'from-[#C6A248] to-[#0A1628]',
     tag: 'Workshop',
   },
 ];
@@ -46,7 +46,7 @@ const WebinarList = () => {
       {/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 md:py-24">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <Play className="h-12 w-12 text-orange-400 mx-auto mb-4" />
+          <Play className="h-12 w-12 text-[#D4AF37] mx-auto mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Webinarii Gratuite</h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Participă la webinariile noastre gratuite și află totul despre studii universitare
@@ -72,16 +72,16 @@ const WebinarList = () => {
                   <p className="text-gray-600 text-sm mb-4 flex-1">{w.description}</p>
                   <div className="space-y-2 mb-5">
                     <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Calendar className="w-4 h-4 text-orange-500" />
+                      <Calendar className="w-4 h-4 text-[#D4AF37]" />
                       <span>{w.schedule}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Users className="w-4 h-4 text-orange-500" />
+                      <Users className="w-4 h-4 text-[#D4AF37]" />
                       <span>{w.spots}</span>
                     </div>
                   </div>
                   <Link to={w.link}>
-                    <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold">
+                    <Button className="w-full bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold">
                       Înscrie-te Gratuit
                     </Button>
                   </Link>

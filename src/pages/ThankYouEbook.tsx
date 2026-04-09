@@ -62,11 +62,11 @@ const ThankYouEbook = () => {
             {nextSteps.map((step, i) => (
               <Card key={i} className="p-6 hover:shadow-md transition-shadow">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
-                    <step.icon className="w-6 h-6 text-orange-600" />
+                  <div className="w-12 h-12 rounded-full bg-[#D4AF37]/20 flex items-center justify-center flex-shrink-0">
+                    <step.icon className="w-6 h-6 text-[#C6A248]" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-orange-500 mb-1">Pasul {i + 1}</div>
+                    <div className="text-xs font-bold text-[#D4AF37] mb-1">Pasul {i + 1}</div>
                     <h3 className="font-bold text-gray-900 mb-1">{step.title}</h3>
                     <p className="text-gray-600 text-sm">{step.desc}</p>
                   </div>
@@ -80,14 +80,14 @@ const ThankYouEbook = () => {
       {/* CTA */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <MessageSquare className="w-10 h-10 text-orange-500 mx-auto mb-4" />
+          <MessageSquare className="w-10 h-10 text-[#D4AF37] mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Ai Întrebări?</h2>
           <p className="text-gray-600 mb-8">
             Echipa noastră este aici să te ajute. Programează o consultație gratuită sau contactează-ne direct.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/book-appointment">
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 gap-2">
+              <Button className="bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold px-6 py-3 gap-2">
                 Programează Consultație <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>

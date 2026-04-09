@@ -178,7 +178,7 @@ const NewsletterForm = ({ variant = 'light' }: NewsletterFormProps) => {
             'w-full',
             isInline && 'w-auto',
             isDark
-              ? 'bg-orange-500 text-white hover:bg-orange-600'
+              ? 'bg-[#D4AF37] text-white hover:bg-[#C6A248]'
               : 'bg-blue-600 text-white hover:bg-blue-700'
           )}
         >

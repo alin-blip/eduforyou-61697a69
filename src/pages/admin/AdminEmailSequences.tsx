@@ -130,7 +130,7 @@ const AdminEmailSequences = () => {
             {sequences.length} sequences, {activeCount} active
           </p>
         </div>
-        <Button onClick={openNew} className="bg-[#E67E22] hover:bg-[#d35400]">
+        <Button onClick={openNew} className="bg-[#D4AF37] hover:bg-[#d35400]">
           <Plus className="w-4 h-4 mr-1" /> New Sequence
         </Button>
       </div>
@@ -270,7 +270,7 @@ const AdminEmailSequences = () => {
           <DialogFooter>
             <Button
               onClick={() => saveSequence.mutate(editing)}
-              className="bg-[#E67E22] hover:bg-[#d35400]"
+              className="bg-[#D4AF37] hover:bg-[#d35400]"
             >
               Save
             </Button>

@@ -56,7 +56,7 @@ const commissionTiers = [
     amount: '£750',
     description: 'Per înscriere',
     icon: Zap,
-    gradient: 'from-[#E67E22] to-orange-600',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
     requirement: '10+ studenți înscriși',
   },
   {
@@ -166,8 +166,8 @@ const AgentDashboardHome = () => {
       label: 'Câștiguri Totale',
       value: `£${totalEarnings.toLocaleString()}`,
       icon: TrendingUp,
-      color: 'text-[#E67E22]',
-      bg: 'bg-orange-50 dark:bg-orange-950/30',
+      color: 'text-[#D4AF37]',
+      bg: 'bg-[#D4AF37]/10 dark:bg-[#D4AF37]/10',
     },
     {
       label: 'Rată de Conversie',
@@ -223,7 +223,7 @@ const AgentDashboardHome = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#E67E22]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#D4AF37]" />
       </div>
     );
   }
@@ -241,10 +241,10 @@ const AgentDashboardHome = () => {
       </div>
 
       {/* Membership Status */}
-      <Card className="border-[#E67E22]/30 bg-gradient-to-r from-[#E67E22]/5 to-orange-50 dark:to-orange-950/20">
+      <Card className="border-[#D4AF37]/30 bg-gradient-to-r from-[#D4AF37]/5 to-[#D4AF37]/10 dark:to-[#D4AF37]/10">
         <CardContent className="p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Crown className="w-6 h-6 text-[#E67E22]" />
+            <Crown className="w-6 h-6 text-[#D4AF37]" />
             <div>
               <p className="font-semibold text-foreground">
                 Membru {currentTier}
@@ -254,7 +254,7 @@ const AgentDashboardHome = () => {
               </p>
             </div>
           </div>
-          <Badge className="bg-[#E67E22] text-white hover:bg-[#E67E22]/90">
+          <Badge className="bg-[#D4AF37] text-white hover:bg-[#D4AF37]/90">
             {currentTier}
           </Badge>
         </CardContent>
@@ -286,7 +286,7 @@ const AgentDashboardHome = () => {
               key={tier.name}
               className={`relative overflow-hidden ${
                 currentTier === tier.name
-                  ? 'ring-2 ring-[#E67E22] shadow-lg'
+                  ? 'ring-2 ring-[#D4AF37] shadow-lg'
                   : 'shadow-sm'
               }`}
             >
@@ -295,13 +295,13 @@ const AgentDashboardHome = () => {
               />
               <CardContent className="p-6 relative">
                 <div className="flex items-center justify-between mb-3">
-                  <tier.icon className="w-8 h-8 text-[#E67E22]" />
+                  <tier.icon className="w-8 h-8 text-[#D4AF37]" />
                   {currentTier === tier.name && (
-                    <Badge className="bg-[#E67E22] text-white">Actual</Badge>
+                    <Badge className="bg-[#D4AF37] text-white">Actual</Badge>
                   )}
                 </div>
                 <h3 className="text-lg font-bold text-foreground">{tier.name}</h3>
-                <p className="text-3xl font-bold text-[#E67E22] mt-1">
+                <p className="text-3xl font-bold text-[#D4AF37] mt-1">
                   {tier.amount}
                 </p>
                 <p className="text-sm text-muted-foreground">{tier.description}</p>
@@ -351,7 +351,7 @@ const AgentDashboardHome = () => {
                     <div className="w-full bg-muted rounded-full h-2">
                       <div
                         className={`h-2 rounded-full transition-all ${
-                          achieved ? 'bg-emerald-500' : 'bg-[#E67E22]'
+                          achieved ? 'bg-emerald-500' : 'bg-[#D4AF37]'
                         }`}
                         style={{ width: `${progress}%` }}
                       />
@@ -373,7 +373,7 @@ const AgentDashboardHome = () => {
       <Card className="shadow-sm">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Send className="w-5 h-5 text-[#E67E22]" />
+            <Send className="w-5 h-5 text-[#D4AF37]" />
             Referral Rapid
           </CardTitle>
           <CardDescription>
@@ -423,7 +423,7 @@ const AgentDashboardHome = () => {
             </Select>
           </div>
           <Button
-            className="mt-4 bg-[#E67E22] hover:bg-[#E67E22]/90 text-white"
+            className="mt-4 bg-[#D4AF37] hover:bg-[#D4AF37]/90 text-white"
             onClick={handleSubmitReferral}
             disabled={submitting}
           >
@@ -437,7 +437,7 @@ const AgentDashboardHome = () => {
       <Card className="shadow-sm">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Clock className="w-5 h-5 text-[#E67E22]" />
+            <Clock className="w-5 h-5 text-[#D4AF37]" />
             Activitate Recentă
           </CardTitle>
         </CardHeader>
@@ -454,8 +454,8 @@ const AgentDashboardHome = () => {
                   className="flex items-center justify-between p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#E67E22]/10 flex items-center justify-center">
-                      <Users className="w-4 h-4 text-[#E67E22]" />
+                    <div className="w-8 h-8 rounded-full bg-[#D4AF37]/10 flex items-center justify-center">
+                      <Users className="w-4 h-4 text-[#D4AF37]" />
                     </div>
                     <div>
                       <p className="font-medium text-foreground text-sm">

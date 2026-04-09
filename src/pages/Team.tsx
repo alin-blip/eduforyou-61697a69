@@ -7,49 +7,49 @@ const teamMembers = [
     name: 'Andrei Popescu',
     role: 'CEO & Fondator',
     bio: 'Cu peste 10 ani de experiență în educația internațională, Andrei a fondat EduForYou cu misiunea de a face educația universitară accesibilă tuturor românilor din UK.',
-    gradient: 'from-orange-400 to-red-500',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
   },
   {
     name: 'Maria Ionescu',
     role: 'Director Operațiuni',
     bio: 'Maria coordonează toate procesele operaționale, asigurându-se că fiecare student primește suportul necesar de la aplicare până la absolvire.',
-    gradient: 'from-amber-400 to-orange-500',
+    gradient: 'from-[#EAC67E] to-[#D4AF37]',
   },
   {
     name: 'Cristian Dumitrescu',
     role: 'Director Parteneriate Universitare',
     bio: 'Cristian dezvoltă și menține relațiile cu universitățile partenere din UK, negociind cele mai bune condiții pentru studenții noștri.',
-    gradient: 'from-orange-500 to-amber-600',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
   },
   {
     name: 'Elena Dragomir',
     role: 'Consilier Educațional Senior',
     bio: 'Cu experiență în consilierea a peste 500 de studenți, Elena ghidează fiecare candidat prin procesul de aplicare și finanțare.',
-    gradient: 'from-red-400 to-orange-500',
+    gradient: 'from-[#C6A248] to-[#D4AF37]',
   },
   {
     name: 'Alexandru Munteanu',
     role: 'Manager Marketing Digital',
     bio: 'Alexandru dezvoltă strategiile de marketing care conectează EduForYou cu comunitatea românească din UK și dincolo de granițe.',
-    gradient: 'from-amber-500 to-red-400',
+    gradient: 'from-[#EAC67E] to-[#C6A248]',
   },
   {
     name: 'Diana Constantinescu',
     role: 'Specialist Finanțare Studențească',
     bio: 'Diana este expertul nostru în Student Finance England, ajutând studenții să navigheze procesul de aplicare pentru finanțare.',
-    gradient: 'from-orange-600 to-amber-500',
+    gradient: 'from-[#C6A248] to-[#EAC67E]',
   },
   {
     name: 'Mihai Georgescu',
     role: 'Manager Rețea Agenți',
     bio: 'Mihai coordonează rețeaua de agenți EduForYou din întreaga Anglie, oferind training și suport continuu.',
-    gradient: 'from-red-500 to-orange-600',
+    gradient: 'from-[#C6A248] to-[#D4AF37]',
   },
   {
     name: 'Ioana Stanciu',
     role: 'Specialist Suport Studenți',
     bio: 'Ioana asigură că fiecare student are o experiență pozitivă, oferind suport continuu pe parcursul studiilor.',
-    gradient: 'from-amber-400 to-red-400',
+    gradient: 'from-[#EAC67E] to-[#C6A248]',
   },
 ];
 
@@ -59,7 +59,7 @@ const Team = () => {
       {/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 md:py-24">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <Users className="h-12 w-12 text-orange-400 mx-auto mb-4" />
+          <Users className="h-12 w-12 text-[#D4AF37] mx-auto mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Echipa Noastră</h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Suntem o echipă dedicată de profesioniști pasionați de educație, uniți de
@@ -90,7 +90,7 @@ const Team = () => {
                 </div>
                 <div className="p-5">
                   <h3 className="text-lg font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-orange-600 font-medium text-sm mb-3">
+                  <p className="text-[#C6A248] font-medium text-sm mb-3">
                     {member.role}
                   </p>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
@@ -99,14 +99,14 @@ const Team = () => {
                   <div className="flex gap-3">
                     <a
                       href="#"
-                      className="text-gray-400 hover:text-orange-500 transition-colors"
+                      className="text-gray-400 hover:text-[#D4AF37] transition-colors"
                       aria-label={`LinkedIn ${member.name}`}
                     >
                       <Linkedin className="h-5 w-5" />
                     </a>
                     <a
                       href="#"
-                      className="text-gray-400 hover:text-orange-500 transition-colors"
+                      className="text-gray-400 hover:text-[#D4AF37] transition-colors"
                       aria-label={`Email ${member.name}`}
                     >
                       <Mail className="h-5 w-5" />
@@ -139,7 +139,7 @@ const Team = () => {
               },
             ].map((val, i) => (
               <div key={i}>
-                <h3 className="text-xl font-bold text-orange-600 mb-2">{val.title}</h3>
+                <h3 className="text-xl font-bold text-[#C6A248] mb-2">{val.title}</h3>
                 <p className="text-gray-600">{val.desc}</p>
               </div>
             ))}

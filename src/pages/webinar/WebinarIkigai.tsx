@@ -85,9 +85,9 @@ const WebinarIkigai = () => {
       {/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 md:py-24">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <Lightbulb className="h-12 w-12 text-orange-400 mx-auto mb-4" />
+          <Lightbulb className="h-12 w-12 text-[#D4AF37] mx-auto mb-4" />
           <h1 className="text-3xl md:text-5xl font-bold mb-4">
-            Descoperă-ți <span className="text-orange-400">Ikigai</span>
+            Descoperă-ți <span className="text-[#D4AF37]">Ikigai</span>
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
             Un workshop interactiv bazat pe metoda japoneză Ikigai care te ajută să îți
@@ -101,9 +101,9 @@ const WebinarIkigai = () => {
               <span className="text-red-300 text-sm font-medium mr-2">Oferta expiră în:</span>
               <div className="flex items-center gap-1 text-white font-mono text-2xl font-bold">
                 <span className="bg-gray-700 rounded px-2 py-1">{pad(timeLeft.hours)}</span>
-                <span className="text-orange-400">:</span>
+                <span className="text-[#D4AF37]">:</span>
                 <span className="bg-gray-700 rounded px-2 py-1">{pad(timeLeft.minutes)}</span>
-                <span className="text-orange-400">:</span>
+                <span className="text-[#D4AF37]">:</span>
                 <span className="bg-gray-700 rounded px-2 py-1">{pad(timeLeft.seconds)}</span>
               </div>
             </div>
@@ -122,8 +122,8 @@ const WebinarIkigai = () => {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {pillars.map((p, i) => (
-              <Card key={i} className="p-6 text-center hover:shadow-md transition-shadow border-t-4 border-t-orange-400">
-                <p.icon className="w-10 h-10 text-orange-500 mx-auto mb-3" />
+              <Card key={i} className="p-6 text-center hover:shadow-md transition-shadow border-t-4 border-t-[#D4AF37]">
+                <p.icon className="w-10 h-10 text-[#D4AF37] mx-auto mb-3" />
                 <h3 className="font-bold text-gray-900 mb-2">{p.title}</h3>
                 <p className="text-gray-600 text-sm">{p.desc}</p>
               </Card>
@@ -187,7 +187,7 @@ const WebinarIkigai = () => {
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg py-3"
+                    className="w-full bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg py-3"
                   >
                     {loading ? (
                       <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Se procesează...</>

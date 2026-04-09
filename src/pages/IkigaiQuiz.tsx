@@ -161,11 +161,11 @@ const IkigaiQuiz = () => {
                   <ArrowLeft className="w-4 h-4" /> Back
                 </Button>
                 {step < ikigaiQuestions.length - 1 ? (
-                  <Button onClick={() => setStep(s => s + 1)} disabled={!(answers[currentQ.id]?.length)} className="bg-primary hover:bg-orange-dark text-primary-foreground gap-2">
+                  <Button onClick={() => setStep(s => s + 1)} disabled={!(answers[currentQ.id]?.length)} className="bg-primary hover:bg-gold-dark text-primary-foreground gap-2">
                     Next <ArrowRight className="w-4 h-4" />
                   </Button>
                 ) : (
-                  <Button onClick={handleFinish} disabled={!(answers[currentQ.id]?.length)} className="bg-primary hover:bg-orange-dark text-primary-foreground gap-2">
+                  <Button onClick={handleFinish} disabled={!(answers[currentQ.id]?.length)} className="bg-primary hover:bg-gold-dark text-primary-foreground gap-2">
                     See Results <Sparkles className="w-4 h-4" />
                   </Button>
                 )}
@@ -196,7 +196,7 @@ const IkigaiQuiz = () => {
 
               <div className="flex flex-wrap justify-center gap-4">
                 <Link to="/eligibilitate">
-                  <Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2">
+                  <Button size="lg" className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2">
                     Check Eligibility <ArrowRight className="w-5 h-5" />
                   </Button>
                 </Link>

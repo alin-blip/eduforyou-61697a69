@@ -152,7 +152,7 @@ const CVBuilder = () => {
     <div className="space-y-6 max-w-2xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
-          <FileText className="w-6 h-6 text-orange-500" />
+          <FileText className="w-6 h-6 text-[#D4AF37]" />
           CV & Personal Statement
         </h1>
         <p className="text-muted-foreground mt-1">

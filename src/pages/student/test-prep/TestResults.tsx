@@ -22,7 +22,7 @@ import {
 
 const TEST_TYPE_CONFIG: Record<string, { label: string; icon: React.ElementType; color: string }> = {
   written: { label: 'Test Scris', icon: PenTool, color: 'text-blue-500 bg-blue-50 dark:bg-blue-950/20 border-blue-200' },
-  interview: { label: 'Practică Interviu', icon: MessageSquare, color: 'text-orange-500 bg-orange-50 dark:bg-orange-950/20 border-orange-200' },
+  interview: { label: 'Practică Interviu', icon: MessageSquare, color: 'text-[#D4AF37] bg-[#D4AF37]/10 dark:bg-[#D4AF37]/10 border-[#D4AF37]/30' },
   ai_personalized: { label: 'Test AI Personalizat', icon: Brain, color: 'text-purple-500 bg-purple-50 dark:bg-purple-950/20 border-purple-200' },
 };
 
@@ -104,7 +104,7 @@ const TestResults = () => {
         </Card>
         <Card>
           <CardContent className="p-3 text-center">
-            <MessageSquare className="w-5 h-5 text-orange-500 mx-auto mb-1" />
+            <MessageSquare className="w-5 h-5 text-[#D4AF37] mx-auto mb-1" />
             <p className="text-xl font-bold">{interviewCount}</p>
             <p className="text-xs text-muted-foreground">Interviuri</p>
           </CardContent>

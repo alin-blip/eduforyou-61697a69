@@ -30,7 +30,7 @@ const UrgencyBanner = () => {
   }, []);
 
   return (
-    <div className="rounded-xl bg-gradient-to-r from-red-600 via-orange-500 to-red-600 px-4 py-3 text-center shadow-lg">
+    <div className="rounded-xl bg-gradient-to-r from-[#0A1628] via-[#D4AF37] to-[#0A1628] px-4 py-3 text-center shadow-lg">
       <div className="flex items-center justify-center gap-2">
         <AlertTriangle className="h-5 w-5 shrink-0 animate-pulse text-yellow-200" />
         <p className="text-sm font-bold text-white sm:text-base">

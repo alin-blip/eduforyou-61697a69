@@ -13,7 +13,7 @@ const testimonials = [
     students: 62,
     quote:
       'Am început ca agent EduForYou în timp ce lucram full-time. După 6 luni, câștigam mai mult din comisioane decât din jobul meu. Acum sunt agent full-time și ajut zeci de studenți în fiecare lună.',
-    gradient: 'from-orange-400 to-red-500',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
   },
   {
     name: 'Andreea Vasile',
@@ -23,7 +23,7 @@ const testimonials = [
     students: 44,
     quote:
       'Ca mamă singură, aveam nevoie de flexibilitate. EduForYou mi-a oferit exact asta. Lucrez de acasă, la orele mele, și câștig mai bine decât orice job anterior.',
-    gradient: 'from-amber-400 to-orange-500',
+    gradient: 'from-[#EAC67E] to-[#D4AF37]',
   },
   {
     name: 'Bogdan Ilie',
@@ -33,7 +33,7 @@ const testimonials = [
     students: 105,
     quote:
       'Am atins milestone-ul de 100 de studenți și am primit BMW-ul promis! Echipa EduForYou este incredibilă și suportul pe care îl oferă face toată diferența.',
-    gradient: 'from-red-400 to-orange-500',
+    gradient: 'from-[#C6A248] to-[#D4AF37]',
   },
   {
     name: 'Cristina Dinu',
@@ -43,7 +43,7 @@ const testimonials = [
     students: 38,
     quote:
       'Am pornit sceptică, dar rezultatele vorbesc de la sine. Training-ul a fost excelent și comisioanele sunt exacte — fără întârzieri, fără surprize.',
-    gradient: 'from-orange-500 to-amber-600',
+    gradient: 'from-[#D4AF37] to-[#C6A248]',
   },
   {
     name: 'Adrian Moldovan',
@@ -53,7 +53,7 @@ const testimonials = [
     students: 72,
     quote:
       'Am câștigat vacanța în Dubai după doar 25 de studenți. Acum lucrez spre milestone-ul de 100 și sunt convins că voi ajunge acolo anul acesta.',
-    gradient: 'from-red-500 to-rose-500',
+    gradient: 'from-[#C6A248] to-[#0A1628]',
   },
   {
     name: 'Simona Petrescu',
@@ -63,7 +63,7 @@ const testimonials = [
     students: 26,
     quote:
       'Am început part-time, doar câteva ore pe săptămână. Chiar și așa, rezultatele sunt impresionante. Recomand oricui vrea un venit extra serios.',
-    gradient: 'from-amber-500 to-red-400',
+    gradient: 'from-[#EAC67E] to-[#C6A248]',
   },
 ];
 
@@ -80,9 +80,9 @@ const AgentsSuccess = () => {
       {/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 md:py-24">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <Star className="h-12 w-12 text-orange-400 mx-auto mb-4" />
+          <Star className="h-12 w-12 text-[#D4AF37] mx-auto mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Povești de Succes ale <span className="text-orange-400">Agenților</span>
+            Povești de Succes ale <span className="text-[#D4AF37]">Agenților</span>
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Descoperă cum agenții EduForYou și-au transformat viața financiară ajutând alți
@@ -92,12 +92,12 @@ const AgentsSuccess = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-10 bg-orange-50 border-b border-orange-100">
+      <section className="py-10 bg-[#D4AF37]/10 border-b border-[#D4AF37]/20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {stats.map((stat, i) => (
               <div key={i} className="flex flex-col items-center">
-                <stat.icon className="w-6 h-6 text-orange-500 mb-2" />
+                <stat.icon className="w-6 h-6 text-[#D4AF37] mb-2" />
                 <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
                 <div className="text-sm text-gray-600">{stat.label}</div>
               </div>
@@ -134,7 +134,7 @@ const AgentsSuccess = () => {
                   </div>
                 </div>
                 <div className="p-5">
-                  <Quote className="w-6 h-6 text-orange-300 mb-2" />
+                  <Quote className="w-6 h-6 text-[#EAC67E] mb-2" />
                   <p className="text-gray-600 text-sm leading-relaxed">{t.quote}</p>
                 </div>
               </Card>
@@ -144,17 +144,17 @@ const AgentsSuccess = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-orange-500 to-red-500 text-white">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-[#D4AF37] to-[#C6A248] text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Scrie-ți Propria Poveste de Succes
           </h2>
-          <p className="text-orange-100 text-lg mb-8">
+          <p className="text-[#EAC67E] text-lg mb-8">
             Alătură-te rețelei de agenți EduForYou și începe să câștigi comisioane generoase.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/auth/register">
-              <Button className="bg-white text-orange-600 hover:bg-orange-50 font-semibold text-lg px-8 py-3 gap-2">
+              <Button className="bg-white text-[#C6A248] hover:bg-[#D4AF37]/10 font-semibold text-lg px-8 py-3 gap-2">
                 Devino Agent <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>

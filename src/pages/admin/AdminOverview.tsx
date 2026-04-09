@@ -62,7 +62,7 @@ const AdminOverview = () => {
   const pipelineStages = [
     { key: 'new', label: 'New', color: 'bg-green-500' },
     { key: 'contacted', label: 'Contacted', color: 'bg-yellow-500' },
-    { key: 'qualified', label: 'Qualified', color: 'bg-orange-500' },
+    { key: 'qualified', label: 'Qualified', color: 'bg-[#D4AF37]' },
     { key: 'converted', label: 'Converted', color: 'bg-blue-500' },
   ];
 

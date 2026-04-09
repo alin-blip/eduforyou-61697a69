@@ -17,7 +17,7 @@ const WebinarAnnouncementBanner = () => {
   if (dismissed) return null;
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#D4AF37] via-[#D4AF37] to-yellow-400">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5">
         <Link
           to="/webinar/ikigai"

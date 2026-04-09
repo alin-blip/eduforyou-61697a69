@@ -26,21 +26,21 @@ const GamificationBar = () => {
   }
 
   return (
-    <div className="rounded-xl bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border border-orange-500/20 p-4 text-white">
+    <div className="rounded-xl bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border border-[#D4AF37]/20 p-4 text-white">
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
         {/* Level Badge */}
         <div className="flex items-center gap-3">
           <div className="relative">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/30">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#C6A248] flex items-center justify-center shadow-lg shadow-[#D4AF37]/30">
               <Trophy className="w-6 h-6 text-white" />
             </div>
-            <div className="absolute -bottom-1 -right-1 bg-orange-500 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-gray-900">
+            <div className="absolute -bottom-1 -right-1 bg-[#D4AF37] text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-gray-900">
               {level}
             </div>
           </div>
           <div>
             <p className="text-xs text-gray-400 uppercase tracking-wider">Nivel</p>
-            <p className="text-lg font-bold text-orange-400">Level {level}</p>
+            <p className="text-lg font-bold text-[#D4AF37]">Level {level}</p>
           </div>
         </div>
 
@@ -55,7 +55,7 @@ const GamificationBar = () => {
 
         {/* Streak */}
         <div className="flex items-center gap-2">
-          <Flame className={`w-5 h-5 ${streak > 0 ? 'text-orange-400' : 'text-gray-500'}`} />
+          <Flame className={`w-5 h-5 ${streak > 0 ? 'text-[#D4AF37]' : 'text-gray-500'}`} />
           <div>
             <p className="text-xs text-gray-400">Serie</p>
             <p className="text-base font-semibold">
@@ -68,11 +68,11 @@ const GamificationBar = () => {
         <div className="flex-1 min-w-0 w-full sm:w-auto">
           <div className="flex items-center justify-between mb-1">
             <p className="text-xs text-gray-400">Progres Nivel</p>
-            <p className="text-xs text-orange-400">{points}/{nextLevelThreshold}</p>
+            <p className="text-xs text-[#D4AF37]">{points}/{nextLevelThreshold}</p>
           </div>
           <div className="relative h-2 rounded-full bg-gray-700 overflow-hidden">
             <div
-              className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-orange-500 to-yellow-400 transition-all duration-500"
+              className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#D4AF37] to-yellow-400 transition-all duration-500"
               style={{ width: `${Math.min(levelProgress, 100)}%` }}
             />
           </div>
@@ -86,7 +86,7 @@ const GamificationBar = () => {
             <Badge
               key={badge}
               variant="outline"
-              className="text-[10px] border-orange-500/30 text-orange-300 bg-orange-500/10"
+              className="text-[10px] border-[#D4AF37]/30 text-[#EAC67E] bg-[#D4AF37]/10"
             >
               <Zap className="w-3 h-3 mr-1" />
               {BADGE_LABELS[badge] || badge}

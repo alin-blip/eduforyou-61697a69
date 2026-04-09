@@ -134,11 +134,11 @@ const Bonuses = () => {
       </div>
 
       {/* Summary */}
-      <Card className="bg-gradient-to-r from-orange-50 to-yellow-50 dark:from-orange-950/20 dark:to-yellow-950/20 border-orange-200 dark:border-orange-800">
+      <Card className="bg-gradient-to-r from-[#D4AF37]/10 to-yellow-50 dark:from-[#D4AF37]/10 dark:to-yellow-950/20 border-[#D4AF37]/30 dark:border-[#C6A248]">
         <CardContent className="p-5">
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <Trophy className="w-6 h-6 text-orange-500 mx-auto mb-1" />
+              <Trophy className="w-6 h-6 text-[#D4AF37] mx-auto mb-1" />
               <p className="text-xl font-bold text-foreground">{level}</p>
               <p className="text-xs text-muted-foreground">Nivel</p>
             </div>

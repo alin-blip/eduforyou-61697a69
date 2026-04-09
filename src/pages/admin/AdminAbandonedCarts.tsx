@@ -64,7 +64,7 @@ const AdminAbandonedCarts = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card className="shadow-sm">
           <CardContent className="pt-6 flex items-center gap-3">
-            <ShoppingCart className="w-8 h-8 text-[#E67E22]" />
+            <ShoppingCart className="w-8 h-8 text-[#D4AF37]" />
             <div>
               <p className="text-2xl font-bold text-[#1a252f]">{totalCarts}</p>
               <p className="text-xs text-muted-foreground">Total Abandoned</p>
@@ -161,7 +161,7 @@ const AdminAbandonedCarts = () => {
                       onClick={() => sendRecoveryEmail.mutate(c)}
                       title="Send recovery email"
                     >
-                      <Mail className="w-4 h-4 text-[#E67E22]" />
+                      <Mail className="w-4 h-4 text-[#D4AF37]" />
                     </Button>
                   )}
                 </TableCell>

@@ -37,7 +37,7 @@ const CareersPage = () => (
                   </div>
                   <p className="text-muted-foreground text-sm mt-2">{job.desc}</p>
                 </div>
-                <Button className="bg-primary hover:bg-orange-dark text-primary-foreground shrink-0 gap-2">
+                <Button className="bg-primary hover:bg-gold-dark text-primary-foreground shrink-0 gap-2">
                   Apply <ArrowRight className="w-4 h-4" />
                 </Button>
               </div>

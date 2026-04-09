@@ -74,7 +74,7 @@ const FinanceCalculator = () => {
           </div>
           <div className="text-center mt-8">
             <Link to="/eligibilitate">
-              <Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2">
+              <Button size="lg" className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2">
                 Check Eligibility <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>

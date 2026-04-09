@@ -115,7 +115,7 @@ const AgentCourseIncome = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#E67E22]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#D4AF37]" />
       </div>
     );
   }
@@ -171,7 +171,7 @@ const AgentCourseIncome = () => {
       <Card className="shadow-sm">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-[#E67E22]" />
+            <BarChart3 className="w-5 h-5 text-[#D4AF37]" />
             Câștiguri per Curs
           </CardTitle>
           <CardDescription>
@@ -207,7 +207,7 @@ const AgentCourseIncome = () => {
                     name,
                   ]}
                 />
-                <Bar dataKey="Câștiguri" fill="#E67E22" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="Câștiguri" fill="#D4AF37" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           )}
@@ -218,7 +218,7 @@ const AgentCourseIncome = () => {
       <Card className="shadow-sm">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-[#E67E22]" />
+            <TrendingUp className="w-5 h-5 text-[#D4AF37]" />
             Tendință Lunară
           </CardTitle>
           <CardDescription>
@@ -254,9 +254,9 @@ const AgentCourseIncome = () => {
                   type="monotone"
                   dataKey="earnings"
                   name="Câștiguri"
-                  stroke="#E67E22"
+                  stroke="#D4AF37"
                   strokeWidth={2}
-                  dot={{ fill: '#E67E22' }}
+                  dot={{ fill: '#D4AF37' }}
                 />
                 <Line
                   yAxisId="right"

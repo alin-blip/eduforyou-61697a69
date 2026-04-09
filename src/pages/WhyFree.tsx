@@ -94,19 +94,19 @@ const WhyFree = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-orange-600 via-orange-500 to-amber-500 text-white py-20 md:py-28">
+      <section className="relative bg-gradient-to-br from-[#C6A248] via-[#D4AF37] to-[#EAC67E] text-white py-20 md:py-28">
         <div className="absolute inset-0 bg-black/20" />
         <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             De Ce Studiile Sunt Gratuite?
           </h1>
-          <p className="text-lg md:text-xl text-orange-100 mb-8 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-[#EAC67E] mb-8 max-w-3xl mx-auto">
             Prin Student Finance England, guvernul britanic finanțează integral taxele
             universitare. Nu plătești nimic din buzunar — rambursezi doar după ce câștigi
             peste £25,000 pe an.
           </p>
           <Link to="/eligibilitate">
-            <Button size="lg" className="bg-white text-orange-600 hover:bg-orange-50 text-lg px-8 py-6">
+            <Button size="lg" className="bg-white text-[#C6A248] hover:bg-[#D4AF37]/10 text-lg px-8 py-6">
               Verifică Eligibilitatea
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
@@ -126,11 +126,11 @@ const WhyFree = () => {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, i) => (
-              <Card key={i} className="p-6 text-center border-2 border-orange-100 hover:border-orange-300 transition-colors">
-                <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
-                  <step.icon className="h-8 w-8 text-orange-600" />
+              <Card key={i} className="p-6 text-center border-2 border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-colors">
+                <div className="w-16 h-16 rounded-full bg-[#D4AF37]/20 flex items-center justify-center mx-auto mb-4">
+                  <step.icon className="h-8 w-8 text-[#C6A248]" />
                 </div>
-                <div className="text-sm font-semibold text-orange-500 mb-2">Pasul {i + 1}</div>
+                <div className="text-sm font-semibold text-[#D4AF37] mb-2">Pasul {i + 1}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
                 <p className="text-gray-600 text-sm">{step.description}</p>
               </Card>
@@ -163,7 +163,7 @@ const WhyFree = () => {
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="flex items-center justify-center gap-3 mb-8">
-            <HelpCircle className="h-8 w-8 text-orange-500" />
+            <HelpCircle className="h-8 w-8 text-[#D4AF37]" />
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               Întrebări Frecvente
             </h2>
@@ -186,7 +186,7 @@ const WhyFree = () => {
       {/* CTA */}
       <section className="py-16 md:py-20 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <Users className="h-12 w-12 text-orange-400 mx-auto mb-4" />
+          <Users className="h-12 w-12 text-[#D4AF37] mx-auto mb-4" />
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ești Eligibil? Verifică Acum!
           </h2>
@@ -195,7 +195,7 @@ const WhyFree = () => {
             studia gratuit în Regatul Unit.
           </p>
           <Link to="/eligibilitate">
-            <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-6">
+            <Button size="lg" className="bg-[#D4AF37] hover:bg-[#C6A248] text-white text-lg px-8 py-6">
               Verifică Eligibilitatea Acum
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

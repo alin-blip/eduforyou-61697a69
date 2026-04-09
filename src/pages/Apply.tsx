@@ -343,7 +343,7 @@ const ApplyPage = () => {
                         type="submit"
                         size="lg"
                         disabled={submitting}
-                        className="w-full bg-orange hover:bg-orange-dark text-white font-bold text-base h-14 shadow-lg shadow-orange/25 transition-all hover:-translate-y-0.5"
+                        className="w-full bg-orange hover:bg-gold-dark text-white font-bold text-base h-14 shadow-lg shadow-orange/25 transition-all hover:-translate-y-0.5"
                       >
                         {submitting ? (
                           <>

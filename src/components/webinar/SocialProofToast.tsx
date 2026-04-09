@@ -56,8 +56,8 @@ const SocialProofToast = () => {
 
   return (
     <div className="fixed bottom-4 left-4 z-50 max-w-sm animate-in slide-in-from-bottom-4 fade-in duration-500">
-      <div className="flex items-start gap-3 rounded-lg border border-orange-200 bg-white p-4 shadow-lg">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-100 text-lg">
+      <div className="flex items-start gap-3 rounded-lg border border-[#D4AF37]/30 bg-white p-4 shadow-lg">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#D4AF37]/20 text-lg">
           &#127891;
         </div>
         <div className="min-w-0 flex-1">

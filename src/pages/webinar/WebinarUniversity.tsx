@@ -62,12 +62,12 @@ const WebinarUniversity = () => {
       {/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 md:py-24">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/30 rounded-full px-4 py-1.5 mb-6">
-            <GraduationCap className="w-4 h-4 text-orange-400" />
-            <span className="text-orange-300 text-sm font-medium">Webinar Gratuit</span>
+          <div className="inline-flex items-center gap-2 bg-[#D4AF37]/20 border border-[#D4AF37]/30 rounded-full px-4 py-1.5 mb-6">
+            <GraduationCap className="w-4 h-4 text-[#D4AF37]" />
+            <span className="text-[#EAC67E] text-sm font-medium">Webinar Gratuit</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-bold mb-4">
-            Cum Să Studiezi <span className="text-orange-400">Gratuit</span> în UK
+            Cum Să Studiezi <span className="text-[#D4AF37]">Gratuit</span> în UK
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-6">
             Află totul despre Student Finance England, universitățile partenere și cum poți
@@ -100,12 +100,12 @@ const WebinarUniversity = () => {
               {/* Speaker */}
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Speaker</h2>
               <Card className="p-5 flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#C6A248] flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
                   {speaker.name.split(' ').map((n) => n[0]).join('')}
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900">{speaker.name}</h3>
-                  <p className="text-orange-600 text-sm font-medium">{speaker.role}</p>
+                  <p className="text-[#C6A248] text-sm font-medium">{speaker.role}</p>
                   <p className="text-gray-600 text-sm mt-1">{speaker.bio}</p>
                 </div>
               </Card>
@@ -165,7 +165,7 @@ const WebinarUniversity = () => {
                       <Button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg py-3"
+                        className="w-full bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg py-3"
                       >
                         {loading ? (
                           <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Se procesează...</>

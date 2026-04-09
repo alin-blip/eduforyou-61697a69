@@ -52,7 +52,7 @@ const ForgotPassword = () => {
   if (isSuccess) {
     return (
       <Layout>
-        <div className="min-h-[calc(100vh-8rem)] flex items-center justify-center px-4 py-12 bg-gradient-to-br from-orange-50 via-white to-orange-50">
+        <div className="min-h-[calc(100vh-8rem)] flex items-center justify-center px-4 py-12 bg-gradient-to-br from-[#D4AF37]/10 via-white to-[#D4AF37]/10">
           <Card className="w-full max-w-md shadow-xl border-0 text-center">
             <CardHeader>
               <div className="mx-auto w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-2">
@@ -69,7 +69,7 @@ const ForgotPassword = () => {
             <CardFooter className="justify-center">
               <Link
                 to="/auth/login"
-                className="inline-flex items-center text-orange-600 hover:text-orange-700 font-medium hover:underline"
+                className="inline-flex items-center text-[#C6A248] hover:text-[#C6A248] font-medium hover:underline"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Înapoi la autentificare
@@ -83,10 +83,10 @@ const ForgotPassword = () => {
 
   return (
     <Layout>
-      <div className="min-h-[calc(100vh-8rem)] flex items-center justify-center px-4 py-12 bg-gradient-to-br from-orange-50 via-white to-orange-50">
+      <div className="min-h-[calc(100vh-8rem)] flex items-center justify-center px-4 py-12 bg-gradient-to-br from-[#D4AF37]/10 via-white to-[#D4AF37]/10">
         <Card className="w-full max-w-md shadow-xl border-0">
           <CardHeader className="text-center space-y-4">
-            <div className="mx-auto w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg">
+            <div className="mx-auto w-16 h-16 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#C6A248] flex items-center justify-center shadow-lg">
               <span className="text-white text-2xl font-bold">E</span>
             </div>
             <div>
@@ -119,7 +119,7 @@ const ForgotPassword = () => {
             <CardFooter className="flex flex-col space-y-4">
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
+                className="w-full bg-gradient-to-r from-[#D4AF37] to-[#C6A248] hover:from-[#C6A248] hover:to-[#C6A248] text-white"
                 disabled={isLoading}
               >
                 {isLoading ? (
@@ -132,7 +132,7 @@ const ForgotPassword = () => {
 
               <Link
                 to="/auth/login"
-                className="inline-flex items-center justify-center text-sm text-gray-500 hover:text-orange-600"
+                className="inline-flex items-center justify-center text-sm text-gray-500 hover:text-[#C6A248]"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Înapoi la autentificare

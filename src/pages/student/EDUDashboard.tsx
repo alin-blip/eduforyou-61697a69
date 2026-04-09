@@ -89,7 +89,7 @@ const EDUDashboard = () => {
 
   const phaseColors: Record<string, string> = {
     evaluate: 'from-blue-500 to-cyan-400',
-    deliver: 'from-orange-500 to-purple-500',
+    deliver: 'from-[#D4AF37] to-purple-500',
     unlock: 'from-green-500 to-lime-400',
   };
 
@@ -205,9 +205,9 @@ const EDUDashboard = () => {
             <p className="text-xs text-muted-foreground">Evaluate</p>
           </CardContent>
         </Card>
-        <Card className="border-orange-200 dark:border-orange-800">
+        <Card className="border-[#D4AF37]/30 dark:border-[#C6A248]">
           <CardContent className="p-4 text-center">
-            <FileText className="w-6 h-6 text-orange-500 mx-auto mb-1" />
+            <FileText className="w-6 h-6 text-[#D4AF37] mx-auto mb-1" />
             <p className="text-2xl font-bold text-foreground">{deliverProgress.completed}/{deliverProgress.total}</p>
             <p className="text-xs text-muted-foreground">Deliver</p>
           </CardContent>

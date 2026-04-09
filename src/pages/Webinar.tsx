@@ -39,7 +39,7 @@ const WebinarPage = () => (
                   <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {w.date}</span>
                   <span className="flex items-center gap-1"><Users className="w-4 h-4" /> {w.spots}</span>
                 </div>
-                <Button className="w-full bg-primary hover:bg-orange-dark text-primary-foreground font-semibold">
+                <Button className="w-full bg-primary hover:bg-gold-dark text-primary-foreground font-semibold">
                   Register Free
                 </Button>
               </div>

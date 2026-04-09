@@ -111,7 +111,7 @@ const CareerApply = () => {
             <ArrowLeft className="w-4 h-4" /> Înapoi la Cariere
           </Link>
           <div className="flex items-center gap-3 mb-4">
-            <Briefcase className="w-10 h-10 text-orange-400" />
+            <Briefcase className="w-10 h-10 text-[#D4AF37]" />
             <div>
               <h1 className="text-3xl md:text-4xl font-bold">{jobTitle}</h1>
               <p className="text-gray-400 text-sm">Aplică pentru această poziție</p>
@@ -231,7 +231,7 @@ const CareerApply = () => {
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg py-3 gap-2"
+                    className="w-full bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg py-3 gap-2"
                   >
                     {loading ? (
                       <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Se trimite...</>

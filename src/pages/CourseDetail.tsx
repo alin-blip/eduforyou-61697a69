@@ -51,7 +51,7 @@ const CourseDetail = () => {
               <div className="text-3xl font-bold text-primary mb-6">{course.price}</div>
               <div className="flex flex-wrap gap-3">
                 <Link to="/eligibilitate">
-                  <Button size="lg" className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2">
+                  <Button size="lg" className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2">
                     Apply Now <ArrowRight className="w-5 h-5" />
                   </Button>
                 </Link>
@@ -120,7 +120,7 @@ const CourseDetail = () => {
                 <h3 className="font-display font-bold text-xl text-foreground mb-3">Ready to Apply?</h3>
                 <p className="text-muted-foreground mb-6">Check your eligibility in 2 minutes. Our team will guide you through the entire process — completely free.</p>
                 <Link to="/eligibilitate">
-                  <Button className="bg-primary hover:bg-orange-dark text-primary-foreground font-semibold gap-2 w-full">
+                  <Button className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2 w-full">
                     Check Eligibility <ArrowRight className="w-5 h-5" />
                   </Button>
                 </Link>

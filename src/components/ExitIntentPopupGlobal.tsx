@@ -99,7 +99,7 @@ const ExitIntentPopupGlobal = () => {
 
           <Button
             onClick={handleCTA}
-            className="w-full bg-gradient-to-r from-orange-500 to-red-500 py-6 text-base font-semibold text-white hover:from-orange-600 hover:to-red-600"
+            className="w-full bg-gradient-to-r from-[#D4AF37] to-[#C6A248] py-6 text-base font-semibold text-white hover:from-[#C6A248] hover:to-[#C6A248]"
           >
             Începe Testul IKIGAI Gratuit
           </Button>

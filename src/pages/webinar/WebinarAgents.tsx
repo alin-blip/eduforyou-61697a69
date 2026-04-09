@@ -66,12 +66,12 @@ const WebinarAgents = () => {
       {/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 md:py-24">
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/30 rounded-full px-4 py-1.5 mb-6">
-            <Briefcase className="w-4 h-4 text-orange-400" />
-            <span className="text-orange-300 text-sm font-medium">Webinar Pentru Agenți</span>
+          <div className="inline-flex items-center gap-2 bg-[#D4AF37]/20 border border-[#D4AF37]/30 rounded-full px-4 py-1.5 mb-6">
+            <Briefcase className="w-4 h-4 text-[#D4AF37]" />
+            <span className="text-[#EAC67E] text-sm font-medium">Webinar Pentru Agenți</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-bold mb-4">
-            Devino Agent <span className="text-orange-400">EduForYou</span>
+            Devino Agent <span className="text-[#D4AF37]">EduForYou</span>
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-6">
             Descoperă cum poți câștiga comisioane de până la £1,000 per student, cu training complet
@@ -86,14 +86,14 @@ const WebinarAgents = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-8 bg-orange-500 text-white">
+      <section className="py-8 bg-[#D4AF37] text-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {stats.map((s, i) => (
               <div key={i} className="flex flex-col items-center">
                 <s.icon className="w-6 h-6 mb-1" />
                 <div className="text-2xl font-bold">{s.value}</div>
-                <div className="text-orange-100 text-xs">{s.label}</div>
+                <div className="text-[#EAC67E] text-xs">{s.label}</div>
               </div>
             ))}
           </div>
@@ -116,7 +116,7 @@ const WebinarAgents = () => {
                 ))}
               </div>
 
-              <Card className="p-5 bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200">
+              <Card className="p-5 bg-gradient-to-br from-[#D4AF37]/10 to-[#EAC67E]/10 border-[#D4AF37]/30">
                 <h3 className="font-bold text-gray-900 mb-2">Cine Prezintă?</h3>
                 <p className="text-gray-600 text-sm">
                   Webinarul este prezentat de Mihai Georgescu, Manager Rețea Agenți, alături
@@ -177,7 +177,7 @@ const WebinarAgents = () => {
                       <Button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg py-3"
+                        className="w-full bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg py-3"
                       >
                         {loading ? (
                           <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Se procesează...</>

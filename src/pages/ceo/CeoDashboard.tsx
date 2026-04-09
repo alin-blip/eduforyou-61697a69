@@ -101,7 +101,7 @@ const CeoDashboard = () => {
     { label: 'Active Applications', value: stats.applications.toLocaleString(), change: '+8%', icon: FileText, color: 'text-emerald-600' },
     { label: 'Revenue', value: `€${(stats.revenue).toLocaleString()}`, change: '+15%', icon: DollarSign, color: 'text-[#d4a843]' },
     { label: 'Conversion Rate', value: `${stats.conversionRate}%`, change: '+3%', icon: TrendingUp, color: 'text-purple-600' },
-    { label: 'Agent Performance', value: `${stats.agentPerformance} apps/agent`, change: '+5%', icon: Cpu, color: 'text-orange-600' },
+    { label: 'Agent Performance', value: `${stats.agentPerformance} apps/agent`, change: '+5%', icon: Cpu, color: 'text-[#C6A248]' },
   ];
 
   const alertSeverityColor = (severity: string) => {

@@ -24,7 +24,7 @@ const STATUS_CONFIG: Record<string, { label: string; color: string; icon: React.
   under_review: { label: 'În Verificare', color: 'text-yellow-600 border-yellow-300 bg-yellow-50', icon: Clock },
   approved: { label: 'Aprobat', color: 'text-green-600 border-green-300 bg-green-50', icon: CheckCircle2 },
   rejected: { label: 'Respins', color: 'text-red-600 border-red-300 bg-red-50', icon: XCircle },
-  resubmit: { label: 'De Retrimis', color: 'text-orange-600 border-orange-300 bg-orange-50', icon: AlertCircle },
+  resubmit: { label: 'De Retrimis', color: 'text-[#C6A248] border-[#D4AF37]/40 bg-[#D4AF37]/10', icon: AlertCircle },
 };
 
 const DocumentChecks = () => {
@@ -66,7 +66,7 @@ const DocumentChecks = () => {
     <div className="space-y-6 max-w-2xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
-          <FileSearch className="w-6 h-6 text-orange-500" />
+          <FileSearch className="w-6 h-6 text-[#D4AF37]" />
           Verificare Documente & Răspuns Universitate
         </h1>
         <p className="text-muted-foreground mt-1">
@@ -151,7 +151,7 @@ const DocumentChecks = () => {
                   accepted: { label: 'Acceptat', color: 'text-green-600 bg-green-50 border-green-200' },
                   rejected: { label: 'Respins', color: 'text-red-600 bg-red-50 border-red-200' },
                   enrolled: { label: 'Înscris', color: 'text-primary bg-primary/10 border-primary/30' },
-                  conditional: { label: 'Acceptare Condiționată', color: 'text-orange-600 bg-orange-50 border-orange-200' },
+                  conditional: { label: 'Acceptare Condiționată', color: 'text-[#C6A248] bg-[#D4AF37]/10 border-[#D4AF37]/30' },
                 };
 
                 const status = statusMap[app.status] || statusMap.submitted;

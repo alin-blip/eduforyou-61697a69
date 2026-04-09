@@ -132,7 +132,7 @@ const Header = () => {
               </Button>
             </Link>
             <Link to="/eligibilitate">
-              <Button size="sm" className="hidden md:inline-flex bg-primary hover:bg-orange-dark text-primary-foreground font-semibold">
+              <Button size="sm" className="hidden md:inline-flex bg-primary hover:bg-gold-dark text-primary-foreground font-semibold">
                 {t('nav.checkEligibility')}
               </Button>
             </Link>
@@ -191,7 +191,7 @@ const Header = () => {
                   </SheetClose>
                   <SheetClose asChild>
                     <Link to="/eligibilitate">
-                      <Button className="w-full mt-2 bg-primary hover:bg-orange-dark text-primary-foreground">
+                      <Button className="w-full mt-2 bg-primary hover:bg-gold-dark text-primary-foreground">
                         {t('nav.checkEligibility')}
                       </Button>
                     </Link>
