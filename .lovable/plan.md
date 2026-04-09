@@ -1,38 +1,57 @@
 
 
-# Fix: Eligibility contact insert RLS error
+# Audit General: Eligibilitate, Ikigai & Zona de Membri
 
-## Root cause
+## Probleme Identificate
 
-The `contacts` insert on line 105-113 of `Eligibility.tsx` chains `.select()` after `.insert()`. This triggers both INSERT and SELECT policies. The INSERT policy allows anyone, but the SELECT policy only allows admins and agents. Since the eligibility form is used by unauthenticated or student users, the SELECT check fails.
+### 1. CRITIC: Categoriile din Ikigai Quiz nu se potrivesc cu cursurile
+Ikigai Quiz folosește tag-uri: `Psychology`, `Health`, `Business`, `Technology`, `Construction`
+Cursurile din `courses.ts` folosesc categorii: `Business`, `Computing & IT`, `Engineering`, `Psychology`, `Health & Social Care`, `Construction`, `Law`, `Marketing`, `Accounting & Finance`, `Project Management`, `Human Resources`
 
-The same pattern exists in multiple pages: `Apply.tsx`, `ApplyRo.tsx`, `Contact.tsx`, `WebinarUniversity.tsx`, `WebinarIkigai.tsx`, `WebinarAgents.tsx`.
+**Nepotriviri:**
+- `Technology` (Ikigai) ≠ `Computing & IT` (cursuri) → **0 rezultate returnate**
+- `Health` (Ikigai) ≠ `Health & Social Care` (cursuri) → **0 rezultate returnate**
+- Categoriile `Law`, `Marketing`, `Accounting & Finance`, `Project Management`, `Human Resources`, `Engineering` nu sunt acoperite de Ikigai deloc
 
-## Fix
+**Fix:** Actualizez tag-urile din Ikigai Quiz să folosească exact categoriile din `courses.ts` și adaug opțiuni pentru categoriile lipsă.
 
-Remove `.select()` from all `contacts` insert calls where the caller doesn't need the returned data. This is the simplest and most secure fix — no need to weaken RLS policies.
+### 2. CRITIC: Eligibility Quiz - categoriile de cursuri sunt hardcoded și incomplete
+Eligibility.tsx (linia 31-38) are doar 7 opțiuni hardcoded (`Business & Management`, `Computing & Technology`, etc.) care nu se potrivesc cu cele 11 categorii reale din `courses.ts`.
 
-### Files to edit:
-1. **`src/pages/Eligibility.tsx`** — remove `.select()` from contacts insert (line 113)
-2. **`src/pages/Apply.tsx`** — remove `.select()` from contacts insert
-3. **`src/pages/ApplyRo.tsx`** — remove `.select()` from contacts insert
-4. **`src/pages/Contact.tsx`** — remove `.select()` if present
-5. **`src/pages/webinar/WebinarUniversity.tsx`** — remove `.select()` if present
-6. **`src/pages/webinar/WebinarIkigai.tsx`** — remove `.select()` if present
-7. **`src/pages/webinar/WebinarAgents.tsx`** — remove `.select()` if present
-8. **`src/components/webinar/IkigaiSignupForm.tsx`** — remove `.select()` if present
+**Fix:** Generez lista de cursuri dinamic din `coursesData` + adaug "Not Sure Yet".
 
-### Edge function build errors
+### 3. MEDIU: Build errors — AdminJobPage.tsx
+`fadeUp` variant folosește `ease: 'easeOut'` ca string, dar TypeScript cere tipul `Easing`. Fix simplu: cast la `as const` sau folosește array.
 
-Two additional build errors to fix in the same pass:
+### 4. MEDIU: Build errors — AdminCourses.tsx
+`emptyCourse` nu include toate câmpurile din interfața `Course` (lipsesc `studyMode`, `fees`, `intakes`, `entryRequirements`, etc.).
 
-1. **`supabase/functions/send-transactional-email/index.ts`** — remove `@react-email/render` import (npm package not available in Deno). Replace with inline HTML string handling.
+**Fix:** Adaug toate câmpurile lipsă cu valori default.
 
-2. **`supabase/functions/process-email-queue/index.ts`** — add explicit types to `.map((msg: any)` and `.filter((id: any)` to fix implicit `any` errors.
+### 5. LOW: Fluxul eligibilitate → cont → zona de membri
+Fluxul actual funcționează: eligibilitate → creare cont → verificare email → login → redirect `/student`. 
+**Problemă:** După creare cont, utilizatorul trebuie să verifice email-ul, apoi să navigheze manual la `/login`. Nu există redirect automat sau link direct.
+
+**Fix:** Adaug buton "Go to Login" după crearea contului.
 
 ---
 
-## Regarding GitHub sync
+## Plan de Implementare
 
-Sincronizarea cu GitHub funcționează bidirecțional — modificările din GitHub se sincronizează automat în Lovable și invers. Dacă ai făcut modificări pe GitHub și nu le vezi reflectate, verifică în Settings → GitHub dacă repository-ul este conectat corect. Modificările ar trebui să apară automat în câteva secunde după push.
+### Pas 1: Fix build errors (AdminJobPage + AdminCourses)
+- `AdminJobPage.tsx`: Schimb `ease: 'easeOut'` în `ease: [0.0, 0.0, 0.2, 1] as const` (cubic-bezier equivalent)
+- `AdminCourses.tsx`: Adaug câmpurile lipsă la `emptyCourse`
+
+### Pas 2: Sincronizare categorii Ikigai Quiz cu cursurile reale
+Actualizez `IkigaiQuiz.tsx`:
+- `Technology` → `Computing & IT`
+- `Health` → `Health & Social Care`
+- Adaug opțiuni noi pentru `Law`, `Marketing`, `Accounting & Finance`, `Engineering`, `Project Management`, `Human Resources`
+- Adaug întrebări/opțiuni relevante pentru aceste categorii
+
+### Pas 3: Dinamizare lista cursuri în Eligibility
+Înlocuiesc `courseOptions` hardcoded cu categorii extrase din `coursesData` + "Not Sure Yet".
+
+### Pas 4: Îmbunătățire flux post-eligibilitate
+Adaug link "Mergi la Login" după crearea contului, pentru navigare directă la zona de membri.
 
