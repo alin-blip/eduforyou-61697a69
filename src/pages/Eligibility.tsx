@@ -4,10 +4,12 @@ import Layout from '@/components/layout/Layout';
 import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/i18n/LanguageContext';
-import { ArrowRight, ArrowLeft, CheckCircle2, User, Phone, MapPin, BookOpen, Lock } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, User, Phone, MapPin, BookOpen, Lock, LogIn } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { trackLead } from '@/lib/tracking';
+import { coursesData } from '@/data/courses';
 
 const META_PIXEL_ID = '1930929073773570';
 
@@ -28,13 +30,9 @@ const residenceOptions = [
   'Other / Not Sure',
 ];
 
+// Dynamic course categories from actual course data
 const courseOptions = [
-  'Business & Management',
-  'Computing & Technology',
-  'Psychology & Counselling',
-  'Health & Social Care',
-  'Construction Management',
-  'Accounting & Finance',
+  ...Array.from(new Set(coursesData.map(c => c.category))).sort(),
   'Not Sure Yet',
 ];
 
@@ -349,11 +347,16 @@ const EligibilityPage = () => {
                           </div>
                         </div>
                       ) : (
-                        <div className="bg-success/10 rounded-xl p-6 border border-success/20 max-w-md mx-auto">
+                        <div className="bg-success/10 rounded-xl p-6 border border-success/20 max-w-md mx-auto space-y-4">
                           <div className="flex items-center gap-2 justify-center">
                             <CheckCircle2 className="w-5 h-5 text-success" />
                             <p className="font-medium text-foreground">Account created! Check your email to verify.</p>
                           </div>
+                          <Link to="/login">
+                            <Button className="w-full bg-primary hover:bg-gold-dark text-primary-foreground gap-2 mt-2">
+                              <LogIn className="w-4 h-4" /> Go to Login
+                            </Button>
+                          </Link>
                         </div>
                       )}
                     </>

@@ -11,20 +11,29 @@ import { Plus, Edit2, Trash2, BookOpen, Search } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { coursesData, type Course } from '@/data/courses';
 
-const emptyCourse = {
+const emptyCourse: Omit<Course, 'id'> & { id: string } = {
   id: '',
   title: '',
   slug: '',
   description: '',
-  level: 'BSc' as Course['level'],
+  level: 'BSc',
   duration: '',
   category: '',
-  campuses: [] as string[],
+  campuses: [],
   price: '',
   image: '',
-  modules: [] as string[],
-  careers: [] as string[],
+  modules: [],
+  careers: [],
   university: '',
+  studyMode: 'Full-time',
+  fees: '',
+  intakes: [],
+  entryRequirements: '',
+  documentsRequired: '',
+  interviewInfo: '',
+  admissionTestInfo: '',
+  personalStatementGuidelines: '',
+  additionalInfo: '',
 };
 
 const AdminCourses = () => {
