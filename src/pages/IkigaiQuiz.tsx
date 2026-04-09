@@ -6,6 +6,11 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, ArrowLeft, Heart, Zap, Globe, Briefcase, Sparkles } from 'lucide-react';
 import { coursesData } from '@/data/courses';
 
+/**
+ * Tags must match exactly the `category` values in courses.ts:
+ * Business, Computing & IT, Engineering, Psychology, Health & Social Care,
+ * Construction, Law, Marketing, Accounting & Finance, Project Management, Human Resources
+ */
 const ikigaiQuestions = [
   {
     id: 'passion',
@@ -13,12 +18,14 @@ const ikigaiQuestions = [
     subtitle: 'Select the activities that bring you joy and fulfilment.',
     icon: Heart,
     options: [
-      { label: 'Helping people solve problems', tags: ['Psychology', 'Health'] },
-      { label: 'Working with numbers and data', tags: ['Business', 'Technology'] },
-      { label: 'Creating and building things', tags: ['Technology', 'Construction'] },
-      { label: 'Leading and managing teams', tags: ['Business'] },
-      { label: 'Understanding how people think', tags: ['Psychology'] },
-      { label: 'Analysing information and research', tags: ['Technology', 'Business'] },
+      { label: 'Helping people solve problems', tags: ['Psychology', 'Health & Social Care'] },
+      { label: 'Working with numbers and data', tags: ['Accounting & Finance', 'Computing & IT'] },
+      { label: 'Creating and building things', tags: ['Engineering', 'Construction'] },
+      { label: 'Leading and managing teams', tags: ['Business', 'Project Management'] },
+      { label: 'Understanding how people think', tags: ['Psychology', 'Human Resources'] },
+      { label: 'Promoting ideas and brands', tags: ['Marketing', 'Business'] },
+      { label: 'Researching laws and justice', tags: ['Law'] },
+      { label: 'Designing digital solutions', tags: ['Computing & IT', 'Engineering'] },
     ],
   },
   {
@@ -27,12 +34,14 @@ const ikigaiQuestions = [
     subtitle: 'Choose the skills that come naturally to you.',
     icon: Zap,
     options: [
-      { label: 'Communication and empathy', tags: ['Psychology', 'Health'] },
-      { label: 'Logical thinking and problem-solving', tags: ['Technology'] },
-      { label: 'Organisation and planning', tags: ['Business', 'Construction'] },
-      { label: 'Creativity and innovation', tags: ['Technology', 'Business'] },
-      { label: 'Attention to detail', tags: ['Business', 'Construction'] },
-      { label: 'Working under pressure', tags: ['Health', 'Business'] },
+      { label: 'Communication and empathy', tags: ['Psychology', 'Health & Social Care', 'Human Resources'] },
+      { label: 'Logical thinking and problem-solving', tags: ['Computing & IT', 'Engineering'] },
+      { label: 'Organisation and planning', tags: ['Project Management', 'Construction'] },
+      { label: 'Creativity and innovation', tags: ['Marketing', 'Computing & IT'] },
+      { label: 'Attention to detail and accuracy', tags: ['Accounting & Finance', 'Law'] },
+      { label: 'Working under pressure', tags: ['Health & Social Care', 'Business'] },
+      { label: 'Negotiation and persuasion', tags: ['Law', 'Marketing', 'Business'] },
+      { label: 'Managing people and teams', tags: ['Human Resources', 'Project Management'] },
     ],
   },
   {
@@ -41,12 +50,14 @@ const ikigaiQuestions = [
     subtitle: 'What cause or area feels most important to you?',
     icon: Globe,
     options: [
-      { label: 'Better mental health support', tags: ['Psychology', 'Health'] },
-      { label: 'Technological innovation', tags: ['Technology'] },
-      { label: 'Stronger businesses and economies', tags: ['Business'] },
-      { label: 'Better infrastructure and housing', tags: ['Construction'] },
-      { label: 'Financial literacy and access', tags: ['Business'] },
-      { label: 'Healthcare for everyone', tags: ['Health'] },
+      { label: 'Better mental health support', tags: ['Psychology', 'Health & Social Care'] },
+      { label: 'Technological innovation', tags: ['Computing & IT', 'Engineering'] },
+      { label: 'Stronger businesses and economies', tags: ['Business', 'Accounting & Finance'] },
+      { label: 'Better infrastructure and housing', tags: ['Construction', 'Project Management'] },
+      { label: 'Justice and equal rights', tags: ['Law'] },
+      { label: 'Better workplaces and employee wellbeing', tags: ['Human Resources', 'Psychology'] },
+      { label: 'Smarter marketing and communication', tags: ['Marketing'] },
+      { label: 'Healthcare for everyone', tags: ['Health & Social Care'] },
     ],
   },
   {
@@ -55,12 +66,15 @@ const ikigaiQuestions = [
     subtitle: 'Pick the career direction you find most appealing.',
     icon: Briefcase,
     options: [
-      { label: 'Therapist, counsellor, or social worker', tags: ['Psychology', 'Health'] },
-      { label: 'Software developer or data analyst', tags: ['Technology'] },
-      { label: 'Manager, entrepreneur, or consultant', tags: ['Business'] },
-      { label: 'Accountant or financial analyst', tags: ['Business'] },
-      { label: 'Project manager or site manager', tags: ['Construction'] },
-      { label: 'Cybersecurity specialist', tags: ['Technology'] },
+      { label: 'Therapist, counsellor, or social worker', tags: ['Psychology', 'Health & Social Care'] },
+      { label: 'Software developer or data analyst', tags: ['Computing & IT'] },
+      { label: 'Manager, entrepreneur, or consultant', tags: ['Business', 'Project Management'] },
+      { label: 'Accountant or financial analyst', tags: ['Accounting & Finance'] },
+      { label: 'Project manager or site manager', tags: ['Construction', 'Project Management'] },
+      { label: 'Lawyer or legal advisor', tags: ['Law'] },
+      { label: 'Marketing specialist or brand strategist', tags: ['Marketing'] },
+      { label: 'HR manager or recruiter', tags: ['Human Resources'] },
+      { label: 'Engineer or technical specialist', tags: ['Engineering'] },
     ],
   },
 ];
