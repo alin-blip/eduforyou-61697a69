@@ -17,7 +17,7 @@ const AgentsPage = () => {
 
   const handleSubscribe = async () => {
     if (!user) {
-      toast({ title: 'Please log in first', description: 'You need an account to subscribe.', variant: 'destructive' });
+      toast({ title: 'Autentifică-te mai întâi', description: 'Ai nevoie de un cont pentru a te abona.', variant: 'destructive' });
       return;
     }
     setLoading(true);
@@ -28,7 +28,7 @@ const AgentsPage = () => {
       if (error) throw error;
       if (data?.url) window.open(data.url, '_blank');
     } catch (err: any) {
-      toast({ title: 'Error', description: err.message || 'Could not start checkout', variant: 'destructive' });
+      toast({ title: 'Eroare', description: err.message || 'Nu am putut porni procesul de plată', variant: 'destructive' });
     } finally {
       setLoading(false);
     }
@@ -41,7 +41,7 @@ const AgentsPage = () => {
       if (error) throw error;
       if (data?.url) window.open(data.url, '_blank');
     } catch (err: any) {
-      toast({ title: 'Error', description: err.message || 'Could not open portal', variant: 'destructive' });
+      toast({ title: 'Eroare', description: err.message || 'Nu am putut deschide portalul clientului', variant: 'destructive' });
     } finally {
       setPortalLoading(false);
     }
@@ -51,17 +51,17 @@ const AgentsPage = () => {
     <Layout>
       <section className="py-20 bg-navy-gradient">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Become an Education Agent</h1>
-          <p className="text-secondary-foreground/70 max-w-2xl mx-auto">Earn generous commissions by referring students to UK university programmes. Join our growing network of education agents.</p>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Devino agent educațional</h1>
+          <p className="text-secondary-foreground/70 max-w-2xl mx-auto">Câștigă comisioane atractive recomandând studenți către programe universitare din Marea Britanie. Alătură-te rețelei noastre în continuă creștere de agenți educaționali.</p>
         </div>
       </section>
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { icon: PoundSterling, title: 'Competitive Commissions', desc: 'Earn up to £500 per successful student referral' },
-              { icon: Users, title: 'Marketing Support', desc: 'Access branded materials, landing pages, and training' },
-              { icon: Trophy, title: 'Leaderboard & Bonuses', desc: 'Top agents earn extra bonuses and VIP perks' },
+              { icon: PoundSterling, title: 'Comisioane competitive', desc: 'Câștigă până la 500 £ pentru fiecare student recomandat cu succes' },
+              { icon: Users, title: 'Suport de marketing', desc: 'Ai acces la materiale de brand, pagini de prezentare și instruire' },
+              { icon: Trophy, title: 'Clasament și bonusuri', desc: 'Cei mai buni agenți primesc bonusuri suplimentare și beneficii VIP' },
             ].map((item, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}
                 className="bg-card rounded-xl p-6 border border-border text-center">
@@ -73,34 +73,34 @@ const AgentsPage = () => {
           </div>
           <div className="bg-gradient-to-br from-primary/5 to-gold/5 rounded-2xl p-8 md:p-12 border border-primary/10 text-center">
             <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-              {isSubscribed ? "You're an Active Agent!" : 'Ready to Get Started?'}
+              {isSubscribed ? 'Ești un agent activ!' : 'Ești gata să începi?'}
             </h2>
             <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
               {isSubscribed
-                ? 'Manage your subscription or access the agent dashboard below.'
-                : 'Subscribe for £97/month to unlock CRM, commissions, training, and dedicated support.'}
+                ? 'Gestionează-ți abonamentul sau accesează mai jos panoul agentului.'
+                : 'Abonează-te cu 97 £/lună pentru a debloca CRM-ul, comisioanele, instruirea și suportul dedicat.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               {isSubscribed ? (
                 <>
                   <Link to="/agent">
                     <Button size="lg" className="font-semibold gap-2">
-                      Go to Dashboard <ArrowRight className="w-5 h-5" />
+                      Mergi la panou <ArrowRight className="w-5 h-5" />
                     </Button>
                   </Link>
                   <Button size="lg" variant="outline" onClick={handleManage} disabled={portalLoading} className="font-semibold gap-2">
-                    {portalLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <><CreditCard className="w-5 h-5" /> Manage Subscription</>}
+                    {portalLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <><CreditCard className="w-5 h-5" /> Gestionează abonamentul</>}
                   </Button>
                 </>
               ) : (
                 <>
                   <Button size="lg" onClick={handleSubscribe} disabled={loading}
                     className="bg-primary hover:bg-gold-dark text-primary-foreground font-semibold gap-2">
-                    {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Subscribe — £97/month <ArrowRight className="w-5 h-5" /></>}
+                    {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Abonează-te — 97 £/lună <ArrowRight className="w-5 h-5" /></>}
                   </Button>
                   {!user && (
                     <Link to="/login">
-                      <Button size="lg" variant="outline" className="font-semibold">Log in first</Button>
+                      <Button size="lg" variant="outline" className="font-semibold">Autentifică-te mai întâi</Button>
                     </Link>
                   )}
                 </>
