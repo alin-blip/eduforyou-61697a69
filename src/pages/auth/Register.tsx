@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Eye, EyeOff, UserPlus, Loader2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
@@ -10,7 +10,12 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 
+const AGENT_APPLICATION_WEBHOOK_URL =
+  import.meta.env.VITE_N8N_AGENT_APPLICATION_WEBHOOK ||
+  'https://eduforyou.app.n8n.cloud/webhook/agent-application';
+
 const Register = () => {
+  const [searchParams] = useSearchParams();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -20,6 +25,37 @@ const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
+  const leadSource = searchParams.get('source');
+  const isAgentLead = leadSource === 'agents';
+
+  const sendAgentLeadToN8n = async () => {
+    if (!isAgentLead) return;
+
+    const payload = {
+      fullName: fullName.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
+      city: '',
+      occupation: 'Agent signup via /agents',
+      salesExperience: '',
+      experienceDetails: '',
+      networkSize: '',
+      whyAgent: 'Lead capturat din fluxul /agents → /auth/register',
+      howHeard: 'eduforyou.co.uk/agents',
+    };
+
+    const response = await fetch(AGENT_APPLICATION_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Webhook n8n a răspuns cu status ${response.status}`);
+    }
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -64,6 +100,8 @@ const Register = () => {
         });
         return;
       }
+
+      await sendAgentLeadToN8n();
 
       setIsSuccess(true);
       toast({
@@ -125,7 +163,7 @@ const Register = () => {
                 Creează cont
               </CardTitle>
               <CardDescription className="text-gray-500 mt-1">
-                Înregistrează-te pe EduForYou
+                {isAgentLead ? 'Înregistrează-te ca agent EduForYou' : 'Înregistrează-te pe EduForYou'}
               </CardDescription>
             </div>
           </CardHeader>

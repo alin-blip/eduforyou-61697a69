@@ -124,7 +124,7 @@ const AgentsOffer = () => {
             Fără investiție inițială. Fără risc. Training complet oferit de noi.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/auth/register">
+            <Link to="/auth/register?source=agents">
               <Button className="bg-[#D4AF37] hover:bg-[#C6A248] text-white font-semibold text-lg px-8 py-3 gap-2">
                 Înscrie-te Ca Agent <ArrowRight className="w-5 h-5" />
               </Button>
@@ -193,7 +193,7 @@ const AgentsOffer = () => {
                       </li>
                     ))}
                   </ul>
-                  <Link to="/auth/register">
+                  <Link to="/auth/register?source=agents">
                     <Button
                       className={`w-full mt-6 font-semibold ${
                         tier.highlight
@@ -293,7 +293,7 @@ const AgentsOffer = () => {
           <p className="text-[#EAC67E] text-lg mb-8">
             Alătură-te celor peste 500 de agenți care câștigă comisioane ajutând românii să acceseze educație gratuită în UK.
           </p>
-          <Link to="/auth/register">
+          <Link to="/auth/register?source=agents">
             <Button className="bg-white text-[#C6A248] hover:bg-[#D4AF37]/10 font-semibold text-lg px-8 py-3 gap-2">
               Înscrie-te Ca Agent <ArrowRight className="w-5 h-5" />
             </Button>

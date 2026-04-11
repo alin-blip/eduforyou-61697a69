@@ -153,7 +153,7 @@ const AgentsSuccess = () => {
             Alătură-te rețelei de agenți EduForYou și începe să câștigi comisioane generoase.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/auth/register">
+            <Link to="/auth/register?source=agents">
               <Button className="bg-white text-[#C6A248] hover:bg-[#D4AF37]/10 font-semibold text-lg px-8 py-3 gap-2">
                 Devino Agent <ArrowRight className="w-5 h-5" />
               </Button>
